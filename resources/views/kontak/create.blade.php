@@ -1,7 +1,7 @@
 @extends('layouts.navigation')
 @section('title','Contact')
 @section('nav')
-
+{{ Counter::count('contact') }}
     <section class="section-breadcrumb">
         <h2 class="title" >About the Ombak Putih Bungalow</h2>
         <div class="breadcrumb">
