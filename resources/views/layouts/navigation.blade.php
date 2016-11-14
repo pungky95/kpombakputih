@@ -17,6 +17,7 @@
     <link href="{{ asset("moon/bootstrap/css/bootstrap.min.css") }}" rel='stylesheet' type='text/css'>
     <link href="{{ asset("moon/css/animate.css") }}" rel='stylesheet' type='text/css'>
     <link href="{{ asset("moon/css/swiper.min.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("css/sweetalert.css") }}" rel='stylesheet' type='text/css'>
 
     <link href="{{ asset("moon/css/style.css") }}" rel='stylesheet' type='text/css'>
 

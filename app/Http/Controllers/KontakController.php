@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Alert;
 use App\Kontak;
 use Illuminate\Http\Request;
 use Session;
@@ -48,11 +48,9 @@ class KontakController extends Controller
     public function store(StoreKontakRequest $request)
     {
         $requestData = $request->all();
-        
         Kontak::create($requestData);
 
-        Session::flash('flash_message', 'Kontak added!');
-
+        Alert::success('Your Message Sent','Sent')->persistent('Ok');;
         return redirect('kontak/create');
     }
 

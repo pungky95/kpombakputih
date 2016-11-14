@@ -2,6 +2,8 @@
 @section('title','Contact')
 @section('nav')
 {{ Counter::count('contact') }}
+<script src="{{ asset("js/sweetalert.min.js") }}"></script>
+@include('sweet::alert')
     <section class="section-breadcrumb">
         <h2 class="title" >About the Ombak Putih Bungalow</h2>
         <div class="breadcrumb">
