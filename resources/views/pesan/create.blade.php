@@ -60,6 +60,20 @@
                     {!! $errors->first('permintaan_khusus', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('no_telepon') ? 'has-error' : ''}}">
+                {!! Form::label('no_telepon', 'Telephone', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-md-6">
+                    {!! Form::text('no_telepon', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('no_telepon', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
+                {!! Form::label('email', 'Email', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-md-6">
+                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
 
                         <div class="form-group">

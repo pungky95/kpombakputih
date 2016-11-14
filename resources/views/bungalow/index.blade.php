@@ -133,7 +133,7 @@
                                 <tbody>
                                 @foreach($bungalow as $item)
                                     <tr>
-                                        <td>{{ $item->nama }}</td><td> Rp.{{ $item->tarif_low }}</td><td>Rp.{{ $item->tarif_high }}</td><td>{{ $item->keterangan }}</td><td>{{ $item->jumlah_kamar }}</td>
+                                        <td>{{ $item->nama }}</td><td> IDR. {{ number_format($item->tarif_low) }}</td><td> IDR. {{ number_format($item->tarif_high) }}</td><td>{{ $item->keterangan }}</td><td>{{ $item->jumlah_kamar }}</td>
                                         <td>
                                             <a href="{{ url('/bungalow/' . $item->id) }}" class="btn btn-default" title="View Bungalow">
                                             <i class="fa fa-eye"></i></a>
