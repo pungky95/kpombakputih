@@ -46,7 +46,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/bungalow')}}">
             <i class="fa fa-bed"></i>
             <span>Bungalows</span>
@@ -64,7 +64,7 @@
             <span>Gallery</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/kegiatan')}}">
             <i class="fa fa-bicycle"></i>
             <span>Activity</span>
@@ -109,7 +109,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Kegiatan</li>
+        <li class="active">Activity</li>
       </ol>
     </section>
 
@@ -127,7 +127,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Name </th><th> Konten </th><th>Actions</th>
+                                        <th> Name </th><th> Content </th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -46,7 +46,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/bungalow')}}">
             <i class="fa fa-bed"></i>
             <span>Bungalows</span>
@@ -76,7 +76,7 @@
             <span>Blog</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/kontak')}}">
             <i class="fa fa-phone"></i>
             <span>Contact</span>

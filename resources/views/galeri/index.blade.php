@@ -46,7 +46,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/bungalow')}}">
             <i class="fa fa-bed"></i>
             <span>Bungalows</span>
@@ -58,7 +58,7 @@
             <span>Facilities</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/galeri')}}">
             <i class="fa fa-photo"></i>
             <span>Gallery</span>
@@ -127,7 +127,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Foto </th><th> Katagori </th><th>Actions</th>
+                                        <th> Photo </th><th> Category </th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>

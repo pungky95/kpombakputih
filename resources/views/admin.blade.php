@@ -121,7 +121,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>$jumlah</h3>
+              <h3>Jumlah</h3>
 
               <p>New Orders</p>
             </div>
@@ -134,22 +134,9 @@
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
-            <div class="inner">
-<<<<<<< HEAD
-<<<<<<< HEAD
-              
-            
-              <p>Unique Visitors</p>
-=======
+            <div class="inner">            
               <h3>{{ Counter::allHits() }}</h3>
-
               <p>Page Views</p>
->>>>>>> origin/admin
-=======
-              <h3>{{ Counter::allHits() }}</h3>
-
-              <p>Page Views</p>
->>>>>>> origin/admin
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>

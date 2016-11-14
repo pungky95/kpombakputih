@@ -46,7 +46,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/bungalow')}}">
             <i class="fa fa-bed"></i>
             <span>Bungalows</span>
@@ -82,7 +82,7 @@
             <span>Contact</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/pesan')}}">
             <i class="fa fa-book"></i>
             <span>Booking</span>
@@ -127,7 +127,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Customer </th><th> In </th><th> out </th><th> Childrens </th><th> Adults </th><th> Spesial Request </th><th> Phone </th><th> Email </th><th>Actions</th>
+                                        <th> Customer Name </th><th> Check In </th><th> Check out </th><th> Children </th><th> Adults </th><th> Special Request </th><th> Phone </th><th> Email </th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
