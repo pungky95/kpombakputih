@@ -17,7 +17,7 @@ class CreateBungalowsTable extends Migration
             $table->string('nama',25);
             $table->float('tarif_low');
             $table->float('tarif_high');
-            $table->string('keterangan',1000);
+            $table->string('keterangan',2000);
             $table->tinyinteger('jumlah_kamar');
             $table->timestamps();
         });

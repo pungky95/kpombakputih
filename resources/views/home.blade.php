@@ -1,6 +1,7 @@
 @extends('layouts.navigation')
 @section('title','Home')
 @section('nav')
+{{ Counter::count('home') }}
  <div id="main-slider" class="slider">
         <div class="swiper-container">
             <h2 class="hidden">Main Slider</h2>
