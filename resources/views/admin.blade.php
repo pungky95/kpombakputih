@@ -136,9 +136,15 @@
           <div class="small-box bg-red">
             <div class="inner">
 <<<<<<< HEAD
+<<<<<<< HEAD
               
             
               <p>Unique Visitors</p>
+=======
+              <h3>{{ Counter::allHits() }}</h3>
+
+              <p>Page Views</p>
+>>>>>>> origin/admin
 =======
               <h3>{{ Counter::allHits() }}</h3>
 
