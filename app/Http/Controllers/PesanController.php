@@ -66,8 +66,9 @@ class PesanController extends Controller
     public function show($id)
     {
         $pesan = Pesan::findOrFail($id);
-
+        $jumlah = Model::count();
         return view('pesan.show', compact('pesan'));
+        return view('admin', compact('jumlah'));
     }
 
     /**

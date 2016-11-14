@@ -45,3 +45,4 @@ Route::get('/admin', 'HomeController@index');
 Route::get('/about', 'AboutController@index');
 Route::get('/', 'WelcomeController@index');
 Route::resource('komentar', 'KomentarController');
+Route::get('/order', 'PesanController@show');

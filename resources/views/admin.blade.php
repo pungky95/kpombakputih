@@ -229,28 +229,49 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3>$jumlah</h3>
 
               <p>New Orders</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('order') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
-
+              <h3>$jumlah</h3>
+            
               <p>Unique Visitors</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+         <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+            <google-calendar grid="a1:a2"></google-calendar>
+            <last-fm grid="b1:c1"></last-fm>
+
+            <current-time grid="d1" dateformat="ddd DD/MM"></current-time>
+
+            <packagist-statistics grid="b2"></packagist-statistics>
+
+            <rain-forecast grid="c2"></rain-forecast>
+
+            <internet-connection grid="d2"></internet-connection>
+            
+            </div>
+            
+            
           </div>
         </div>
         <!-- ./col -->
