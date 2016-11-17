@@ -78,6 +78,11 @@ class BlogController extends Controller
         return view('blog.show', compact('blog'));
     }
 
+    public function tampil($id)
+    {
+        $single = Blog::findOrFail($id);
+        return view('blog.single',compact('single'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
