@@ -38,7 +38,6 @@ Route::any ( 'blog/user/search', function () {
         return view ( 'blog/search' )->withMessage ( 'No Details found. Try to search again !' );
 } );
 Route::get('blog/user','BlogController@blogs');
-Route::get('blog/single/{id}','BlogController@tampil');
 Route::resource('blog', 'BlogController');
 Auth::routes();
 

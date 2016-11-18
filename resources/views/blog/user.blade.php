@@ -26,10 +26,10 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="post-box">
-                                        <h4 class="post-title"><a href="{{ url('/blog/single/' . $item->id) }}">{{ $item->nama }}</a></h4>
+                                         <h4 class="post-title"><a href="{{ url('/blog/' . $item->id) }}">{{ $item->nama }}</a></h4>
                                         <div class="post-meta">
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
-                                            <!-- <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span> -->
+                                            <span class="post-comments"><i class="fa fa-comments"></i>Jumlah comments</span>
                                         </div>
                                         <p class="content">{{$item->konten}}</p>
                                     </div>
