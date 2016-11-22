@@ -33,8 +33,22 @@
             <div class="form-group {{ $errors->has('konten') ? 'has-error' : ''}}">
                 {!! Form::label('konten', 'Konten', ['class' => 'col-md-4 control-label']) !!}
                 <div class="col-md-6">
-                    {!! Form::text('konten', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('konten', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('konten', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('konten1') ? 'has-error' : ''}}">
+                {!! Form::label('konten', 'Konten1', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-md-6">
+                    {!! Form::textarea('konten1', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('konten1', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('konten') ? 'has-error' : ''}}">
+                {!! Form::label('qoute', 'Qoute', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-md-6">
+                    {!! Form::textarea('qoute', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('qoute', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('kategori') ? 'has-error' : ''}}">

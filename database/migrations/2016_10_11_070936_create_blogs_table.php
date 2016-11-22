@@ -17,6 +17,8 @@ class CreateBlogsTable extends Migration
             $table->string('nama',25);
             $table->string('konten',5000);
             $table->string('kategori',255);
+            $table->string('qoute',1000);
+            $table->string('konten1',5000);
             $table->timestamps();
         });
     }

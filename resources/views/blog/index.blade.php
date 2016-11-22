@@ -127,13 +127,13 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Name </th><th> Content </th><th> Category </th><th>Actions</th>
+                                        <th> Name </th><th> Content </th><th> Content 1 </th><th> Qoutes </th><th> Category </th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($blog as $item)
                                     <tr>
-                                        <td>{{ $item->nama }}</td><td> {{ $item->konten }}</td><td>{{ $item->kategori }}</td>
+                                        <td>{{ $item->nama }}</td><td> {{ $item->konten }}</td><td> {{ $item->konten1 }}</td><td> {{ $item->qoute }}</td><td>{{ $item->kategori }}</td>
                                         <td>
                                             <a href="{{ url('/blog/' . $item->id) }}" class="btn btn-default" title="View ">
                                             <i class="fa fa-eye"></i></a>

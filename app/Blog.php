@@ -25,7 +25,7 @@ class Blog extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama', 'konten','kategori'];
+    protected $fillable = ['nama', 'konten','kategori','qoute','konten1'];
 
     public function komentar(){
         return $this->hasMany('App\Komentar');

@@ -47,8 +47,8 @@
                         </div>
                             <div class="post-content">
                                 <p class="content"> {{ $blog->konten }} </p>
-                                <p class="content highlight"></p>
-                                <p class="content"></p>
+                                <p class="content highlight">{{ $blog->qoute }}</p>
+                                <p class="content">{{ $blog->konten1 }}</p>
                                 
                          
                             </div>
