@@ -30,7 +30,7 @@
                                     <div class="post-meta">
                                         <span class="post-date"><i class="fa fa-calendar-o"></i>May 21st, 2015</span>
                                         <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span>
-                                        <span class="post-author-name"><i class="fa fa-user"></i>Charles Harries</span>
+                                        <span class="post-author-name"><i class="fa fa-user"></i>{{ $user->name }}</span>
                                     </div>
                                     <div class="post-social-links">
                                         <div class="header">Share this post</div>
@@ -46,20 +46,20 @@
                             </div>
                         </div>
                             <div class="post-content">
-                                <p class="content"> {{ $blog->konten }} </p>
+                                <p class="content"> &nbsp;&nbsp;&nbsp;&nbsp; {{ $blog->konten }} </p>
                                 <p class="content highlight">{{ $blog->qoute }}</p>
-                                <p class="content">{{ $blog->konten1 }}</p>
+                                <p class="content"> &nbsp;&nbsp;&nbsp;&nbsp; {{ $blog->konten1 }}</p>
                                 
                          
                             </div>
                         
                         <div class="post-tags">
-                            Tags: <em>travel, hotel</em>
+                            Tags: <em>{{ $blog->kategori }}</em>
                         </div>
                         <div class="post-author">
                             <img src="images/blog/author.png" class="img-responsive" alt="author">
                             <div class="author-info">
-                                <h4 class="author-name">Charles Harris</h4>
+                                <h4 class="author-name">{{ $user->name }}</h4>
                                 <p class="content">Integer ultricies nisi sed augue interdum porta. Vestibulum ac aliquam risus, ac dictum magna. Fusce lacus arcu, facilisis eu odio nec, varius vestibulum sem. Ut ornare est et sollicitudin vehicula. Nulla venenatis auctor quam, ac porta lectus dictum in ac dictum magna.</p>
                                 <div class="icons">
                                     <a class="social-link" href="#"><i class="fa fa-facebook"></i></a>

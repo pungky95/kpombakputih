@@ -14,11 +14,11 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('nama',25);
+            $table->string('nama',100);
             $table->string('konten',5000);
             $table->string('kategori',255);
-            $table->string('qoute',1000);
-            $table->string('konten1',5000);
+            $table->string('qoute',1000)->nullable();
+            $table->string('konten1',5000)->nullable();
             $table->timestamps();
         });
     }

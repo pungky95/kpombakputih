@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Blog;
+use App\User;
 use Illuminate\Http\Request;
 use Session;
 
@@ -74,8 +75,8 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
-
-        return view('blog.show', compact('blog'));
+        $user = User::first();
+        return view('blog.show', ['blog'=>$blog,'user'=>$user]);
     }
     /**
      * Show the form for editing the specified resource.
