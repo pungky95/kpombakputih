@@ -28,10 +28,10 @@ class Bungalow_Pesan extends Model
     protected $fillable = ['bungalow_id', 'pesan_id'];
 
     public function bungalows(){
-        return $this->belongsToMany('Bungalow');
+        return $this->belongsToMany('App\Bungalow');
     }
 
     public function pesans(){
-        return $this->belongsToMany('Pesan');
+        return $this->belongsToMany('App\Pesan');
     }
 }

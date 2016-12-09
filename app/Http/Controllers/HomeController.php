@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pesan;
+use Alert;
 class HomeController extends Controller
 {
     /**
@@ -22,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pesan= Pesan::count();
+        $pesan = Pesan::count();
         return view('admin',compact('pesan'));
     }
 }

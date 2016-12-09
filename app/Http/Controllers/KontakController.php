@@ -50,7 +50,7 @@ class KontakController extends Controller
         $requestData = $request->all();
         Kontak::create($requestData);
 
-        Alert::success('Your Message Sent','Sent')->persistent('Ok');;
+        Alert::success('Your Message Sent','Sent')->persistent('Ok');
         return redirect('kontak/create');
     }
 
