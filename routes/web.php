@@ -16,6 +16,7 @@ use App\Blog;
 // });
 
 Route::resource('bungalow', 'BungalowController');
+Route::get('services', 'FasilitasController@services');
 Route::resource('fasilitas', 'FasilitasController');
 Route::resource('kegiatan', 'KegiatanController');
 Route::resource('testimoni', 'TestimoniController');

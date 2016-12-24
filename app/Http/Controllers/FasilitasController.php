@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Fasilita;
+use App\Testimoni;
 use Illuminate\Http\Request;
 use Session;
 
@@ -13,7 +14,7 @@ class FasilitasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['only' => 'index','create','store','edit','destroy','update']);
     }
     /**
      * Display a listing of the resource.
@@ -25,6 +26,14 @@ class FasilitasController extends Controller
         $fasilitas = Fasilita::paginate(25);
 
         return view('fasilitas.index', compact('fasilitas'));
+    }
+
+    public function services()
+    {
+        $fasilitas = Fasilita::paginate(25);
+        $testimoni = Testimoni::paginate(25);
+
+        return view('fasilitas.services', compact('fasilitas','testimoni'));
     }
 
     /**

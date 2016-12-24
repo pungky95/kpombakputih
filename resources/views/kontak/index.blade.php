@@ -19,7 +19,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset("adminlte/dist/img/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
+          <img src="{{ asset("images/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
@@ -127,13 +127,13 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Name </th><th> Email </th><th> Subject </th><th> Message </th><th>Actions</th>
+                                        <th> Name </th><th> Email </th><th> Phone </th><th> Message </th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($kontak as $item)
                                     <tr>
-                                        <td>{{ $item->nama }}</td><td> {{ $item->email }}</td><td>{{ $item->subjek }}</td><td>{{ $item->pesan }}</td>
+                                        <td>{{ $item->nama }}</td><td> {{ $item->email }}</td><td>{{ $item->phone }}</td><td>{{ $item->pesan }}</td>
                                         <td>
                                             <a href="{{ url('/kontak/' . $item->id) }}" class="btn btn-default" title="View ">
                                             <i class="fa fa-eye"></i></a>

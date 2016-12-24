@@ -25,7 +25,7 @@ class Kontak extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama', 'email', 'pesan', 'subjek'];
+    protected $fillable = ['nama', 'email', 'pesan', 'phone'];
 
     
 }

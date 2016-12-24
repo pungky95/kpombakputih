@@ -34,7 +34,8 @@ class BlogController extends Controller
     public function blogs()
     {
         $blog = Blog::orderBy('created_at','desc')->paginate(5);
-        return view('blog.user', compact('blog'));
+        $kategori = Blog::where('kategori','Hotel Reviews')->orWhere('kategori','Travel Tips')->orWhere('kategori','Facilities')->orWhere('kategori','Travel and Food')->get();
+        return view('blog.user', compact('blog','kategori'));
     }
     /**
      * Show the form for creating a new resource.

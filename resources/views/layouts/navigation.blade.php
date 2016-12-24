@@ -5,21 +5,21 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="Theme-Paradise" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <script src="{{ asset("js/sweetalert.min.js") }}"></script>
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 
-    <link href="{{ asset("moon/fonts/fontawesome/css/font-awesome.min.css") }}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset("moon/fonts/icomoon/style.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("fonts/fontawesome/css/font-awesome.min.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("fonts/icomoon/style.css") }}" rel='stylesheet' type='text/css'>
 
-    <link href="{{ asset("moon/css/jquery-ui.min.css") }}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset("moon/bootstrap/css/bootstrap.min.css") }}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset("moon/css/animate.css") }}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset("moon/css/swiper.min.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("css/jquery-ui.min.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("bootstrap/css/bootstrap.min.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("css/animate.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("css/swiper.min.css") }}" rel='stylesheet' type='text/css'>
     <link href="{{ asset("css/sweetalert.css") }}" rel='stylesheet' type='text/css'>
 
-    <link href="{{ asset("moon/css/style.css") }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset("css/style.css") }}" rel='stylesheet' type='text/css'>
 
     <title>@yield('title')</title>
 
@@ -45,7 +45,7 @@
                         <a href="#">Rooms</a>
                     </li>
                     <li class="menu-item">
-                        <a href="facilities.html">Services</a>
+                        <a href="{{ url('/services')}}">Services</a>
                     </li>
                     <li class="menu-item">
                         <a href="#">Booking</a>
@@ -145,8 +145,8 @@
                     <div class="moon-divider small"></div>
                     <p>Jln.Pratama 101X, Tanjung Benoa</p>
                     <p>(+064) - 342 - 68273   —   (+064) - 342 - 68275</p>
-                    <p><a href="#">info@themoonhotel.com</a></p>
-                    <p><a href="#">http://themoonhotel.com</a></p>
+                    <p><a href="#">dinafur@hotmail.com</a></p>
+                    <p><a href="#">http://ombakputihnusadua.com</a></p>
                     <div class="moon-divider small"></div>
                     <div class="social-links">
                         <a class="social-link" href="#"><i class="fa fa-facebook"></i><i class="fa fa-facebook"></i></a>
@@ -166,11 +166,11 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src="{{ asset("moon/js/jquery.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("moon/js/jquery-ui.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("moon/bootstrap/js/bootstrap.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("moon/js/plugins.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("moon/js/functions.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/jquery.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/jquery-ui.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/plugins.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/functions.js") }}"></script>
 
     </body>
 

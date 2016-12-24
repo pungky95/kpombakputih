@@ -26,7 +26,7 @@ class StoreKontakRequest extends FormRequest
         return [
             'nama' => 'required|max:50',
             'email' => 'required|max:50',
-            'subjek' => 'required|max:50',
+            'phone' => 'required|max:18',
             'pesan' => 'required|max:2000',
         ];
     }
@@ -35,8 +35,8 @@ class StoreKontakRequest extends FormRequest
         return [
             'nama.required' => 'The Name field is required',
             'nama.max' => 'The Name may not be greater than 50 characters.',
-            'subjek.required' => 'The Subject field is required',
-            'subjek.max' => 'The Subject may not be greater than 50 characters.',
+            'phone.required' => 'The Phone field is required',
+            'phone.max' => 'The Phone may not be greater than 18 characters.',
             'email.required' => 'The Email field is required',
             'email.max' => 'The Email may not be greater than 50 characters.',
             'pesan.required' => 'The Message field is required',

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Testimoni;
 use App\Http\Requests;
+use DB;
+use App\Blog;
 
 class WelcomeController extends Controller
 {
@@ -16,7 +18,12 @@ class WelcomeController extends Controller
     public function index()
     {
         $testimoni = Testimoni::paginate(25);
-        return view('home', compact('testimoni'));
+        $id = Blog::max('id');
+        $blog1= Blog::where('id',$id)->get();
+        $blog2= Blog::where('id',$id-1)->get();
+        $blog3= Blog::where('id',$id-2)->get();
+        $blog4= Blog::where('id',$id-3)->get();
+        return view('home', compact('testimoni','blog1','blog2','blog3','blog4','all'));
     }
 
     /**

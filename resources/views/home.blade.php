@@ -326,54 +326,62 @@
         <div class="moon-divider"></div>
         <div class="container">
             <div class="row" >
+                @foreach($blog4 as $one)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box ">
                         <a href="blog-single.html">
                             <img src="{{ asset("moon/images/blog/blog-thumb-1.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-1">
                             <div class="blog-meta-box ">
-                                <h3 class="blog-title">Sed convallis malesuada massa id volutpat</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>May 21st, 2015</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span>
+                                <h3 class="blog-title">{{ $one->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $one->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($one->komentar->count()==1){{ $one->komentar->count()}} Comment @elseif($one->komentar->count()==0)0 @else{{$one->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
+                @endforeach
+                @foreach($blog3 as $two)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box">
                         <a href="blog-single.html">
                             <img src="{{ asset("moon/images/blog/blog-thumb-2.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-2">
                             <div class="blog-meta-box">
-                                <h3 class="blog-title">Consectetur pharetra elit id maximus facillisis erat</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>May 21st, 2015</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span>
+                                <h3 class="blog-title">{{ $two->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $two->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($two->komentar->count()==1){{ $two->komentar->count()}} Comment @elseif($two->komentar->count()==0)0 @else{{$two->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
+                @endforeach
+                @foreach($blog2 as $three)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box">
                         <a href="blog-single.html">
                             <img src="{{ asset("moon/images/blog/blog-thumb-3.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-3">
                             <div class="blog-meta-box">
-                                <h3 class="blog-title">elleantesque ornare dui cursus ex dictum porttitor</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>May 21st, 2015</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span>
+                                <h3 class="blog-title">{{ $three->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $three->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($three->komentar->count()==1){{ $three->komentar->count()}} Comment @elseif($three->komentar->count()==0)0 @else{{$three->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
+                @endforeach
+                @foreach($blog1 as $four)
                 <div class="col-md-8 col-xs-12">
                     <div class="blog-box wide">
                         <a href="blog-single.html">
                             <img src="{{ asset("moon/images/blog/blog-thumb-4.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-4">
                             <div class="blog-meta-box ">
-                                <h3 class="blog-title">Fusce in odio ac diam finibus tempus at aliquam elementum</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>May 21st, 2015</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span>
+                                <h3 class="blog-title">{{ $four->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $four->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($four->komentar->count()==1){{ $four->komentar->count()}} Comment @elseif($four->komentar->count()==0)0 @else{{$four->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
+                @endforeach
             </div>
             <div class="text-center">
                 <a href="{{url ('blog/user')}}" class="button transparent" >See All Entries</a>

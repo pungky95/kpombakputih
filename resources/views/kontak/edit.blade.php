@@ -44,11 +44,11 @@
                     {!! $errors->first('pesan', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('subjek') ? 'has-error' : ''}}">
-                {!! Form::label('subjek', 'Subjek', ['class' => 'col-md-4 control-label']) !!}
+            <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
+                {!! Form::label('phone', 'Phone', ['class' => 'col-md-4 control-label']) !!}
                 <div class="col-md-6">
-                    {!! Form::text('subjek', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('subjek', '<p class="help-block">:message</p>') !!}
+                    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 

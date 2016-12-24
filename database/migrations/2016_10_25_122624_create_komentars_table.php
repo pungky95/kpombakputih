@@ -14,8 +14,11 @@ class CreateKomentarsTable extends Migration
     {
         Schema::create('komentars', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('blog_id')->unsigned();
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
             $table->string('nama');
             $table->string('email');
+            $table->string('isi',10000);
             $table->timestamps();
         });
     }

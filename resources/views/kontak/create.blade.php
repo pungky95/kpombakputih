@@ -2,8 +2,10 @@
 @section('title','Contact')
 @section('nav')
 {{ Counter::count('contact') }}
-<script src="{{ asset("js/sweetalert.min.js") }}"></script>
 @include('sweet::alert')
+@if (count($errors) > 0)
+    <script type="text/javascript"> sweetAlert("Failed to Sent Your Message", "Check Your Contact Form" , "error"); </script>
+@endif
     <section class="section-breadcrumb">
         <h2 class="title" >About the Ombak Putih Bungalow</h2>
         <div class="breadcrumb">
@@ -56,11 +58,11 @@
                                     {!! $errors->first('nama', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
-                            <div class="form-group {{ $errors->has('subjek') ? 'has-error' : ''}}">
-                                {!! Form::label('subjek', 'Subject*', ['class' => 'control-label']) !!}
+                            <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
+                                {!! Form::label('phone', 'Phone*', ['class' => 'control-label']) !!}
                                 <div>
-                                    {!! Form::text('subjek', null, ['class' => 'form-control']) !!}
-                                    {!! $errors->first('subjek', '<p class="help-block">:message</p>') !!}
+                                    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                                    {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">

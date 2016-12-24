@@ -46,11 +46,11 @@ class KontakController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(StoreKontakRequest $request)
-    {
+    {   
         $requestData = $request->all();
         Kontak::create($requestData);
-
-        Alert::success('Your Message Sent','Sent')->persistent('Ok');
+        Alert::success('Your Message Sent','Sent')->persistent('OK');
+        Session::flash('flash_message', 'Kontak Terkirim');
         return redirect('kontak/create');
     }
 
