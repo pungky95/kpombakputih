@@ -1,14 +1,15 @@
    @extends('layouts.navigation') 
    @section('title','About')
+   @section('nav')
    {{ Counter::count('about') }}
-    @section('section-breadcrumb')
+    <section class="section-breadcrumb">
         <h2 class="title" >About the Ombak Putih Bungalow</h2>
         <div class="breadcrumb">
             You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > About Us</span></span>
         </div>
-    @endsection
+    </section>
 
-    @section('section-style-2')
+    <section class="section-style-2">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -48,9 +49,9 @@
 
             </div>
         </div>
-    @endsection
+    </section>
 
-    @section('section-style-2 section-why-us section-bg-white')
+    <section class="section-style-2 section-why-us section-bg-white">
         <div class="container">
             <div>
                 <h2 class="title" >What Makes Us Different</h2>
@@ -80,9 +81,9 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </section>
 
-    @section('section-style-2 section-testimonials-2')
+    <section class="section-style-2 section-testimonials-2 ">
         <div class="container">
             <div class="row">
                 <div class="col-md-20">
@@ -141,4 +142,5 @@
             </div>
 
         </div>
+    </section>
     @endsection

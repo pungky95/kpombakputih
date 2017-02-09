@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html>
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -29,8 +29,7 @@
     <div id="preloader-wrapper">
         <div id="preloader"></div>
     </div>
-
-    <header >
+    <header>
         <div class="container">
             <a href="#" class="logo-link"><img class="logo" src="{{ asset("moon/images/logo.png") }}" alt="Logo"></a>
             <nav class="main-menu clearfix">
@@ -74,78 +73,57 @@
             <h2 class="hidden">Mobile Navigation Menu</h2>
             <ul>
                 <li class="mobile-menu-item">
-                    <a href="{{ url('/') }}">Home</a>
+                    <a class="menu-item" href="#">Home<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <ul class="submenu">
+                        <li class="sub-menu-item"><a href="index1.html">Home Version 1</a></li>
+                        <li class="sub-menu-item"><a href="index2.html">Home Version 2</a></li>
+                    </ul>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="{{ url('/about') }}">About</a>
+                    <a class="menu-item" href="about.html">About</a>
                 </li>
                 <li class="mobile-menu-item">
                     <a class="menu-item" href="#">Rooms<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <ul class="submenu">
+                        <li class="sub-menu-item"><a href="rooms.html">Rooms List</a></li>
+                        <li class="sub-menu-item"><a href="room-single.html">Room single</a></li>
+                    </ul>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="{{ url('/services')}}">Services</a>
+                    <a class="menu-item" href="facilities.html">Services</a>
                 </li>
                 <li class="mobile-menu-item">
                     <a class="menu-item" href="#">Booking<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <ul class="submenu">
+                        <li class="sub-menu-item"><a href="booking-choose-date.html">Choose Date</a></li>
+                        <li class="sub-menu-item"><a href="booking-choose-room.html">Choose Room</a></li>
+                        <li class="sub-menu-item"><a href="booking-reservation.html">Reservation</a></li>
+                    </ul>
                 </li>
                 <li class="mobile-menu-item">
                     <a class="menu-item" href="#">Gallery<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <ul class="submenu">
+                        <li class="sub-menu-item"><a href="gallery.html">Gallery</a></li>
+                        <li class="sub-menu-item"><a href="gallery-single.html">Gallery Single</a></li>
+                    </ul>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="{{ url('/blog/user')}}">Blog</a>
+                    <a class="menu-item" href="#">Blog<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <ul class="submenu">
+                        <li class="sub-menu-item"><a href="blog1.html">Blog Version 1</a></li>
+                        <li class="sub-menu-item"><a href="blog2.html">Blog Version 2</a></li>
+                        <li class="sub-menu-item"><a href="blog-single.html">Blog Single</a></li>
+                    </ul>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="{{ url('kontak/create')}}">Contact</a>
+                  <a class="menu-item" href="contact.html">Contact</a>
                 </li>
             </ul>
         </nav>
+
     </header>
-
-    <div id="main-slider" class="slider">
-        @yield('main-slider')
-    </div>
-
-    <section class="section-search-rooms">
-        @yield('search-rooms')
-    </section>
-
-    <section class="section-why-us">
-        @yield('section-why-us')
-    </section>
-
-    <section class="section-rooms">
-        @yield('section-rooms')
-    </section>
-
-    <section class="section-facilities">
-        @yield('facilites')
-    </section>
-
-    <section class="section-testimonials bg-primary">
-        @yield('section-testimonials')
-    </section>
-
-    <section class="section-from-blog ">
-        @yield('section-from-blog')
-    </section>
-
-    <section class="section-breadcrumb">
-        @yield('section-breadcrumb')
-    </section>
-
-    <section class="section-style-2">
-        @yield('section-style-2')
-    </section>
-
-    <section class="section-style-2 section-why-us section-bg-white">
-        @yield('section-style-2 section-why-us section-bg-white')
-    </section>
-
-    <section class="section-style-2 section-testimonials-2">
-        @yield('section-style-2 section-testimonials-2')
-    </section>
-
-    <footer>
+@yield('nav')
+   <footer>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
@@ -193,5 +171,7 @@
     <script type="text/javascript" src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/plugins.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/functions.js") }}"></script>
+
     </body>
+
 </html>
