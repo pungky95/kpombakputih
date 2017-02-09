@@ -41,10 +41,10 @@
         <li class="treeview">
           <a href="{{ url('/bungalow')}}">
             <i class="fa fa-bed"></i>
-            <span>Bungalow</span>
+            <span>Bungalows</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/fasilitas')}}">
             <i class="fa fa-tv"></i>
             <span>Facilities</span>
@@ -62,7 +62,7 @@
             <span>Activity</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/blog')}}">
             <i class="fa fa-file-text-o"></i>
             <span>Blog</span>

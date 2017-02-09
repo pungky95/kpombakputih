@@ -38,7 +38,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/bungalow')}}">
             <i class="fa fa-bed"></i>
             <span>Bungalows</span>
@@ -62,7 +62,7 @@
             <span>Activity</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/blog')}}">
             <i class="fa fa-file-text-o"></i>
             <span>Blog</span>

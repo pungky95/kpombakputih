@@ -62,7 +62,7 @@
             <span>Activity</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/blog')}}">
             <i class="fa fa-file-text-o"></i>
             <span>Blog</span>
@@ -80,7 +80,7 @@
             <span>Booking</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/testimoni')}}">
             <i class="fa fa-users"></i>
             <span>Testimonial</span>

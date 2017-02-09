@@ -70,13 +70,13 @@
             <span>Activity</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/blog')}}">
             <i class="fa fa-file-text-o"></i>
             <span>Blog</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/kontak')}}">
             <i class="fa fa-phone"></i>
             <span>Contact</span>

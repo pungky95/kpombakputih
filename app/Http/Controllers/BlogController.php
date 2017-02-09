@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 use App\Blog;
 use App\User;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class BlogController extends Controller
     public function blogs()
     {
         $blog = Blog::orderBy('created_at','desc')->paginate(5);
-        $kategori = Blog::where('kategori','Hotel Reviews')->orWhere('kategori','Travel Tips')->orWhere('kategori','Facilities')->orWhere('kategori','Travel and Food')->get();
+        $kategori = DB::table('blogs')->select('kategori')->distinct('kategori')->where('kategori','Hotel Reviews')->orWhere('kategori','Travel Tips')->orWhere('kategori','Facilities')->orWhere('kategori','Travel and Food')->get();
         return view('blog.user', compact('blog','kategori'));
     }
     /**
