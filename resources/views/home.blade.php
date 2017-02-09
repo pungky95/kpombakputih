@@ -1,8 +1,7 @@
 @extends('layouts.navigation')
 @section('title','Home')
-@section('nav')
-{{ Counter::count('home') }}
- <div id="main-slider" class="slider">
+@section('main-slider')
+        {{ Counter::count('home') }}
         <div class="swiper-container">
             <h2 class="hidden">Main Slider</h2>
             <div class="swiper-wrapper">
@@ -44,9 +43,9 @@
             <div class="page-controls centered clearfix">
             </div>
         </div>
-    </div>
+@endsection
 
-    <section class="section-search-rooms">
+    @section('search-rooms')
         <h2 class="hidden">Search Rooms</h2>
         <div class="search-rooms-content">
             <div class="container">
@@ -117,9 +116,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    @endsection
 
-    <section class="section-why-us">
+    @section('section-why-us')
         <h2 class="title text-center" >Why the Ombak Putih</h2>
         <div class="moon-divider"></div>
         <div class="container">
@@ -147,9 +146,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    @endsection
 
-    <section class="section-rooms">
+    @section('section-rooms')
         <h2 class="hidden">Rooms</h2>
         <div class="container">
             <div class="rooms-area">
@@ -222,9 +221,9 @@
             </div>
             <div class="col-md-offset-8 col-xs-offset-6 rooms-background bg-secondary"></div>
         </div>
-    </section>
+    @endsection
 
-    <section class="section-facilities">
+    @section('facilites')
         <div class="text-center">
             <h2 class="title">Ombak Putih's Facilities</h2>
         </div>
@@ -272,9 +271,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    @endsection
 
-    <section class="section-testimonials bg-primary">
+    @section('section-testimonials')
         <div class="text-center">
             <h2 class="title">Testimonial</h2>
         </div>
@@ -317,9 +316,9 @@
             </div>
             <div class="testimonial-slider-page-controls"></div>
         </div>
-    </section>
+    @endsection
 
-    <section class="section-from-blog ">
+    @section('section-from-blog')
         <div class="text-center">
             <h2 class="title">From Our Blog</h2>
         </div>
@@ -387,5 +386,4 @@
                 <a href="{{url ('blog/user')}}" class="button transparent" >See All Entries</a>
             </div>
         </div>
-    </section>
-@endsection
+    @endsection
