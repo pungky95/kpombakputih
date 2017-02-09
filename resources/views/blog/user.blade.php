@@ -1,6 +1,6 @@
-@extends('layouts.navigation')
+@extends('layouts.main')
 @section('title','Blog')
-@section('nav')
+@section('content')
 
     <section class="section-breadcrumb">
         <h2 class="title" >Up-to-date with us</h2>

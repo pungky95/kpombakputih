@@ -1,6 +1,6 @@
-@extends('layouts.navigation') 
+@extends('layouts.main') 
 @section('title','Services')
-@section('nav')
+@section('content')
 
     <h1 class="hidden">Facilities</h1>
     <section class="section-breadcrumb">

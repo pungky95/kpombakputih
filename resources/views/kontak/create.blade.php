@@ -1,6 +1,6 @@
-@extends('layouts.navigation')
+@extends('layouts.main')
 @section('title','Contact')
-@section('nav')
+@section('content')
 {{ Counter::count('contact') }}
 @include('sweet::alert')
 @if (count($errors) > 0)
@@ -91,5 +91,3 @@
         </div>
     </section>
 @endsection 
-@section('footer')
-@endsection
