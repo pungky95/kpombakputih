@@ -1,16 +1,6 @@
 @extends('layouts.adminlte')
-<!DOCTYPE html>
-<html>
-<head>
-  @section('title','Admin Dashboard')
-</head>
-
-
-
-
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-@section('nav')
+@section('title','Admin Dashboard')
+@section('content')
 
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -169,8 +159,3 @@
     </section>
   </div>
   @endsection
-  @section('footer')
-</div>
-</body>
-</html>
-@endsection

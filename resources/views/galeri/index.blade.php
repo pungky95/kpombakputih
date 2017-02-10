@@ -1,16 +1,6 @@
 @extends('layouts.adminlte')
-<!DOCTYPE html>
-<html>
-<head>
-  @section('title','Admin Dashboard')
-</head>
-
-
-
-
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-@section('nav')
+@section('title','Admin Dashboard')
+@section('content')
 
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -50,7 +40,7 @@
             <span>Facilities</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="{{ url('/galeri')}}">
             <i class="fa fa-photo"></i>
             <span>Gallery</span>
@@ -62,7 +52,7 @@
             <span>Activity</span>
           </a>
         </li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/blog')}}">
             <i class="fa fa-file-text-o"></i>
             <span>Blog</span>
@@ -156,8 +146,3 @@
     </section>
   </div>
   @endsection
-  @section('footer')
-</div>
-</body>
-</html>
-@endsection
