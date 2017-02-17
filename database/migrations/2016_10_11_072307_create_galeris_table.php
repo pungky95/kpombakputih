@@ -18,6 +18,8 @@ class CreateGalerisTable extends Migration
             $table->foreign('kegiatan_id')->references('id')->on('kegiatans')->onDelete('cascade');
             $table->integer('blog_id')->unsigned();
             $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
+            $table->integer('fasilitas_id')->unsigned();
+            $table->foreign('fasilitas_id')->references('id')->on('fasilitas')->onDelete('cascade');
             $table->binary('foto');
             $table->string('kategori',255);
             $table->timestamps();
