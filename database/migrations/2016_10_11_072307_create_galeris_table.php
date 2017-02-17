@@ -14,13 +14,13 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('kegiatan_id')->unsigned();
+            $table->integer('kegiatan_id')->unsigned()->nullable();
             $table->foreign('kegiatan_id')->references('id')->on('kegiatans')->onDelete('cascade');
-            $table->integer('blog_id')->unsigned();
+            $table->integer('blog_id')->unsigned()->nullable();
             $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
-            $table->integer('fasilitas_id')->unsigned();
+            $table->integer('fasilitas_id')->unsigned()->nullable();
             $table->foreign('fasilitas_id')->references('id')->on('fasilitas')->onDelete('cascade');
-            $table->binary('foto');
+            $table->string('foto',255)->default('default.jpg');
             $table->string('kategori',255);
             $table->timestamps();
         });

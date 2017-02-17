@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Galeri;
 use Illuminate\Http\Request;
 use Session;
+use Image;
 
 class GaleriController extends Controller
 {
@@ -47,9 +48,19 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         
-        $requestData = $request->all();
+        // $requestData = $request->all();
         
-        Galeri::create($requestData);
+        // Galeri::create($requestData);
+
+        $image = $request->file('image');
+        $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->save(public_path($filename));
+        $kategori = $request->get('kategori');
+        $galeri = new Galeri(array(
+                'foto'=>$filename,
+                'kategori'=>$kategori,
+        ));
+        $galeri->save();
 
         Session::flash('flash_message', 'Galeri added!');
 

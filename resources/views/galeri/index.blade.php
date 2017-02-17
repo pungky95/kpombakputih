@@ -115,7 +115,7 @@
                                 <tbody>
                                 @foreach($galeri as $item)
                                     <tr>
-                                        <td>{{ $item->foto }}</td><td> {{ $item->katagori }}</td>
+                                        <td><img src="{{ asset($item->foto) }}" style="width: auto; height:50px; position: absolute;"></td><td> {{ $item->kategori }}</td>
                                         <td>
                                             <a href="{{ url('/galeri/' . $item->id) }}" class="btn btn-default" title="View Gallery">
                                             <i class="fa fa-eye"></i></a>

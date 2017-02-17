@@ -166,6 +166,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Kryptonit3\Counter\CounterServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -234,6 +235,8 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
 
     ],
 
