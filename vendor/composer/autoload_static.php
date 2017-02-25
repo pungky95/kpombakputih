@@ -333,7 +333,6 @@ class ComposerStaticInit42602cf043219511d3098e8054d73dd5
     );
 
     public static $classMap = array (
-<<<<<<< Updated upstream
         'App\\Blog' => __DIR__ . '/../..' . '/app/Blog.php',
         'App\\Bungalow' => __DIR__ . '/../..' . '/app/Bungalow.php',
         'App\\Bungalow_Fasilita' => __DIR__ . '/../..' . '/app/Bungalow_Fasilita.php',
@@ -412,8 +411,6 @@ class ComposerStaticInit42602cf043219511d3098e8054d73dd5
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
-=======
->>>>>>> Stashed changes
         'CreateBlogsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_11_070936_create_blogs_table.php',
         'CreateBungalowFasilitasTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_11_073509_create_bungalow_fasilitas_table.php',
         'CreateBungalowGalerisTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_11_073617_create_bungalow_galeris_table.php',
@@ -3344,9 +3341,7 @@ class ComposerStaticInit42602cf043219511d3098e8054d73dd5
         'Symfony\\Polyfill\\Util\\BinaryOnFuncOverload' => __DIR__ . '/..' . '/symfony/polyfill-util/BinaryOnFuncOverload.php',
         'Symfony\\Polyfill\\Util\\TestListener' => __DIR__ . '/..' . '/symfony/polyfill-util/TestListener.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
-        'TestimonisTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TestimonisTableSeeder.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-<<<<<<< Updated upstream
         'UxWeb\\SweetAlert\\ConvertMessagesIntoSweatAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/ConvertMessagesIntoSweatAlert.php',
         'UxWeb\\SweetAlert\\LaravelSessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/LaravelSessionStore.php',
         'UxWeb\\SweetAlert\\SessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SessionStore.php',
@@ -3416,9 +3411,6 @@ class ComposerStaticInit42602cf043219511d3098e8054d73dd5
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
-=======
-        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
->>>>>>> Stashed changes
     );
 
     public static function getInitializer(ClassLoader $loader)

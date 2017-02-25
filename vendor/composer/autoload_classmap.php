@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-<<<<<<< Updated upstream
     'App\\Blog' => $baseDir . '/app/Blog.php',
     'App\\Bungalow' => $baseDir . '/app/Bungalow.php',
     'App\\Bungalow_Fasilita' => $baseDir . '/app/Bungalow_Fasilita.php',
@@ -85,8 +84,6 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
-=======
->>>>>>> Stashed changes
     'CreateBlogsTable' => $baseDir . '/database/migrations/2016_10_11_070936_create_blogs_table.php',
     'CreateBungalowFasilitasTable' => $baseDir . '/database/migrations/2016_10_11_073509_create_bungalow_fasilitas_table.php',
     'CreateBungalowGalerisTable' => $baseDir . '/database/migrations/2016_10_11_073617_create_bungalow_galeris_table.php',
@@ -3017,9 +3014,7 @@ return array(
     'Symfony\\Polyfill\\Util\\BinaryOnFuncOverload' => $vendorDir . '/symfony/polyfill-util/BinaryOnFuncOverload.php',
     'Symfony\\Polyfill\\Util\\TestListener' => $vendorDir . '/symfony/polyfill-util/TestListener.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
-    'TestimonisTableSeeder' => $baseDir . '/database/seeds/TestimonisTableSeeder.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-<<<<<<< Updated upstream
     'UxWeb\\SweetAlert\\ConvertMessagesIntoSweatAlert' => $vendorDir . '/uxweb/sweet-alert/src/SweetAlert/ConvertMessagesIntoSweatAlert.php',
     'UxWeb\\SweetAlert\\LaravelSessionStore' => $vendorDir . '/uxweb/sweet-alert/src/SweetAlert/LaravelSessionStore.php',
     'UxWeb\\SweetAlert\\SessionStore' => $vendorDir . '/uxweb/sweet-alert/src/SweetAlert/SessionStore.php',
@@ -3089,7 +3084,4 @@ return array(
     'phpDocumentor\\Reflection\\Types\\String_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/String_.php',
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
-=======
-    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
->>>>>>> Stashed changes
 );
