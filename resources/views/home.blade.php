@@ -10,7 +10,7 @@
                 <div class="swiper-slide" style="background: url({{ URL::asset('moon/images/home/slider-3.jpg')}}) center top/cover no-repeat">
                     <div class="container">
                         <div class="slide-content">
-                            <h3 class="slide-title" data-animate="fadeInDown"><strong>Tropical</strong> Garden</h3>
+                            <h3 class="slide-title" data-animate="fadeInDown"><strong>Swimming</strong>Pool</h3>
                             <div class="slide-divider" data-animate="fadeInRight"></div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                  <div class="swiper-slide" style="background: url({{ URL::asset('moon/images/home/slider-5.jpg')}}) center top/cover no-repeat">
                     <div class="container">
                         <div class="slide-content">
-                            <h3 class="slide-title" data-animate="fadeInDown"><strong>Comfort</strong> Room</h3>
+                            <h3 class="slide-title" data-animate="fadeInDown"><strong>Comfort</strong>Room</h3>
                             <div class="slide-divider" data-animate="fadeInRight"></div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="container">
                         <div class="slide-content">
                             <div class="slide-subtitle" data-animate="fadeInRight">Special Offers</div>
-                            <h3 class="slide-title" data-animate="fadeInDown"><strong>Water</strong> Sport</h3>
+                            <h3 class="slide-title" data-animate="fadeInDown"><strong>Water</strong>Sport</h3>
                             <div class="slide-divider" data-animate="fadeInRight"></div>
                             <div class="slide-subtitle-italic" data-animate="fadeInRight" data-delay="300"><span class="price">$149</span></div>
                             <a href="#" class="button transparent" data-animate="fadeInRight" data-delay="300">See Details</a>

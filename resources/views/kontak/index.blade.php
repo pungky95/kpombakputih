@@ -1,9 +1,93 @@
 @extends('layouts.adminlte')
 @section('title','Admin Dashboard')
-@section('kontak','active')
 @section('content')
 
-  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{ asset("images/user2-160x160.jpg")}}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ Auth::user()->name }}</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- pungky -->
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="{{ url('/admin') }}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/bungalow')}}">
+            <i class="fa fa-bed"></i>
+            <span>Bungalows</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/fasilitas')}}">
+            <i class="fa fa-tv"></i>
+            <span>Facilities</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/galeri')}}">
+            <i class="fa fa-photo"></i>
+            <span>Gallery</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/kegiatan')}}">
+            <i class="fa fa-bicycle"></i>
+            <span>Activity</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/blog')}}">
+            <i class="fa fa-file-text-o"></i>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li class="active treeview">
+          <a href="{{ url('/kontak')}}">
+            <i class="fa fa-phone"></i>
+            <span>Contact</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/pesan')}}">
+            <i class="fa fa-book"></i>
+            <span>Booking</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('/testimoni')}}">
+            <i class="fa fa-users"></i>
+            <span>Testimonial</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
