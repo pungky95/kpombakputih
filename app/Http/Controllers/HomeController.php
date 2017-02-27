@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pesan;
 use App\Galeri;
+use App\User;
 use Image;
 use Alert;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -28,21 +30,25 @@ class HomeController extends Controller
         $pesan = Pesan::count();
         return view('admin',compact('pesan'));
     }
+    public function profile(){
+        
+    }
     public function editprofile()
     {
-        return view('editprofile');
+        return view('editprofile',compact('user'));
     }
-    public function store(Request $request){
+    public function update(Request $request,$id){
 
         $image = $request->file('image');
         $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
         Image::make($image)->save(public_path($filename));
-        $kategori = $request->get('kategori');
-        $galeri = new Galeri(array(
-                'foto'=>$filename,
-                'kategori'=>$kategori,
-        ));
-        $galeri->save();
+        $user = User::findOrFail($id);
+        $user->update(array(
+            'name'=> $request->get('name'),
+            'email' => $request->get('email'),
+            'foto'=> $filename,
+            ));
+        $user->save();
         return redirect('editprofile');
     }
 }

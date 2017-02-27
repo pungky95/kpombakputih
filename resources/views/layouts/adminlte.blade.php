@@ -105,6 +105,9 @@
               <!-- Menu Body -->
               <!-- Menu Footer-->
               <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{ url('/editprofile') }}" class="btn btn-default btn-flat">Edit Profile</a>
+                </div>
                 <div class="pull-right">
                   <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
@@ -132,7 +135,7 @@
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-book"></i> Edit Profile</a>
+          <a href="{{ url('/editprofile') }}"><i class="fa fa-book"></i> Edit Profile</a>
         </div>
       </div>
       
