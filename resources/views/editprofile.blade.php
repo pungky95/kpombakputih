@@ -41,7 +41,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Edit Profile</h3>
             </div>
-            {!! Form::open(['url' => '/editprofile/', 'role' => 'form', 'files' => true]) !!}
+            {!! Form::open(['route' => ['editprofile/{id}', $user]]) !!}
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
@@ -56,7 +56,6 @@
                   <input type="file" name="image" id="image">
                 </div>
               </div>
-
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
