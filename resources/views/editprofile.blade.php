@@ -25,9 +25,9 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{ asset("images/user2-160x160.jpg")}}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset("$user->foto")}}" alt="User profile picture">
 
-              <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
+              <h3 class="profile-username text-center">{{$user->name}}</h3>
 
               <p class="text-muted text-center">Owner</p>
 
@@ -41,25 +41,26 @@
             <div class="box-header with-border">
               <h3 class="box-title">Edit Profile</h3>
             </div>
-            {!! Form::open(['route' => ['editprofile/{id}', $user]]) !!}
+            <form enctype="multipart/form-data" action="editprofile" method="post">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="{{Auth::user()->name}}">
+                  <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="{{Auth::user()->email}}">
+                  <input type="email" class="form-control" name="email" id="email" value="{{$user->email}}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">Change Photo Profile</label>
-                  <input type="file" name="image" id="image">
+                  <input type="file" name="image">
                 </div>
+                {{ csrf_field()}}
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
-            {!! Form::close() !!}
+            </form>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

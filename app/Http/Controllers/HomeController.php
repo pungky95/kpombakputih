@@ -35,21 +35,20 @@ class HomeController extends Controller
     }
     public function editprofile()
     {
-        $user = Auth::user()->id;
-        return view('editprofile',compact('user'));
+        return view('editprofile',array('user' => Auth::user()));
     }
-    public function update(Request $request,$id){
-
+    public function update(Request $request)
+    {
         $image = $request->file('image');
         $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
         Image::make($image)->save(public_path($filename));
-        $user = User::findOrFail($id);
+        $user = Auth::user();
         $user->update(array(
+            'foto' => $filename,
             'name'=> $request->get('name'),
             'email' => $request->get('email'),
-            'foto'=> $filename,
             ));
         $user->save();
-        return redirect('editprofile');
+        return view('editprofile',array('user' => Auth::user()));
     }
 }

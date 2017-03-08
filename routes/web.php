@@ -45,7 +45,7 @@ Auth::routes();
 Route::get('/admin', 'HomeController@index');
 Route::get('/about', 'AboutController@index');
 Route::get('editprofile', 'HomeController@editprofile');
-Route::get('editprofile/{id}', 'HomeController@update');
+Route::post('editprofile', 'HomeController@update');
 Route::get('/', 'WelcomeController@index');
 Route::resource('komentar', 'KomentarController');
 Route::get('/pesan/show', 'PesanController@show');
