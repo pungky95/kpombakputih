@@ -41,7 +41,7 @@ class HomeController extends Controller
     {
         $image = $request->file('image');
         $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->save(public_path($filename));
+        Image::make($image)->fit(200)->save(public_path($filename));
         $user = Auth::user();
         $user->update(array(
             'foto' => $filename,
