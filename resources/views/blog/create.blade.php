@@ -1,54 +1,40 @@
-@extends('layouts.app')
-
+@extends('layouts.adminlte')
+@section('title','Admin Dashboard')
+@section('blog','active')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Create New Blog</div>
-                    <div class="panel-body">
+<div class="content-wrapper" style="min-height: 946px;">
+<div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Create New Post
+                <small>Write Creative Things</small>
+              </h3>
 
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-
-            {!! Form::open(['url' => '/blog', 'class' => 'form-horizontal', 'files' => true]) !!}
-
-            <div class="form-group {{ $errors->has('nama') ? 'has-error' : ''}}">
-                {!! Form::label('nama', 'Nama', ['class' => 'col-md-4 control-label']) !!}
-                <div class="col-md-6">
-                    {!! Form::text('nama', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('nama', '<p class="help-block">:message</p>') !!}
-                </div>
             </div>
-            <div class="form-group {{ $errors->has('konten') ? 'has-error' : ''}}">
-                {!! Form::label('konten', 'Konten', ['class' => 'col-md-4 control-label']) !!}
-                <div class="col-md-6">
-                    {!! Form::textarea('konten', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('konten', '<p class="help-block">:message</p>') !!}
+            <!-- /.box-header -->
+            <div class="box-body pad">
+              {!! Form::open(['url' => '/blog', 'files' => true]) !!}
+                <div class="col-xs-20">
+                  <input type="text" name="nama" class="form-control" placeholder="Title">
                 </div>
-            </div>
-            <div class="form-group {{ $errors->has('kategori') ? 'has-error' : ''}}">
-                {!! Form::label('kategori', 'Kategori', ['class' => 'col-md-4 control-label']) !!}
-                <div class="col-md-6">
-                    {!! Form::text('kategori', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('kategori', '<p class="help-block">:message</p>') !!}
+                <br>
+                <div class="col-xs-20">
+                  <input type="file" name="image" class="form-control">
                 </div>
+                <br>
+                <div class="form-group">
+                <select name="kategori" class="form-control select2" style="width: 100%;">
+                  <option selected="selected">Choose Category</option>
+                  <option>Lifestyle</option>
+                  <option>Review</option>
+                  <option>Water Sport</option>
+                  <option>Travel</option>
+                </select>
+              </div>
+                <br>
+                <textarea name="konten" class="textarea" placeholder="Write Content Here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                {!! Form::submit('Post', ['class' => 'btn btn-block btn-primary btn-lg']) !!}
+              {!! Form::close() !!}
             </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-4 col-md-4">
-                                {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
-                            </div>
-                        </div>
-                        {!! Form::close() !!}
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+          </div>
+</div>
 @endsection

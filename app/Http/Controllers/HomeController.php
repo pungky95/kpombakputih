@@ -30,9 +30,6 @@ class HomeController extends Controller
         $pesan = Pesan::count();
         return view('admin',compact('pesan'));
     }
-    public function profile(){
-        
-    }
     public function editprofile()
     {
         return view('editprofile',array('user' => Auth::user()));

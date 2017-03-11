@@ -12,7 +12,8 @@
         "almasaeed2010/adminlte": "~2.3.6",
         "uxweb/sweet-alert": "~1.1",
         "kryptonit3/counter": "5.2.*",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "vinelab/laravel-editor": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

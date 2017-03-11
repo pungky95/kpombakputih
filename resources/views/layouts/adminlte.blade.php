@@ -30,6 +30,8 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ asset("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
   <link href="{{ asset("css/sweetalert.css") }}" rel='stylesheet' type='text/css'>
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset("plugins/select2/select2.min.css")}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -210,6 +212,7 @@
     reserved.
   </footer>
 </div>
+
 <script src="{{ asset("plugins/jQuery/jquery-2.2.3.min.js")}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -231,6 +234,7 @@
 <script src="{{ asset("plugins/knob/jquery.knob.js")}}"></script>
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{ asset("plugins/select2/select2.full.min.js")}}"></script>
 <script src="{{ asset("plugins/daterangepicker/daterangepicker.js") }}"></script>
 <!-- datepicker -->
 <script src="{{ asset("plugins/datepicker/bootstrap-datepicker.js") }}"></script>
@@ -246,5 +250,13 @@
 <script src="{{ asset("js/pages/dashboard.js") }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset("js/demo.js") }}"></script>
+<!-- CK Editor -->
+<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<!-- Select2 -->
+<script src="{{ asset("plugins/select2/select2.full.min.js")}}"></script>
+<!-- InputMask -->
+<script src="{{ asset("plugins/input-mask/jquery.inputmask.js")}}"></script>
+<script src="{{ asset("plugins/input-mask/jquery.inputmask.date.extensions.js")}}"></script>
+<script src="{{ asset("plugins/input-mask/jquery.inputmask.extensions.js")}}"></script>
 </body>
 </html>

@@ -167,6 +167,7 @@ return [
         Kryptonit3\Counter\CounterServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        'Vinelab\Editor\EditorServiceProvider',
 
         /*
          * Package Service Providers...

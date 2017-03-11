@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Blog;
 use App\User;
+use App\Galeri;
 use Illuminate\Http\Request;
 use Session;
+use Image;
 
 class BlogController extends Controller
 {
@@ -24,6 +26,7 @@ class BlogController extends Controller
     public function index()
     {
         $blog = Blog::orderBy('created_at','desc')->paginate(25);
+        
         return view('blog.index', compact('blog'));
     }
     /**
@@ -34,8 +37,9 @@ class BlogController extends Controller
     public function blogs()
     {
         $blog = Blog::orderBy('created_at','desc')->paginate(5);
+        $galeri = Galeri::orderBy('created_at','desc')->paginate(25);
         $kategori = DB::table('blogs')->select('kategori')->distinct('kategori')->where('kategori','Hotel Reviews')->orWhere('kategori','Travel Tips')->orWhere('kategori','Facilities')->orWhere('kategori','Travel and Food')->get();
-        return view('blog.user', compact('blog','kategori'));
+        return view('blog.user', compact('blog','kategori','galeri'));
     }
     /**
      * Show the form for creating a new resource.
@@ -43,7 +47,7 @@ class BlogController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
+    {   
         return view('blog.create');
     }
 
@@ -60,6 +64,16 @@ class BlogController extends Controller
         $requestData = $request->all();
         
         Blog::create($requestData);
+        $blog_id = Blog::max('id');
+        $image = $request->file('image');
+        $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->save(public_path($filename));
+        $galeri = new Galeri(array(
+                'blog_id' => $blog_id,
+                'foto'=>$filename,
+                'kategori'=>$request->get('kategori'),
+        ));
+        $galeri->save();
 
         Session::flash('flash_message', 'Blog added!');
 

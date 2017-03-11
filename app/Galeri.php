@@ -25,7 +25,7 @@ class Galeri extends Model
      *
      * @var array
      */
-    protected $fillable = ['kegiatan_id', 'blog_id', 'foto', 'kategori'];
+    protected $fillable = ['kegiatan_id', 'blog_id', 'foto', 'kategori','faisilitas_id'];
 
     public function blog(){
         return $this->belongsTo('App\Blog');

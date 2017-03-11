@@ -16,29 +16,30 @@
                 <div class="col-md-9">
                     <h3 class="hidden">Blog list</h3>
                     <div class="list-container">
-                        <div class="post-row">
                         @if(isset($blog))
-                            @foreach($blog as $item)
+                        @foreach($galeri as $item)
+                        <div class="post-row">
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div>
-                                        <img src="images/blog/post-thumb-1.jpg" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
+                                        <img src="{{asset($item->foto)}}" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="post-box">
-                                         <h4 class="post-title"><a href="{{ url('/blog/' . $item->id) }}">{{ $item->nama }}</a></h4>
+                                        <div class="post-category"><a href="#">Travel & Tips</a>, <a href="#">Around the world</a></div>
+                                         <h4 class="post-title"><a href="{{ url('/blog/' . $item->blog->id) }}">{{ $item->blog->nama }}</a></h4>
                                         <div class="post-meta">
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
-                                            <span class="post-comments"><i class="fa fa-comments"></i>@if($item->komentar->count()==1){{ $item->komentar->count()}} Comment @elseif($item->komentar->count()==0)0 @else{{$item->komentar->count()}} Comments @endif</span>
+                                            <span class="post-comments"><i class="fa fa-comments"></i>@if($item->blog->komentar->count()==1){{ $item->blog->komentar->count()}} Comment @elseif($item->blog->komentar->count()==0)0 @else{{$item->blog->komentar->count()}} Comments @endif</span>
                                         </div>
-                                        <p class="content">{{$item->konten}}</p>
+                                    <?php echo('<p class="content">'. $item->blog->konten . '</p>') ?>s
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-                        @endif
                         </div>
+                        @endforeach
+                        @endif
                         <div class="page-controls">
                         @if(isset($blog))
                             @if($blog->currentPage() > 1)
