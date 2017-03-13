@@ -27,13 +27,13 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="post-box">
-                                        <div class="post-category"><a href="#">Travel & Tips</a>, <a href="#">Around the world</a></div>
+                                        <div class="post-category"><a href="">{{$item->blog->kategori}}</a></div>
                                          <h4 class="post-title"><a href="{{ url('/blog/' . $item->blog->id) }}">{{ $item->blog->nama }}</a></h4>
                                         <div class="post-meta">
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
                                             <span class="post-comments"><i class="fa fa-comments"></i>@if($item->blog->komentar->count()==1){{ $item->blog->komentar->count()}} Comment @elseif($item->blog->komentar->count()==0)0 @else{{$item->blog->komentar->count()}} Comments @endif</span>
                                         </div>
-                                    <?php echo('<p class="content">'. $item->blog->konten . '</p>') ?>s
+                                    <?php echo str_limit($item->blog->konten) ?>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                         <h4 class="widget-title">Categories</h4>
                         <hr>
                         <ul class="categories">
-                        @foreach($kategori as $item)
+                        @foreach($blog as $item)
                             <li><a href="#">{{ $item->kategori }}</a></li>
                             {{-- <li class="current"><a href="#">Travel Tips</a></li> --}}
                         @endforeach

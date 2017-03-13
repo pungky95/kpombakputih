@@ -16,7 +16,7 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->string('nama',100);
             $table->string('konten',5000);
-            $table->string('kategori',255);
+            $table->string('kategori',255)->default('Uncategorized');
             $table->timestamps();
         });
     }

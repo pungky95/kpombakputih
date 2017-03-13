@@ -16,9 +16,10 @@
                 <div class="col-md-9">
                     <h3 class="hidden">Blog list</h3>
                     <div class="list-container">
-                        <div class="post-row">
                         @if(isset($details))  
-                            @foreach($details as $item)
+                        @foreach($details as $item)
+                        <div class="post-row">
+                        
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div>
@@ -32,14 +33,14 @@
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
                                             <!-- <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span> -->
                                         </div>
-                                        <p class="content">{{$item->konten}}</p>
+                                        {{$item->konten}}
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                        </div>
+                        @endforeach
                         @else <h4>No Details found. Try to search again !</h4>
                         @endif
-                        </div>
                         <div class="page-controls">
                         @if(isset($details))
                             @if($details->currentPage() > 1)

@@ -24,10 +24,12 @@
                 <div class="form-group">
                 <select name="kategori" class="form-control select2" style="width: 100%;">
                   <option selected="selected">Choose Category</option>
-                  <option>Lifestyle</option>
-                  <option>Review</option>
-                  <option>Water Sport</option>
-                  <option>Travel</option>
+                  <option>Hotel Reviews</option>
+                  <option>Travel Tips</option>
+                  <option>Around the world</option>
+                  <option>Facilities</option>
+                  <option>Travel and Food</option>
+                  <option>Miscellaneous</option>
                 </select>
               </div>
                 <br>
