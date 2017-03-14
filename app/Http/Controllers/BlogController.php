@@ -68,6 +68,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $kategori = $request->get('kategori');
+        if($kategori == 'Choose Categroy'){
+            $kategori == 'Uncategorized';
+        }
         $image = $request->file('image');
         $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
         Image::make($image)->save(public_path($filename));
@@ -75,7 +79,7 @@ class BlogController extends Controller
                 'nama' => $request->get('nama'),
                 'foto'=>$filename,
                 'konten' => $request->get('konten'),
-                'kategori'=>$request->get('kategori'),
+                'kategori'=>$kategori,
         ));
         $blog->save();
 

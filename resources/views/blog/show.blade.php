@@ -119,6 +119,7 @@
                     <div class="widget-box ">
                         <h4 class="widget-title">Recent Posts</h4>
                         <hr>
+                        @if(isset($recent))
                         @foreach($recent->slice(0,3) as $item)
                         <div class="row recent-post-row">
                             <a href="{{ url('/blog/' . $item->id) }}">
@@ -127,14 +128,17 @@
                             </a>
                         </div>
                         @endforeach
+                        @endif
                     </div>
                     <div class="widget-box ">
                         <h4 class="widget-title">Categories</h4>
                         <hr>
                         <ul class="categories">
+                        @if(isset($kategori))
                         @foreach($kategori as $item)
                             <li><a href="{{ url('/blog/category/' . $item->kategori) }}">{{ $item->kategori }}</a></li>
                         @endforeach
+                        @endif
                         </ul>
                     </div>
                 </div>
