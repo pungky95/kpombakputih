@@ -25,7 +25,7 @@ class Komentar extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama', 'email'];
+    protected $fillable = ['nama', 'email','konten','website','permissions','blog_id'];
 
     public function blog(){
         return $this->belongsTo('App\Blog');

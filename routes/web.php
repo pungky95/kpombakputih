@@ -1,5 +1,6 @@
 <?php
 use App\Blog;
+use App\Galeri;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,18 +27,21 @@ Route::resource('bungalow_pesan', 'Bungalow_PesanController');
 Route::resource('bungalow_fasilitas', 'Bungalow_FasilitasController');
 Route::resource('bungalow_galeri', 'Bungalow_GaleriController');
 Route::resource('pesan', 'PesanController');
-Route::any ( 'blog/user/search', function () {
+Route::any ( 'blog/search', function () {
     $keyword = Input::get ( 'keyword' );
     if($keyword != ""){
     $blog = Blog::where ( 'nama', 'LIKE', '%' . $keyword . '%' )->orWhere('konten', 'LIKE', '%' . $keyword . '%')->orderBy('created_at','desc')->paginate (5)->setPath ( '' );
+    $kategori = Blog::select('kategori')->distinct()->get();
+    $recent = Blog::orderBy('created_at','desc')->paginate(5);
     $pagination = $blog->appends ( array (
                 'keyword' => Input::get ( 'keyword' ) 
         ) );
     if (count ( $blog ) > 0)
-        return view ( 'blog/search' )->withDetails ( $blog )->withQuery ( $keyword );
+        return view ( 'blog/search',compact('kategori','recent') )->withDetails ( $blog )->withQuery ( $keyword );
     }
         return view ( 'blog/search' )->withMessage ( 'No Details found. Try to search again !' );
 } );
+Route::any('blog/category/{sign}','BlogController@category');
 Route::get('blog/user','BlogController@blogs');
 Route::resource('blog', 'BlogController');
 Auth::routes();

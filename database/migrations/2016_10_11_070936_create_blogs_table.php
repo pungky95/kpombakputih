@@ -15,6 +15,7 @@ class CreateBlogsTable extends Migration
         Schema::create('blogs', function(Blueprint $table) {
             $table->increments('id');
             $table->string('nama',100);
+            $table->string('foto')->default('/images/gallery/blog-thumb-2.jpg');
             $table->string('konten',5000);
             $table->string('kategori',255)->default('Uncategorized');
             $table->timestamps();

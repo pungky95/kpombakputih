@@ -151,5 +151,15 @@
     <script type="text/javascript" src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/plugins.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/functions.js") }}"></script>
+    <!-- Social Share -->
+<script>
+document.getElementById('shareBtn').onclick = function() {
+  FB.ui({
+    method: 'share',
+    mobile_iframe: true,
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
+}
+</script>
     </body>
 </html>

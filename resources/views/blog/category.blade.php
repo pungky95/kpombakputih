@@ -5,7 +5,7 @@
     <section class="section-breadcrumb">
         <h2 class="title" >Up-to-date with us</h2>
         <div class="breadcrumb">
-            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Blog</span></span>
+            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Blog > Categories</span></span>
         </div>
     </section>
 
@@ -71,7 +71,7 @@
                     <div class="widget-box ">
                         <h4 class="widget-title">Recent Posts</h4>
                         <hr>
-                        @foreach($blog->slice(0,3) as $item)
+                        @foreach($recent->slice(0,3) as $item)
                         <div class="row recent-post-row">
                             <a href="{{ url('/blog/' . $item->id) }}">
                                 <img src="{{asset($item->foto)}}" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">

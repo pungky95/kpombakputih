@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Koos Buis',
                 'email' => 'dinafur@hotmail.com',
                 'password' => bcrypt('chivasdakota'),
-                'foto' => 'default.jpg',
+                'foto' => '/images/gallery/user.png',
                 'created_at' => '2017-02-25 22:53:44',
             ]);
     }

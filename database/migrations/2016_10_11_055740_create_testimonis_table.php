@@ -14,6 +14,8 @@ class CreateTestimonisTable extends Migration
     {
         Schema::create('testimonis', function(Blueprint $table) {
             $table->increments('id');
+            $table->string('foto')->default('/images/gallery/user.png');
+            $table->string('asal')->default('Unknown');
             $table->string('nama_tamu',25);
             $table->string('konten',5000);
             $table->timestamps();

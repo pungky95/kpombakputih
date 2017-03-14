@@ -8,6 +8,7 @@ use DB;
 use App\Blog;
 use App\User;
 use App\Galeri;
+use App\Komentar;
 use Illuminate\Http\Request;
 use Session;
 use Image;
@@ -37,9 +38,16 @@ class BlogController extends Controller
     public function blogs()
     {
         $blog = Blog::orderBy('created_at','desc')->paginate(5);
-        $galeri = Galeri::orderBy('created_at','desc')->paginate(25);
-        $kategori = DB::table('blogs')->select('kategori')->distinct('kategori')->where('kategori','Hotel Reviews')->orWhere('kategori','Travel Tips')->orWhere('kategori','Facilities')->orWhere('kategori','Travel and Food')->get();
-        return view('blog.user', compact('blog','kategori','galeri'));
+        $kategori = Blog::select('kategori')->distinct()->get();
+        return view('blog.user', compact('blog','kategori'));
+    }
+
+    public function category($sign){
+        $keyword = $sign;
+        $blog = Blog::where ( 'kategori','=',$sign)->orderBy('created_at','desc')->paginate (5);
+        $kategori = Blog::select('kategori')->distinct()->get();
+        $recent = Blog::orderBy('created_at','desc')->paginate(5);
+        return view ( 'blog.category',compact('blog','kategori','recent'));
     }
     /**
      * Show the form for creating a new resource.
@@ -60,20 +68,16 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $requestData = $request->all();
-        
-        Blog::create($requestData);
-        $blog_id = Blog::max('id');
         $image = $request->file('image');
         $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
         Image::make($image)->save(public_path($filename));
-        $galeri = new Galeri(array(
-                'blog_id' => $blog_id,
+        $blog = new Blog(array(
+                'nama' => $request->get('nama'),
                 'foto'=>$filename,
+                'konten' => $request->get('konten'),
                 'kategori'=>$request->get('kategori'),
         ));
-        $galeri->save();
+        $blog->save();
 
         Session::flash('flash_message', 'Blog added!');
 
@@ -88,10 +92,13 @@ class BlogController extends Controller
      * @return \Illuminate\View\View
      */
     public function show($id)
-    {
-        $blog = Blog::findOrFail($id);
+    {   
         $user = User::first();
-        return view('blog.show', ['blog'=>$blog,'user'=>$user]);
+        $blog = Blog::findOrFail($id);
+        $kategori = Blog::select('kategori')->distinct()->get();
+        $recent = Blog::orderBy('created_at','desc')->paginate(5);
+        $komentar = Komentar::where('blog_id','=',$id)->orderBy('created_at','desc')->paginate(5);
+        return view('blog.show',compact('blog','kategori','recent','user','komentar'));
     }
     /**
      * Show the form for editing the specified resource.

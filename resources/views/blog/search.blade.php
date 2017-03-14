@@ -23,17 +23,18 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div>
-                                        <img src="images/blog/post-thumb-1.jpg" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
+                                        <img src="{{asset($item->foto)}}" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="post-box">
-                                        <h4 class="post-title"><a href="blog-single.html">{{ $item->nama }}</a></h4>
+                                        <div class="post-category"><a href="{{ url('/blog/category/' . $item->kategori) }}">{{$item->kategori}}</a></div>
+                                         <h4 class="post-title"><a href="{{ url('/blog/' . $item->id) }}">{{ $item->nama }}</a></h4>
                                         <div class="post-meta">
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
-                                            <!-- <span class="post-comments"><i class="fa fa-comments"></i>5 comments</span> -->
+                                            <span class="post-comments"><i class="fa fa-comments"></i>@if($item->komentar->count()==1){{ $item->komentar->count()}} Comment @elseif($item->komentar->count()==0)0 @else{{$item->komentar->count()}} Comments @endif</span>
                                         </div>
-                                        {{$item->konten}}
+                                    {!!str_limit($item->konten)!!}
                                     </div>
                                 </div>
                             </div>
@@ -61,12 +62,33 @@
                         <h4 class="widget-title">Search this blog</h4>
                         <hr>
                         <div class="search-box">
-                            <form action="search" method="POST" role="search">
+                            <form action="{{ url('/blog/search') }}" method="POST" role="search">
                             {{ csrf_field() }}
                                 <div class="input-wrapper"><input type="text" id="keyword" name="keyword" placeholder="Enter keyword"></div>
                                 <button ><i class="fa fa-search"></i></button>
                             </form>
                         </div>
+                    </div>
+                    <div class="widget-box ">
+                        <h4 class="widget-title">Recent Posts</h4>
+                        <hr>
+                        @foreach($recent->slice(0,3) as $item)
+                        <div class="row recent-post-row">
+                            <a href="{{ url('/blog/' . $item->id) }}">
+                                <img src="{{asset($item->foto)}}" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
+                                <p class="content">{{ $item->nama }}</p>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="widget-box ">
+                        <h4 class="widget-title">Categories</h4>
+                        <hr>
+                        <ul class="categories">
+                        @foreach($kategori as $item)
+                            <li><a href="{{ url('/blog/category/' . $item->kategori) }}">{{ $item->kategori }}</a></li>
+                        @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

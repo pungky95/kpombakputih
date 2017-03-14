@@ -25,7 +25,7 @@ class Testimoni extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama_tamu', 'konten'];
+    protected $fillable = ['nama_tamu', 'konten','foto','asal'];
 
     
 }

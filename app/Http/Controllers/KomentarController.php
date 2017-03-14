@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Komentar;
 use Illuminate\Http\Request;
 use Session;
+Use App\Blog;
+Use App\User;
 
 class KomentarController extends Controller
 {
@@ -49,7 +51,13 @@ class KomentarController extends Controller
 
         Session::flash('flash_message', 'Komentar added!');
 
-        return redirect('komentar');
+        $id = $request->get('blog_id');
+        $user = User::first();
+        $blog = Blog::findOrFail($id);
+        $kategori = Blog::select('kategori')->distinct()->get();
+        $recent = Blog::orderBy('created_at','desc')->paginate(5);
+        $komentar = Komentar::where('blog_id','=',$id)->orderBy('created_at','desc')->get();
+        return view('blog.show',compact('blog','kategori','recent','user','komentar'));
     }
 
     /**
