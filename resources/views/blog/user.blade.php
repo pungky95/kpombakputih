@@ -79,7 +79,7 @@
                         @foreach($blog->slice(0,3) as $item)
                         <div class="row recent-post-row">
                             <a href="{{ url('/blog/' . $item->id) }}">
-                                <img src="{{asset($item->foto)}}" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
+                                <img src="{{asset($item->foto)}}" style="object-fit: cover;" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
                                 <p class="content">{{ $item->nama }}</p>
                             </a>
                         </div>

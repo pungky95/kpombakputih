@@ -99,7 +99,7 @@
                                 <p class="text">{{ $item->konten }}</p>
                                 <div class="tri-down"></div>
                                 <div class="profile" >
-                                    <img src="{{ asset("moon/images/about/avatar-1.png") }}" class="img img-circle avatar" alt="avatar-1">
+                                    <img src="{{ asset($item->foto) }}" style="width: 84px;" class="img img-circle avatar" alt="avatar-1">
                                     <h3 class="name">{{ $item->nama_tamu }}</h3>
                                     <div class="position">Our Guest</div>
                                 </div>
@@ -113,7 +113,7 @@
                                 <p class="text">There is no testimoni yet</p>
                                 <div class="tri-down"></div>
                                 <div class="profile" >
-                                    <img src="{{ asset("moon/images/about/avatar-1.png") }}" class="img img-circle avatar" alt="avatar-1">
+                                    <img src="{{ asset($item->foto) }}" style="width: 84px;" class="img img-circle avatar" alt="avatar-1">
                                     <h3 class="name">Koos Buis</h3>
                                     <div class="position">Admin</div>
                                 </div>
@@ -127,7 +127,7 @@
                                 <p class="text">{{ $item->konten }}</p>
                                 <div class="tri-down"></div>
                                 <div class="profile" >
-                                    <img src="{{ asset("moon/images/about/avatar-1.png") }}" class="img img-circle avatar" alt="avatar-1">
+                                    <img src="{{ asset($item->foto) }}" style="width: 84px;" class="img img-circle avatar" alt="avatar-1">
                                     <h3 class="name">{{ $item->nama_tamu }}</h3>
                                     <div class="position">Our Guest</div>
                                 </div>

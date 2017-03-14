@@ -19,11 +19,15 @@
                             'files' => true
                         ]) !!}
                 <div class="col-xs-20">
-                  <input type="text" value="{{$blog->nama}}" name="nama" class="form-control" placeholder="Title">
+                Title <input type="text" value="{{$blog->nama}}" name="nama" class="form-control" placeholder="Title">
                 </div>
                 <br>
                 <div class="col-xs-20">
-                  <input type="file" value="{{asset($blog->foto)}}" name="image" class="form-control">
+                  <img src="{{asset($blog->foto)}}" style=" width: 200px; object-fit: cover;">
+                </div>
+                <br>
+                <div class="col-xs-20">
+                <input type="file" value="{{asset($blog->foto)}}" name="image" class="form-control">
                 </div>
                 <br>
                 <div class="col-xs-20">

@@ -341,8 +341,8 @@
                 @foreach($blog4 as $one)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box ">
-                        <a href="blog-single.html">
-                            <img src="{{ asset("moon/images/blog/blog-thumb-1.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-1">
+                        <a href="{{ url('/blog/' . $one->id) }}">
+                            <img src="{{asset($one->foto)}}" style="width: 370px; height: 570px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-1">
                             <div class="blog-meta-box ">
                                 <h3 class="blog-title">{{ $one->nama }}</h3>
                                 <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $one->created_at->format('d/M/Y')}}</span>
@@ -355,8 +355,8 @@
                 @foreach($blog3 as $two)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box">
-                        <a href="blog-single.html">
-                            <img src="{{ asset("moon/images/blog/blog-thumb-2.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-2">
+                        <a href="{{ url('/blog/' . $two->id) }}">
+                            <img src="{{ asset($two->foto)}}" style="width: 370px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-2">
                             <div class="blog-meta-box">
                                 <h3 class="blog-title">{{ $two->nama }}</h3>
                                 <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $two->created_at->format('d/M/Y')}}</span>
@@ -369,8 +369,8 @@
                 @foreach($blog2 as $three)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box">
-                        <a href="blog-single.html">
-                            <img src="{{ asset("moon/images/blog/blog-thumb-3.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-3">
+                        <a href="{{ url('/blog/' . $three->id) }}">
+                            <img src="{{ asset($three->foto)}}" style="width: 370px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-3">
                             <div class="blog-meta-box">
                                 <h3 class="blog-title">{{ $three->nama }}</h3>
                                 <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $three->created_at->format('d/M/Y')}}</span>
@@ -383,8 +383,8 @@
                 @foreach($blog1 as $four)
                 <div class="col-md-8 col-xs-12">
                     <div class="blog-box wide">
-                        <a href="blog-single.html">
-                            <img src="{{ asset("moon/images/blog/blog-thumb-4.jpg")}}" class="img-centered img-responsive" alt="blog-thumb-4">
+                        <a href="{{ url('/blog/' . $two->id) }}">
+                            <img src="{{ asset($four->foto)}}" style="width: 780px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-4">
                             <div class="blog-meta-box ">
                                 <h3 class="blog-title">{{ $four->nama }}</h3>
                                 <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $four->created_at->format('d/M/Y')}}</span>
