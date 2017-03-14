@@ -25,24 +25,25 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Blog</h3>
-                        <a href="{{ url('/blog/create') }}" class="btn btn-default" title="Add New Blog"><li class="fa fa-plus"></li> Add New Blog</a>
+                        <a href="{{ url('/blog/create') }}" class="btn btn-default" title="Add New Blog"><li class="fa fa-plus"></li> Add New Post</a>
                     </div>
                         <div class="box-body">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th> Thumbnail </th>
+                                        <th> Title </th>
                                         <th> Content </th>
                                         <th> Category </th>
-                                        <th>Actions</th>
+                                        <th> Actions </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($blog as $item)
                                     <tr>
+                                        <td> <img src="{{asset($item->foto)}}" style="width: 150px;"> </td>
                                         <td>{{ $item->nama }}</td>
-                                        <td> {{ $item->konten }}</td>
+                                        <td>{!!str_limit($item->konten)!!}</td>
                                         <td>{{ $item->kategori }}</td>
                                         <td>
                                             <a href="{{ url('/blog/' . $item->id) }}" class="btn btn-default" title="View ">

@@ -39,8 +39,13 @@
                             </div>
                         </div>
                         @endforeach
-                        @else
-                        <h4>No Post Yet</h4>
+                        @endif
+                        @if(count($blog)<=0)
+                        <div class="post-row">
+                        <div class="col-sm-7">
+                        <h4 class="post-title">Sorry There is No Post</h4>
+                        </div>
+                        </div>
                         @endif
                         <div class="page-controls">
                         @if(isset($blog))
@@ -93,6 +98,4 @@
             </div>
         </div>
     </section>
-    {{ Counter::count('blog') }}
-
 @endsection
