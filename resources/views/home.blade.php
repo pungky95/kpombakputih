@@ -289,7 +289,13 @@
                         <div class="testimonial-box">
                             <p class="text">{{ $item->konten }}</p>
                             <h4 class="name">{{ $item->nama_tamu}}</h4>
-                            <div class="position">Our Guest</div>
+                            <div class="position">
+                                @if($item->asal != 'Unknown')
+                                Our Guest From {{ $item->asal }}
+                                @else
+                                Our Guest
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -308,7 +314,13 @@
                         <div class="testimonial-box">
                             <p class="text">{{ $item->konten }}</p>
                             <h4 class="name">{{ $item->nama_tamu}}</h4>
-                            <div class="position">Our Guest</div>
+                            <div class="position">
+                                @if($item->asal != 'Unknown')
+                                Our Guest From {{ $item->asal }}
+                                @else
+                                Our Guest
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach  
