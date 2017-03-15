@@ -234,7 +234,7 @@
                 <div class="col-md-6">
                     <div class="col-sm-6">
                         <div class="content-box">
-                            <img src="{{ asset("moon/images/facility-pool.jpg")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
+                            <img src="{{ asset("moon/images/facility-pool.jpg")}}" style="width: 310; height: 200; object-fit: cover;" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
                             <div class="tri-up"></div>
                             <h3 class="title">Swimming Pool</h3>
                             <p class="content">Nullam ultrices, urna nec malesuada aliquam, neque massa auctor metus, vulputate tristique enim nulla quis ante. Sed vel leo turpis. In in tortor fringilla, scelerisque quam eu, aliquet massa.lorem.</p>
@@ -245,14 +245,14 @@
                             <h3 class="title">Free Wifi</h3>
                             <p class="content">Vivamus eros dolor, auctor aliquet dolor sit amet, euismod imperdiet ex. Nam sed nulla sed massa suscipit feugiat. Mauris et nunc ornare, placerat ex ac, interdum magna. Donec mollis tellus non sem pulvinar.</p>
                             <div class="tri-down"></div>
-                            <img src="{{ asset("moon/images/facility-wifi.jpg")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-2">
+                            <img src="{{ asset("moon/images/facility-wifi.jpg")}}" style="width: 310; height: 200; object-fit: cover;" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-2">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="col-sm-6">
                         <div class="content-box">
-                            <img src="{{ asset("moon/images/facility-bicycle.jpg")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-3">
+                            <img src="{{ asset("moon/images/facility-bicycle.jpg")}}" style="width: 310; height: 200; object-fit: cover;" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-3">
                             <div class="tri-up"></div>
                             <h3 class="title">Bicycle Rent</h3>
                             <p class="content">Suspendisse euismod, neque faucibus dictum rutrum, ex dolor tempor dolor, ut egestas velit tellus quis erat. Curabitur vel elit a nibh fringilla maximus.</p>
@@ -263,7 +263,7 @@
                             <h3 class="title">Hot &amp; Cold Shower</h3>
                             <p class="content">Molestie condimentum tellus. Vivamus nec lectus congue, ultrices felis sit amet, dapibus augue. Cras fringilla efficitur elementum. Mauris ac consectetur nibh. Mauris tincidunt dolor justo, ac accumsan.</p>
                             <div class="tri-down"></div>
-                            <img src="{{ asset("moon/images/facility-shower.jpg")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-4">
+                            <img src="{{ asset("moon/images/facility-shower.jpg")}}" style="width: 310; height: 200; object-fit: cover;" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-4">
                         </div>
                     </div>
                 </div>
