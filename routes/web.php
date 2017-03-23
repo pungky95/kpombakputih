@@ -53,3 +53,4 @@ Route::post('editprofile', 'HomeController@update');
 Route::get('/', 'WelcomeController@index');
 Route::resource('komentar', 'KomentarController');
 Route::get('/pesan/show', 'PesanController@show');
+Route::resource('kategori', 'KategoriController');
