@@ -169,12 +169,6 @@
             <span>Gallery</span>
           </a>
         </li>
-        <li class="@yield('kegiatan') treeview">
-          <a href="{{ url('/kegiatan')}}">
-            <i class="fa fa-bicycle"></i>
-            <span>Activity</span>
-          </a>
-        </li>
         <li class="@yield('blog') treeview">
           <a href="{{ url('/blog')}}">
             <i class="fa fa-file-text-o"></i>

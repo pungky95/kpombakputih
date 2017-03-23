@@ -14,8 +14,6 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('kegiatan_id')->unsigned()->nullable();
-            $table->foreign('kegiatan_id')->references('id')->on('kegiatans')->onDelete('cascade');
             $table->integer('fasilitas_id')->unsigned()->nullable();
             $table->foreign('fasilitas_id')->references('id')->on('fasilitas')->onDelete('cascade');
             $table->string('foto',255);
