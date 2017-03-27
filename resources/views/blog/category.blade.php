@@ -5,7 +5,7 @@
     <section class="section-breadcrumb">
         <h2 class="title" >Up-to-date with us</h2>
         <div class="breadcrumb">
-            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Blog > Categories</span></span>
+            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Blog > Categories > {{$selectedkategori}}</span></span>
         </div>
     </section>
 
@@ -46,7 +46,15 @@
                             </div>
                         </div>
                         @endforeach
-                        @else <h4>No Post Yet</h4>
+                        @endif
+                        @if(count($blog)<=0)
+                        <div class="post-row">
+                        <div class="row">
+                        <div class="col-sm-7">
+                        <h4 class="post-title"><a href="{{ url('/blog/user') }}">Sorry ther is no post yet for this category, back to Blog</a></h4>
+                        </div>
+                        </div>
+                        </div>
                         @endif
                         <div class="page-controls">
                         @if(isset($blog))

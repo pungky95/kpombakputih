@@ -45,10 +45,10 @@ class BlogController extends Controller
     }
 
     public function category($sign){
-        $kategori = $sign;
+        $selectedkategori = $sign;
         $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
         ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
-        ->where('kategoris.nama','=',$kategori)
+        ->where('kategoris.nama','=',$selectedkategori)
         ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
         ->orderBy('created','desc')
         ->paginate (5);
@@ -56,7 +56,7 @@ class BlogController extends Controller
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')
         ->get();
         $kategori = Kategori::orderBy('nama','asc')->get();
-        return view ( 'blog.category',compact('blog','recent','kategori'));
+        return view ( 'blog.category',compact('blog','recent','kategori','selectedkategori'));
     }
     /**
      * Show the form for creating a new resource.

@@ -40,7 +40,6 @@
                             </div>
                         </div>
                         @endforeach
-                        @else <h4>No Post Yet</h4>
                         @endif
                         @if(count($blog)<=0)
                         <div class="post-row">
