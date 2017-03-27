@@ -14,10 +14,10 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('kategori_id')->unsigned()->nullable();
+            $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
             $table->string('nama',100);
-            $table->string('foto')->default('/images/gallery/blog-thumb-2.jpg');
             $table->string('konten',5000);
-            $table->string('kategori',255)->default('Uncategorized');
             $table->timestamps();
         });
     }

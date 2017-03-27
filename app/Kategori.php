@@ -27,5 +27,11 @@ class Kategori extends Model
      */
     protected $fillable = ['nama'];
 
+    public function blog(){
+        return $this->hasMany('App\Blog','kategori_id','id');
+    }
+    public function galeri(){
+        return $this->hasMany('App\Galeri');
+    }
     
 }

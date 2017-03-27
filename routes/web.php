@@ -1,5 +1,6 @@
 <?php
 use App\Blog;
+use App\Kategori;
 use App\Galeri;
 /*
 |--------------------------------------------------------------------------
@@ -29,17 +30,23 @@ Route::resource('bungalow_galeri', 'Bungalow_GaleriController');
 Route::resource('pesan', 'PesanController');
 Route::any ( 'blog/search', function () {
     $keyword = Input::get ( 'keyword' );
-    $kategori = Blog::select('kategori')->distinct()->get();
-    $recent = Blog::orderBy('created_at','desc')->paginate(5);
+    $recent = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
+    $kategori = Kategori::orderBy('nama','asc')->get();
     if($keyword != ""){
-    $blog = Blog::where ( 'nama', 'LIKE', '%' . $keyword . '%' )->orWhere('konten', 'LIKE', '%' . $keyword . '%')->orderBy('created_at','desc')->paginate (5)->setPath ( '' );
+    $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
+        ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
+        ->where ( 'blogs.nama', 'LIKE', '%' . $keyword . '%' )->orWhere('blogs.konten', 'LIKE', '%' . $keyword . '%')
+        ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
+        ->orderBy('created','desc')
+        ->paginate (5)->setPath ( '' );
     $pagination = $blog->appends ( array (
                 'keyword' => Input::get ( 'keyword' ) 
         ) );
     if (count ( $blog ) > 0)
-        return view ( 'blog/search',compact('kategori','recent') )->withDetails ( $blog )->withQuery ( $keyword );
+        return view ( 'blog/search',compact('recent','kategori') )->withDetails ( $blog )->withQuery ( $keyword );
     }
-        return view ( 'blog/search',compact('kategori','recent') )->withMessage ( 'No Details found. Try to search again !' );
+        return view ( 'blog/search',compact('recent','kategori') )->withMessage ( 'No Details found. Try to search again !' );
 } );
 Route::any('blog/category/{sign}','BlogController@category');
 Route::get('blog/user','BlogController@blogs');

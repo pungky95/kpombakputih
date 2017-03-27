@@ -18,12 +18,14 @@ class WelcomeController extends Controller
     public function index()
     {
         $testimoni = Testimoni::paginate(25);
-        $id = Blog::max('id');
-        $blog1= Blog::where('id',$id)->get();
-        $blog2= Blog::where('id',$id-1)->get();
-        $blog3= Blog::where('id',$id-2)->get();
-        $blog4= Blog::where('id',$id-3)->get();
-        return view('home', compact('testimoni','blog1','blog2','blog3','blog4','all'));
+        // $id = Blog::max('id');
+        // $blog1= Blog::where('id',$id)->get();
+        // $blog2= Blog::where('id',$id-1)->get();
+        // $blog3= Blog::where('id',$id-2)->get();
+        // $blog4= Blog::where('id',$id-3)->get();
+        $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
+        return view('home', compact('testimoni','blog'));
     }
 
     /**

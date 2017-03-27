@@ -28,6 +28,6 @@ class Komentar extends Model
     protected $fillable = ['nama', 'email','konten','website','permissions','blog_id'];
 
     public function blog(){
-        return $this->belongsTo('App\Blog');
+        return $this->belongsTo('App\Blog','blog_id','id');
     }
 }

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Session;
 Use App\Blog;
 Use App\User;
+use App\Kategori;
+use DB;
 
 class KomentarController extends Controller
 {
@@ -51,12 +53,19 @@ class KomentarController extends Controller
 
         Session::flash('flash_message', 'Komentar added!');
 
-        $id = $request->get('blog_id');
         $user = User::first();
-        $blog = Blog::findOrFail($id);
-        $kategori = Blog::select('kategori')->distinct()->get();
-        $recent = Blog::orderBy('created_at','desc')->paginate(5);
-        $komentar = Komentar::where('blog_id','=',$id)->orderBy('created_at','desc')->get();
+        $id = $request->get('blog_id');
+        $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
+        ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
+        ->where('blogs.id','=',$id)
+        ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
+        ->orderBy('created','desc')
+        ->first();
+        $recent = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
+        $kategori = Kategori::orderBy('nama','asc')->get();
+
+        $komentar = Komentar::where('blog_id','=',$id)->orderBy('created_at','desc')->paginate(5);
         return view('blog.show',compact('blog','kategori','recent','user','komentar'));
     }
 

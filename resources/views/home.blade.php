@@ -338,61 +338,70 @@
         <div class="moon-divider"></div>
         <div class="container">
             <div class="row" >
-                @foreach($blog4 as $one)
+                @php $i=0 @endphp
+                @foreach($blog as $items)
+                @php $i+=1 @endphp
+
+                @if($i==1)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box ">
-                        <a href="{{ url('/blog/' . $one->id) }}">
-                            <img src="{{asset($one->foto)}}" style="width: 370px; height: 570px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-1">
+                        <a href="{{ url('/blog/' . $items->id) }}">
+                            <img src="{{asset($items->path)}}" style="width: 370px; height: 570px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-1">
                             <div class="blog-meta-box ">
-                                <h3 class="blog-title">{{ $one->nama }}</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $one->created_at->format('d/M/Y')}}</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>@if($one->komentar->count()==1){{ $one->komentar->count()}} Comment @elseif($one->komentar->count()==0)0 @else{{$one->komentar->count()}} Comments @endif</span>
+                                <h3 class="blog-title">{{ $items->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $items->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($items->komentar->count()==1){{ $items->komentar->count()}} Comment @elseif($items->komentar->count()==0)0 @else{{$items->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
-                @endforeach
-                @foreach($blog3 as $two)
+                @endif
+
+                @if($i==2)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box">
-                        <a href="{{ url('/blog/' . $two->id) }}">
-                            <img src="{{ asset($two->foto)}}" style="width: 370px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-2">
+                        <a href="{{ url('/blog/' . $items->id) }}">
+                            <img src="{{ asset($items->path)}}" style="width: 370px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-2">
                             <div class="blog-meta-box">
-                                <h3 class="blog-title">{{ $two->nama }}</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $two->created_at->format('d/M/Y')}}</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>@if($two->komentar->count()==1){{ $two->komentar->count()}} Comment @elseif($two->komentar->count()==0)0 @else{{$two->komentar->count()}} Comments @endif</span>
+                                <h3 class="blog-title">{{ $items->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $items->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($items->komentar->count()==1){{ $items->komentar->count()}} Comment @elseif($items->komentar->count()==0)0 @else{{$items->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
-                @endforeach
-                @foreach($blog2 as $three)
+                @endif
+
+                @if($i==3)
                 <div class="col-md-4 col-xs-6">
                     <div class="blog-box">
-                        <a href="{{ url('/blog/' . $three->id) }}">
-                            <img src="{{ asset($three->foto)}}" style="width: 370px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-3">
+                        <a href="{{ url('/blog/' . $items->id) }}">
+                            <img src="{{ asset($items->path)}}" style="width: 370px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-3">
                             <div class="blog-meta-box">
-                                <h3 class="blog-title">{{ $three->nama }}</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $three->created_at->format('d/M/Y')}}</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>@if($three->komentar->count()==1){{ $three->komentar->count()}} Comment @elseif($three->komentar->count()==0)0 @else{{$three->komentar->count()}} Comments @endif</span>
+                                <h3 class="blog-title">{{ $items->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $items->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($items->komentar->count()==1){{ $items->komentar->count()}} Comment @elseif($items->komentar->count()==0)0 @else{{$items->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
-                @endforeach
-                @foreach($blog1 as $four)
+                @endif
+
+                @if($i==4)
                 <div class="col-md-8 col-xs-12">
                     <div class="blog-box wide">
-                        <a href="{{ url('/blog/' . $two->id) }}">
-                            <img src="{{ asset($four->foto)}}" style="width: 780px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-4">
+                        <a href="{{ url('/blog/' . $items->id) }}">
+                            <img src="{{ asset($items->path)}}" style="width: 780px; height: 270px; object-fit: cover;" class="img-centered img-responsive" alt="blog-thumb-4">
                             <div class="blog-meta-box ">
-                                <h3 class="blog-title">{{ $four->nama }}</h3>
-                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $four->created_at->format('d/M/Y')}}</span>
-                                <span class="post-comments"><i class="fa fa-comments"></i>@if($four->komentar->count()==1){{ $four->komentar->count()}} Comment @elseif($four->komentar->count()==0)0 @else{{$four->komentar->count()}} Comments @endif</span>
+                                <h3 class="blog-title">{{ $items->nama }}</h3>
+                                <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $items->created_at->format('d/M/Y')}}</span>
+                                <span class="post-comments"><i class="fa fa-comments"></i>@if($items->komentar->count()==1){{ $items->komentar->count()}} Comment @elseif($items->komentar->count()==0)0 @else{{$items->komentar->count()}} Comments @endif</span>
                             </div>
                         </a>
                     </div>
                 </div>
+                @endif
+
                 @endforeach
             </div>
             <div class="text-center">

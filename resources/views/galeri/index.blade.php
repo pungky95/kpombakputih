@@ -4,7 +4,14 @@
 @section('content')
 
   
-
+@php
+function formatBytes($size, $precision = 2) 
+{ 
+$base = log($size, 1024);
+$suffixes = array('', 'KB', 'MB', 'GB', 'TB');   
+return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];                                            
+} 
+@endphp
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,13 +40,26 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Photo </th><th> Category </th><th>Actions</th>
+                                        <th> Photo </th>
+                                        <th> Category </th>
+                                        <th> Name </th>
+                                        <th> Mime </th>
+                                        <th> Size </th>
+                                        <th> Actions </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($galeri as $item)
                                     <tr>
-                                        <td><img src="{{ asset($item->foto) }}" style="width: auto; height:50px; position: absolute;"></td><td> {{ $item->kategori }}</td>
+                                        <td><img src="{{ asset($item->path) }}" style="width: 75px; height:50px; object-fit: cover; position: absolute;"></td>
+                                        <td> {{ $item->kategori }}</td>
+                                        <td> {{$item->nama}} </td>
+                                        <td> {{$item->mime}} </td>
+                                        <td> 
+                                        @php
+                                            echo formatBytes($item->size,2);
+                                        @endphp
+                                        </td>
                                         <td>
                                             <a href="{{ url('/galeri/' . $item->id) }}" class="btn btn-default" title="View Gallery">
                                             <i class="fa fa-eye"></i></a>

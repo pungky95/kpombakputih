@@ -23,16 +23,23 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div>
-                                        <img src="{{asset($item->foto)}}" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
+                                        <img src="{{asset($item->path)}}" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="post-box">
                                         <div class="post-category"><a href="{{ url('/blog/category/' . $item->kategori) }}">{{$item->kategori}}</a></div>
-                                         <h4 class="post-title"><a href="{{ url('/blog/' . $item->id) }}">{{ $item->nama }}</a></h4>
+                                         <h4 class="post-title"><a href="{{ url('/blog/' . $item->blog_id) }}">{{ $item->judul }}</a></h4>
                                         <div class="post-meta">
-                                            <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
-                                            <span class="post-comments"><i class="fa fa-comments"></i>@if($item->komentar->count()==1){{ $item->komentar->count()}} Comment @elseif($item->komentar->count()==0)0 @else{{$item->komentar->count()}} Comments @endif</span>
+                                            <span class="post-date"><i class="fa fa-calendar-o"></i> 
+                                            @php $date=strtotime($item->created); echo date('d/M/Y',$date); @endphp
+                                            </span>
+                                            <span class="post-comments"><i class="fa fa-comments"></i>
+                                            @if($item->komentar->count()==1){{ $item->komentar->count()}} Comment 
+                                            @elseif($item->komentar->count()==0){{0}} 
+                                            @elseif($item->komentar->count()>1){{$item->komentar->count()}} Comments 
+                                            @endif
+                                            </span>
                                         </div>
                                     {!!str_limit($item->konten)!!}
                                     </div>
@@ -76,7 +83,7 @@
                         @foreach($recent->slice(0,3) as $item)
                         <div class="row recent-post-row">
                             <a href="{{ url('/blog/' . $item->id) }}">
-                                <img src="{{asset($item->foto)}}" style="object-fit: cover;" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
+                                <img src="{{asset($item->path)}}" style="object-fit: cover;" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
                                 <p class="content">{{ $item->nama }}</p>
                             </a>
                         </div>
@@ -89,7 +96,7 @@
                         <ul class="categories">
                         @if(isset($kategori))
                         @foreach($kategori as $item)
-                            <li><a href="{{ url('/blog/category/' . $item->kategori) }}">{{ $item->kategori }}</a></li>
+                            <li><a href="{{ url('/blog/category/' . $item->nama) }}">{{ $item->nama }}</a></li>
                         @endforeach
                         @endif
                         </ul>

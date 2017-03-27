@@ -9,6 +9,7 @@ use App\Blog;
 use App\User;
 use App\Galeri;
 use App\Komentar;
+use App\Kategori;
 use Illuminate\Http\Request;
 use Session;
 use Image;
@@ -26,8 +27,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog = Blog::orderBy('created_at','desc')->paginate(25);
-        
+        $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path')->orderBy('blogs.created_at','desc')->paginate(5);
         return view('blog.index', compact('blog'));
     }
     /**
@@ -37,17 +38,25 @@ class BlogController extends Controller
      */
     public function blogs()
     {
-        $blog = Blog::orderBy('created_at','desc')->paginate(5);
-        $kategori = Blog::select('kategori')->distinct()->get();
+        $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
+        $kategori = Kategori::orderBy('nama','asc')->get();
         return view('blog.user', compact('blog','kategori'));
     }
 
     public function category($sign){
-        $keyword = $sign;
-        $blog = Blog::where ( 'kategori','=',$sign)->orderBy('created_at','desc')->paginate (5);
-        $kategori = Blog::select('kategori')->distinct()->get();
-        $recent = Blog::orderBy('created_at','desc')->paginate(5);
-        return view ( 'blog.category',compact('blog','kategori','recent'));
+        $kategori = $sign;
+        $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
+        ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
+        ->where('kategoris.nama','=',$kategori)
+        ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
+        ->orderBy('created','desc')
+        ->paginate (5);
+        $recent = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')
+        ->get();
+        $kategori = Kategori::orderBy('nama','asc')->get();
+        return view ( 'blog.category',compact('blog','recent','kategori'));
     }
     /**
      * Show the form for creating a new resource.
@@ -56,7 +65,8 @@ class BlogController extends Controller
      */
     public function create()
     {   
-        return view('blog.create');
+        $kategori = Kategori::orderBy('nama','asc')->get();
+        return view('blog.create',compact('kategori'));
     }
 
     /**
@@ -68,20 +78,39 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori = $request->get('kategori');
-        if($kategori == 'Choose Categroy'){
-            $kategori == 'Uncategorized';
+
+        $kategori_id = Kategori::select('id')->where('nama','=',$request->get('kategori'))->get();
+
+        foreach ($kategori_id as $key) {
+            $kategori_id=$key->id;
         }
-        $image = $request->file('image');
-        $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->save(public_path($filename));
+
+        $file = $request->file('image');
+        if(isset($file))
+        {
+            $filename =$file->getClientOriginalName();
+            Image::make($file)->save(public_path('/images/gallery/' . $filename));
+        }
+
         $blog = new Blog(array(
+                'kategori_id' => $kategori_id,
                 'nama' => $request->get('nama'),
-                'foto'=>$filename,
                 'konten' => $request->get('konten'),
-                'kategori'=>$kategori,
         ));
         $blog->save();
+        $blog_id = Blog::max('id');
+
+        if(isset($filename)){
+            $gallery = new Galeri(array(
+                'kategori_id' => $kategori_id,
+                'blog_id' => $blog_id,
+                'nama' => $filename,
+                'mime' => $file->getClientMimeType(),
+                'path' => '/images/gallery/' . $filename,
+                'size' => $file->getClientSize(),
+            ));
+            $gallery->save();
+        }
 
         Session::flash('flash_message', 'Blog added!');
 
@@ -98,9 +127,16 @@ class BlogController extends Controller
     public function show($id)
     {   
         $user = User::first();
-        $blog = Blog::findOrFail($id);
-        $kategori = Blog::select('kategori')->distinct()->get();
-        $recent = Blog::orderBy('created_at','desc')->paginate(5);
+        $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
+        ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
+        ->where('blogs.id','=',$id)
+        ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
+        ->orderBy('created','desc')
+        ->first();
+        $recent = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
+        $kategori = Kategori::orderBy('nama','asc')->get();
+
         $komentar = Komentar::where('blog_id','=',$id)->orderBy('created_at','desc')->paginate(5);
         return view('blog.show',compact('blog','kategori','recent','user','komentar'));
     }
@@ -113,9 +149,14 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::findOrFail($id);
-
-        return view('blog.edit', compact('blog'));
+        $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
+        ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
+        ->where('blogs.id','=',$id)
+        ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
+        ->orderBy('created','desc')
+        ->first();
+        $kategori = Kategori::orderBy('nama','asc')->get();
+        return view('blog.edit', compact('blog','kategori'));
     }
 
     /**

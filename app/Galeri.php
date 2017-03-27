@@ -25,13 +25,10 @@ class Galeri extends Model
      *
      * @var array
      */
-    protected $fillable = ['kegiatan_id', 'blog_id', 'foto', 'kategori','faisilitas_id'];
+    protected $fillable = ['kategori_id','blog_id','fasilitas_id','nama','mime','path','size'];
 
     public function blog(){
         return $this->belongsTo('App\Blog');
-    }
-    public function kegiatan(){
-        return $this->belongsTo('App\Kegiatan');
     }
     public function fasilita(){
         return $this->belongsTo('App\Fasilita');
@@ -39,6 +36,9 @@ class Galeri extends Model
     public function bungalow()
     {
         return $this->belongsToMany('App\Bungalow');
+    }
+    public function kategoris(){
+        return $this->belongsTo('App\Kategori');
     }
     
 }

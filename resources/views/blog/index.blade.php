@@ -41,10 +41,10 @@
                                 <tbody>
                                 @foreach($blog as $item)
                                     <tr>
-                                        <td> <img src="{{asset($item->foto)}}" style="width: 150px;"> </td>
+                                        <td> <img src="{{ asset($item->path) }}" style="width: 150px;"> </td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{!!str_limit($item->konten)!!}</td>
-                                        <td>{{ $item->kategori }}</td>
+                                        <td>{{ $item->kategori->nama }}</td>
                                         <td>
                                             <a href="{{ url('/blog/' . $item->id) }}" class="btn btn-default" title="View ">
                                             <i class="fa fa-eye"></i></a>
@@ -67,7 +67,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $blog->render() !!} </div>
+                            {{-- <div class="pagination-wrapper"> {!! $blog->render() !!} </div> --}}
                         </div>
                 </div>
             </div>

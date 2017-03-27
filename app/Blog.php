@@ -25,13 +25,16 @@ class Blog extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama', 'konten','kategori','foto'];
+    protected $fillable = ['nama', 'konten','kategori_id'];
 
     public function komentar(){
         return $this->hasMany('App\Komentar');
     }
     public function galeri(){
-        return $this->hasMany('App\Galeri');
+        return $this->hasMany('App\Galeri','blog_id');
+    }
+    public function kategori(){
+        return $this->belongsTo('App\Kategori','kategori_id');
     }
     
 }

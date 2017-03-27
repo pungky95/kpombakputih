@@ -5,7 +5,7 @@
     <section class="section-breadcrumb">
         <h2 class="title">Up-to-date with us</h2>
         <div class="breadcrumb">
-            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Blog > {{$blog->nama}}</span></span>
+            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Blog > {{$blog->judul}}</span></span>
         </div>
     </section>
 
@@ -20,16 +20,23 @@
                         
                             <div class="col-sm-5">
                                 <div>
-                                    <img src="{{asset($blog->foto)}}" class="img-responsive" alt="post-thumb-1" data-animate="fadeIn" >
+                                    <img src="{{asset($blog->path)}}" class="img-responsive" alt="post-thumb-1" data-animate="fadeIn" >
                                 </div>
                             </div>
                             <div class="col-sm-7">
                                 <div class="post-box">
-                                    <h4 class="post-category"><a href="#">{{ $blog->kategori }}</a></h4>
-                                    <h4 class="post-title"><a href="#">{{ $blog->nama}} </a></h4>
+                                    <h4 class="post-category"><a href="{{ url('/blog/category/' . $blog->kategori) }}">{{ $blog->kategori }}</a></h4>
+                                    <h4 class="post-title"><a href="{{ url('/blog/' . $blog->blog_id) }}">{{ $blog->judul}} </a></h4>
                                     <div class="post-meta">
-                                        <span class="post-date"><i class="fa fa-calendar-o"></i>{{ $blog->created_at->format('d/M/Y')}}</span>
-                                        <span class="post-comments"><i class="fa fa-comments"></i>@if($blog->komentar->count()==1){{ $blog->komentar->count()}} Comment @elseif($blog->komentar->count()==0)0 @else{{$blog->komentar->count()}} Comments @endif</span>
+                                        <span class="post-date"><i class="fa fa-calendar-o"></i> 
+                                            @php $date=strtotime($blog->created); echo date('d/M/Y',$date); @endphp
+                                        </span>
+                                        <span class="post-comments"><i class="fa fa-comments"></i>
+                                            @if($blog->komentar->count()==1){{ $blog->komentar->count()}} Comment 
+                                            @elseif($blog->komentar->count()==0){{0}} 
+                                            @elseif($blog->komentar->count()>1){{$blog->komentar->count()}} Comments 
+                                            @endif
+                                            </span>
                                         <span class="post-author-name"><i class="fa fa-user"></i>{{ $user->name }}</span>
                                     </div>
                                     <div class="post-social-links">
@@ -54,17 +61,31 @@
                         </div>
 
                         <div class="comments-container">
-                            <h3 class="subtitle">There are @if($blog->komentar->count()==1){{ $blog->komentar->count()}} @elseif($blog->komentar->count()==0)no @else{{$blog->komentar->count()}} @endif comments on this post</h3>
-                            @foreach($komentar as $item)
+                            <h3 class="subtitle">There are @if($blog->komentar->count()==1){{ $blog->komentar->count()}}
+                                            @elseif($blog->komentar->count()==0){{0}} 
+                                            @elseif($blog->komentar->count()>1){{$blog->komentar->count()}}
+                                            @endif comments on this post</h3>
+                            @foreach($komentar as $items)
                             <div class="comment-box">
                                 <img src="images/blog/avatar-2.png" class="img-responsive" alt="avatar-2">
                                 <div class="comment-info">
-                                    <h4 class="comment-name">{{$item->nama}}</h4>
-                                    <div class="comment-date">{{ $item->created_at->format('d/M/Y')}}</div>
-                                    <p class="content">{{ $item->konten }}</p>
+                                    <h4 class="comment-name">{{$items->nama}}</h4>
+                                    <div class="comment-date">{{ $items->created_at->format('d/M/Y')}}</div>
+                                    <p class="content">{{ $items->konten }}</p>
                                 </div>
                             </div>
                             @endforeach
+                            <div class="page-controls">
+                        @if(isset($komentar))
+                            @if($komentar->currentPage() > 1)
+                               <a href="{{ $komentar->previousPageUrl() }}" class="pull-right">Newer entries <i class="glyphicon glyphicon-arrow-right"></i></a> 
+                            @endif
+
+                            @if($komentar->hasMorePages())
+                                <a href="{{ $komentar->nextPageUrl() }}" class="pull-left"><i class="glyphicon glyphicon-arrow-left"></i> Older entries </a>
+                            @endif
+                        @endif
+                        </div>
                         </div>
                         <div class="leave-comment-container">
                             <div class="subtitle">Leave a comment</div>
@@ -98,7 +119,7 @@
                                         <button class="button">Post Comment</button>
                                     </div>
                                 </div>
-                                <input value="{{$blog->id}}" type="hidden" name="blog_id">
+                                <input value="{{$blog->blog_id}}" type="hidden" name="blog_id">
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -120,11 +141,11 @@
                         <h4 class="widget-title">Recent Posts</h4>
                         <hr>
                         @if(isset($recent))
-                        @foreach($recent->slice(0,3) as $item)
+                        @foreach($recent->slice(0,3) as $blog)
                         <div class="row recent-post-row">
-                            <a href="{{ url('/blog/' . $item->id) }}">
-                                <img src="{{asset($item->foto)}}" style="object-fit: cover;" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
-                                <p class="content">{{ $item->nama }}</p>
+                            <a href="{{ url('/blog/' . $blog->id) }}">
+                                <img src="{{asset($blog->path)}}" style="object-fit: cover;" alt="post-thumb-sm-1" data-animate="fadeIn" data-delay="0">
+                                <p class="content">{{ $blog->nama }}</p>
                             </a>
                         </div>
                         @endforeach
@@ -135,8 +156,8 @@
                         <hr>
                         <ul class="categories">
                         @if(isset($kategori))
-                        @foreach($kategori as $item)
-                            <li><a href="{{ url('/blog/category/' . $item->kategori) }}">{{ $item->kategori }}</a></li>
+                        @foreach($kategori as $items)
+                            <li><a href="{{ url('/blog/category/' . $items->nama) }}">{{ $items->nama }}</a></li>
                         @endforeach
                         @endif
                         </ul>
