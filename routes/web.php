@@ -37,7 +37,7 @@ Route::any ( 'blog/search', function () {
     $blog = Blog::join('galeris', 'blogs.id','=','galeris.blog_id')
         ->join('kategoris', 'kategoris.id','=','blogs.kategori_id')
         ->where ( 'blogs.nama', 'LIKE', '%' . $keyword . '%' )->orWhere('blogs.konten', 'LIKE', '%' . $keyword . '%')
-        ->select('blogs.id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
+        ->select('blogs.id as blog_id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
         ->orderBy('created','desc')
         ->paginate (5)->setPath ( '' );
     $pagination = $blog->appends ( array (

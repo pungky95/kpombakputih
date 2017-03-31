@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Komentar;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreKomenRequest;
 use Session;
+use Alert;
 Use App\Blog;
 Use App\User;
 use App\Kategori;
@@ -44,13 +45,13 @@ class KomentarController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(StoreKomenRequest $request)
     {
         
         $requestData = $request->all();
         
         Komentar::create($requestData);
-
+        Alert::success('Your Message Sent','Sent')->persistent('OK');
         Session::flash('flash_message', 'Komentar added!');
 
         $user = User::first();
@@ -65,8 +66,8 @@ class KomentarController extends Controller
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
         $kategori = Kategori::orderBy('nama','asc')->get();
 
-        $komentar = Komentar::where('blog_id','=',$id)->orderBy('created_at','desc')->paginate(5);
-        return view('blog.show',compact('blog','kategori','recent','user','komentar'));
+        $komentar = Komentar::where('blog_id','=',$id)->where('permissions','=','accept')->orderBy('created_at','desc')->paginate(5);
+        return redirect('blog/'.$id);
     }
 
     /**

@@ -17,7 +17,7 @@ class CreateKontaksTable extends Migration
             $table->string('nama',50);
             $table->string('email',50);
             $table->string('pesan',2000);
-            $table->string('phone',18);
+            $table->string('phone',20);
             $table->timestamps();
         });
     }

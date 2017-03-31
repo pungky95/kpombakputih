@@ -16,10 +16,10 @@ class CreateKomentarsTable extends Migration
             $table->increments('id');
             $table->integer('blog_id')->unsigned()->nullable();
             $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
-            $table->string('nama');
-            $table->string('email');
-            $table->string('website')->nullable();
-            $table->string('konten',10000);
+            $table->string('nama',50);
+            $table->string('email',50);
+            $table->string('website',50)->nullable();
+            $table->string('konten',2000);
             $table->enum('permissions', ['accept', 'decline'])->default('decline');
             $table->timestamps();
         });

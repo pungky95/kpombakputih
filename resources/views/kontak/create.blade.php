@@ -55,28 +55,28 @@
                                 {!! Form::label('nama', 'Name*', ['class' => 'control-label']) !!}
                                 <div >
                                     {!! Form::text('nama', null, ['class' => 'form-control']) !!}
-                                    {!! $errors->first('nama', '<p class="help-block">:message</p>') !!}
+                                    {!! $errors->first('nama', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
                                 {!! Form::label('phone', 'Phone*', ['class' => 'control-label']) !!}
                                 <div>
                                     {!! Form::text('phone', null, ['class' => 'form-control']) !!}
-                                    {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
+                                    {!! $errors->first('phone', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
                                 {!! Form::label('email', 'Email*', ['class' => 'control-label']) !!}
                                 <div >
                                     {!! Form::text('email', null, ['class' => 'form-control']) !!}
-                                    {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                                    {!! $errors->first('email', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('pesan') ? 'has-error' : ''}}">
                                 {!! Form::label('pesan', 'Message*', ['class' => 'control-label']) !!}
                                 <div >
                                     {!! Form::textarea('pesan', null, ['class' => 'form-control']) !!}
-                                    {!! $errors->first('pesan', '<p class="help-block">:message</p>') !!}
+                                    {!! $errors->first('pesan', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                         {!! Form::submit('Send Us', ['class' => 'button secondary transparent']) !!}
