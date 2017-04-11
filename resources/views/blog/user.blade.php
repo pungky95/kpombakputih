@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div>
-                                        <img src="{{asset($item->path)}}" class="img-responsive" data-animate="fadeIn" alt="post-thumb-1">
+                                        <img src="{{asset($item->path)}}" class="img-responsive" style="object-fit: cover" data-animate="fadeIn" alt="post-thumb-1">
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

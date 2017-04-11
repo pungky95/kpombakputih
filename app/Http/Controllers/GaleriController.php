@@ -9,6 +9,7 @@ use App\Galeri;
 use Illuminate\Http\Request;
 use Session;
 use Image;
+use App\Kategori;
 
 class GaleriController extends Controller
 {
@@ -36,8 +37,8 @@ class GaleriController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        return view('galeri.create');
+    {   $kategori = Kategori::orderBy('nama','asc')->get();
+        return view('galeri.create',compact('kategori'));
     }
 
     /**
@@ -50,19 +51,26 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         
-        // $requestData = $request->all();
-        
-        // Galeri::create($requestData);
-
-        $image = $request->file('image');
-        $filename ='/images/gallery/' . time() . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->save(public_path($filename));
-        $kategori = $request->get('kategori');
-        $galeri = new Galeri(array(
-                'foto'=>$filename,
-                'kategori'=>$kategori,
-        ));
-        $galeri->save();
+        $kategori_id = Kategori::select('id')->where('nama','=',$request->get('kategori'))->get();
+        foreach ($kategori_id as $key) {
+            $kategori_id=$key->id;
+        }
+        $file = $request->file('file');
+        if(isset($file))
+        {
+            $filename =$file->getClientOriginalName();
+            Image::make($file)->save(public_path('/images/gallery/' . $filename));
+        }
+        if(isset($filename)){
+            $gallery = new Galeri(array(
+                'kategori_id' => $kategori_id,
+                'nama' => $filename,
+                'mime' => $file->getClientMimeType(),
+                'path' => '/images/gallery/' . $filename,
+                'size' => $file->getClientSize(),
+            ));
+            $gallery->save();
+        }
 
         Session::flash('flash_message', 'Galeri added!');
 

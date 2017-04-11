@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset("css/AdminLTE.min.css")}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -44,7 +45,7 @@
 <div class="wrapper">
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{url('/admin')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>OP</span>
       <!-- logo for regular state and mobile devices -->
@@ -193,6 +194,12 @@
             <span>Testimonial</span>
           </a>
         </li>
+        <li class="@yield('komentar') treeview">
+          <a href="{{ url('/komentar')}}">
+            <i class="fa fa-comments"></i>
+            <span>Comment</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -228,6 +235,7 @@
 <script src="{{ asset("plugins/knob/jquery.knob.js")}}"></script>
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script src="{{ asset("plugins/select2/select2.full.min.js")}}"></script>
 <script src="{{ asset("plugins/daterangepicker/daterangepicker.js") }}"></script>
 <!-- datepicker -->

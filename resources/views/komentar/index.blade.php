@@ -1,39 +1,99 @@
-@extends('layouts.app')
-
+@extends('layouts.adminlte')
+@section('title','Admin Dashboard')
+@section('komentar','active')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Komentar</div>
-                    <div class="panel-body">
+   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Comments
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Comments</li>
+      </ol>
+    </section>
 
-                        <a href="{{ url('/komentar/create') }}" class="btn btn-primary btn-xs" title="Add New Komentar"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
-                        <br/>
-                        <br/>
-                        <div class="table-responsive">
-                            <table class="table table-borderless">
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Comments</h3>
+                    </div>
+                        <div class="box-body">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th> Nama </th><th> Email </th><th>Actions</th>
+                                        <th> Nama </th>
+                                        <th> Email </th>
+                                        <th> Website </th>
+                                        <th> Konten </th>
+                                        <th> Permission </th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($komentar as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->nama }}</td><td>{{ $item->email }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->website }}</td>
+                                        <td>{{ $item->konten }}</td>
                                         <td>
-                                            <a href="{{ url('/komentar/' . $item->id) }}" class="btn btn-success btn-xs" title="View Komentar"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                                            <a href="{{ url('/komentar/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Komentar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                                            @if($item->permissions == 'accept')
+                                            {!! Form::model($item, [
+                                            'method' => 'PATCH',
+                                            'url' => ['/komentar', $item->id],
+                                            'class' => 'form-horizontal',
+                                            'files' => true
+                                            ]) !!}
+                                            <input name="nama" type="hidden" value="{{$item->nama}}">
+                                            <input name="email" type="hidden" value="{{$item->email}}">
+                                            <input name="website" type="hidden" value="{{$item->website}}">
+                                            <input name="konten" type="hidden" value="{{$item->konten}}">
+                                            <input name="permissions" type="hidden" value="decline">
+                                            {!! Form::button('<li class="fa fa-check"></li>', array(
+                                                        'type' => 'submit',
+                                                        'class' => 'btn btn-default',
+                                                        'title' => 'Decline this Comment',
+                                                        'onclick'=>'return confirm("Confirm Decline?")'
+                                            )) !!}
+                                            {!! Form::close() !!}
+                                            @elseif($item->permissions == 'decline')
+                                            {!! Form::model($item, [
+                                            'method' => 'PATCH',
+                                            'url' => ['/komentar', $item->id],
+                                            'class' => 'form-horizontal',
+                                            'files' => true
+                                            ]) !!}
+                                            <input name="nama" type="hidden" value="{{$item->nama}}">
+                                            <input name="email" type="hidden" value="{{$item->email}}">
+                                            <input name="website" type="hidden" value="{{$item->website}}">
+                                            <input name="konten" type="hidden" value="{{$item->konten}}">
+                                            <input name="permissions" type="hidden" value="accept">
+                                            {!! Form::button('<li class="fa fa-times"></li>', array(
+                                                        'type' => 'submit',
+                                                        'class' => 'btn btn-default',
+                                                        'title' => 'Accept this Comment',
+                                                        'onclick'=>'return confirm("Confirm Accept?")'
+                                            )) !!}
+                                            {!! Form::close() !!}
+                                            @endif
+                                        </td>
+                                        <td>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/komentar', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Komentar" />', array(
+                                                {!! Form::button('<li class="fa fa-trash-o"></li>', array(
                                                         'type' => 'submit',
-                                                        'class' => 'btn btn-danger btn-xs',
+                                                        'class' => 'btn btn-default',
                                                         'title' => 'Delete Komentar',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
@@ -43,12 +103,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $komentar->render() !!} </div>
+                             <div class="pagination-wrapper"> {!! $komentar->render() !!} </div>
                         </div>
-
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+  </div>
 @endsection

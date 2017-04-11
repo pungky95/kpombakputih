@@ -24,7 +24,6 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Testimonial</h3>
-                        <a href="{{ url('/testimoni/create') }}" class="btn btn-default" title="Add New Testimonial"><li class="fa fa-plus"></li> Add New Testimonial</a>
                     </div>
                         <div class="box-body">
                             <table class="table table-bordered">
