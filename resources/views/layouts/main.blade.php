@@ -52,10 +52,10 @@
                         <a href="#">Booking</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">Gallery</a>
+                        <a href="{{ url('/gallery')}}">Gallery</a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('/blog/user')}}">Blog</a>
+                        <a href="{{ url('/blogs')}}">Blog</a>
                     </li>
                     <li class="menu-item">
                         <a href="{{ url('kontak/create')}}">Contact</a>

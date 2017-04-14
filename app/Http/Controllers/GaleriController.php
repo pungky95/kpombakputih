@@ -10,12 +10,13 @@ use Illuminate\Http\Request;
 use Session;
 use Image;
 use App\Kategori;
+use DB;
 
 class GaleriController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['only' => 'index','create','store','edit','destroy','update']);
     }
     /**
      * Display a listing of the resource.
@@ -26,9 +27,34 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::join('kategoris','galeris.kategori_id','=','kategoris.id')
         ->select('galeris.id','galeris.nama as nama','mime','path','size','kategoris.nama as kategori')
-        ->paginate(25);
+        ->paginate(10);
 
         return view('galeri.index', compact('galeri'));
+    }
+
+    public function gallery(){
+        // $kategori = Kategori::join('galeris','kategoris.id','=','galeris.kategori_id')
+        // ->select('galeris.id','kategori_id','path','galeris.created_at as created_at','kategoris.nama as kategori')
+        // ->paginate(10);
+        $kategori = DB::table('kategoris')
+        ->whereExists(function($query)
+            {
+                $query->select(DB::raw(1))
+                      ->from('galeris')
+                      ->whereRaw('galeris.kategori_id = kategoris.id');
+            })
+        ->get();
+        $arrkategori = json_decode(json_encode($kategori), True);
+        for($i=0;$i<sizeof($arrkategori);$i++){
+            $path = Galeri::where('kategori_id','=',$arrkategori[$i]['id'])->first();
+            $numberphotos = Galeri::where('kategori_id','=',$arrkategori[$i]['id'])->get();
+
+            $arrkategori[$i]['path'] = $path->path;
+            $arrkategori[$i]['created_at'] = $path->created_at;
+            $arrkategori[$i]['number'] = ''.sizeof($numberphotos);
+        }
+        sort($arrkategori);
+        return view('galeri.album')->with(['arrkategori'=>$arrkategori]);
     }
 
     /**

@@ -30,7 +30,7 @@
                                         <div class="post-category"><a href="{{ url('/blog/category/' . $item->kategori->nama) }}">{{$item->kategori->nama}}</a></div>
                                          <h4 class="post-title"><a href="{{ url('/blog/' . $item->id) }}">{{ $item->nama }}</a></h4>
                                         <div class="post-meta">
-                                            <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('d/M/Y')}} </span>
+                                            <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('M jS, Y')}} </span>
                                         </div>
                                     {!!str_limit($item->konten)!!}
                                     </div>

@@ -31,7 +31,7 @@
                                          <h4 class="post-title"><a href="{{ url('/blog/' . $item->blog_id) }}">{{ $item->judul }}</a></h4>
                                         <div class="post-meta">
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> 
-                                            @php $date=strtotime($item->created); echo date('d/M/Y',$date); @endphp 
+                                            @php $date=strtotime($item->created); echo date('M jS, Y',$date); @endphp 
                                             </span>
                                         </div>
                                     {!!str_limit($item->konten)!!}

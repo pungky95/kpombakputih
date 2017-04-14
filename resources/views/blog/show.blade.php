@@ -32,7 +32,7 @@
                                     <h4 class="post-title"><a href="{{ url('/blog/' . $blog->blog_id) }}">{{ $blog->judul}} </a></h4>
                                     <div class="post-meta">
                                         <span class="post-date"><i class="fa fa-calendar-o"></i> 
-                                            @php $date=strtotime($blog->created); echo date('d/M/Y',$date); @endphp
+                                            @php $date=strtotime($blog->created); echo date('M jS, Y',$date); @endphp
                                         </span>
                                         <span class="post-comments"><i class="fa fa-comments"></i>
                                             @if($jumlahkomentar ==1 ){{ $jumlahkomentar }} Comment 

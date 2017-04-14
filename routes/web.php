@@ -23,6 +23,7 @@ Route::resource('fasilitas', 'FasilitasController');
 Route::resource('kegiatan', 'KegiatanController');
 Route::resource('testimoni', 'TestimoniController');
 Route::resource('kontak', 'KontakController');
+Route::get('/gallery','GaleriController@gallery');
 Route::resource('galeri', 'GaleriController');
 Route::resource('bungalow_pesan', 'Bungalow_PesanController');
 Route::resource('bungalow_fasilitas', 'Bungalow_FasilitasController');
@@ -49,7 +50,7 @@ Route::any ( 'blog/search', function () {
         return view ( 'blog/search',compact('recent','kategori') )->withMessage ( 'No Details found. Try to search again !' );
 } );
 Route::any('blog/category/{sign}','BlogController@category');
-Route::get('blog/user','BlogController@blogs');
+Route::get('blogs/','BlogController@blogs');
 Route::resource('blog', 'BlogController');
 Auth::routes();
 

@@ -33,6 +33,9 @@
                             @endforeach
                     </select>
                     <br>
+                    Max Upload Size is 2 MB
+                    Please make sure you choosing the right file.
+                    <br>
                         <div id="form" style="display:none;">
                             {!! Form::open(['url' => url('/galeri'),'enctype'=>'multipart/form-data', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
                             <input type="hidden" name="kategori" id="kategori" value="uncategorize">
@@ -51,12 +54,6 @@
         $("#form").hide();
         else
         $("#form").show();
-    }
-    Dropzone.options.realDropzone = {
-    maxFilesize: 8,
-    dictFileTooBig: 'Image is bigger than 8MB',
-
-    
     }
   </script>
   @endsection
