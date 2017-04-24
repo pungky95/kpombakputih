@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
              array('nama'=>'Room'),
              array('nama'=>'Swimming Pool'),
              array('nama'=>'Sport'),
+             array('nama'=>'Facilities'),
           ));
 
     }

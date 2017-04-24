@@ -71,7 +71,7 @@
                             @endif </h3>
                             @foreach($komentar as $items)
                             <div class="comment-box">
-                                <img src="images/blog/avatar-2.png" class="img-responsive" alt="avatar-2">
+                                <img src="{{ asset('/images/gallery/user.png') }}" style="width: 75px;" class="img-responsive" alt="avatar-2">
                                 <div class="comment-info">
                                     <h4 class="comment-name">{{$items->nama}}</h4>
                                     <div class="comment-date">{{ $items->created_at->format('d/M/Y')}}</div>

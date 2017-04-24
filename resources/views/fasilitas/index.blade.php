@@ -10,7 +10,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Bungalow
+        Facilities
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -39,7 +39,7 @@
                                 <tbody>
                                 @foreach($fasilitas as $item)
                                     <tr>
-                                        <td>{{ $item->nama }}</td><td>{{ $item->keterangan }}</td>
+                                        <td>{{ $item->nama }}</td><td>{!! $item->keterangan !!}</td>
                                         <td>
                                             <a href="{{ url('/fasilitas/' . $item->id) }}" class="btn btn-default" title="View Bungalow">
                                             <i class="fa fa-eye"></i></a>

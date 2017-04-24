@@ -30,7 +30,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $fasilita->id }}</td>
                                     </tr>
-                                    <tr><th> Nama </th><td> {{ $fasilita->nama }} </td></tr><tr><th> Keterangan </th><td> {{ $fasilita->keterangan }} </td></tr>
+                                    <tr><th> Nama </th><td> {{ $fasilita->nama }} </td></tr><tr><th> Keterangan </th><td> {!!$fasilita->keterangan !!} </td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -405,7 +405,7 @@
                 @endforeach
             </div>
             <div class="text-center">
-                <a href="{{url ('blog/user')}}" class="button transparent" >See All Entries</a>
+                <a href="{{url ('blogs')}}" class="button transparent" >See All Entries</a>
             </div>
         </div>
     </section>

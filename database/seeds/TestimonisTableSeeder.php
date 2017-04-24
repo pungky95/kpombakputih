@@ -20,7 +20,7 @@ class TestimonisTableSeeder extends Seeder
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Walter & Ria Schrijn',
-                'konten' => 'Subject : zeer gastvrij en top-service
+                'konten' => 'zeer gastvrij en top-service
 
 Wij verbleven hier ongeveer 8 weken en wij werden zeer gastvrij onthaald en weggebracht door gastvrouw Lina en gastheer Koos met chauffeur op het vliegveld.
 Ons verblijf was gewoon fantastisch met een top-service inclusief excursies, leker eten en niet onbelangrijk: de zorgzaamheid, want mijn blinde darm sprong accuut en Koos en Lina hebben mij al die weken goed verzorgd.
@@ -33,7 +33,7 @@ Ik kan het een ieder aanraden en wij komen hier zeker terug!',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Antonia',
-                'konten' => 'Subject : Vakantie op Bali
+                'konten' => 'Vakantie op Bali
 
 Bedankt voor de leuke vakantie. Het was weer haastige leuk! Wat kan Lina heerlijk koken! Ombakputih is een klein paradijs op Bali.
 Groetjes
@@ -43,7 +43,7 @@ Wijnhold en Antonia',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Jacqueline Vrancken',
-                'konten' => 'Subject : Bedankt voor de geweldige tijd!
+                'konten' => 'Bedankt voor de geweldige tijd!
 
 Hallo Koos & Lina!
 
@@ -58,7 +58,7 @@ p.s. Groetjes aan het personeel!',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Tom & Lenny',
-                'konten' => 'Subject : fantastische vakantie
+                'konten' => 'fantastische vakantie
 
 Na even wennen aan de hoge relatieve vochtigheid in combinatie met temperaturen van 30+, hebben we een fantastische vakantie gehad mede dankzij de goede zorgen van Koos, Lina en de staf, Ria en Elli. Toeren met Koos over het eiland, mountain biking over onverharde wegen langs onverwacht mooie vergezichten. Als je van Indonesisch eten houdt: ontelbare restaurantjes om de hoek en het kost ook nog eens heel weinig. Ga er heen met lege koffers, want er zijn heel veel prachtige dingen te koop op Bali en ook dat kost weinig, als je tenminste de sport van afdingen beheerst! Als een all-inclusive vakantie in een ressort, ver van het lokale leven je ook niet aanspreekt, dan is Ombak Putih het alternatief!
 Gaan we zeker in de toekomst herhalen!
@@ -69,7 +69,7 @@ Tom & Lenny',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Mandy van Belzen',
-                'konten' => 'Subject : Ombak Putih = Vakantie!!
+                'konten' => 'Ombak Putih = Vakantie!!
 
 Hallo Koos en Lina,
 
@@ -83,7 +83,7 @@ Ik wens jullie nog veel succes en plezier met jullie mooie bungalows en hopelijk
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Evelyne, Jean, Lola',
-                'konten' => 'Subject : vacances
+                'konten' => 'vacances
 
 Depuis 4 ans nous passons nos vacances à Ombak-putih
 L’endroit est superbe,les bungalows, la piscine, le jardin sont parfaitemet entretenus ; Koos et Lina ainsi que Ria et Eli (femmes de ménage)feront tout pour que vos vacances soient réussies!!',
@@ -92,7 +92,7 @@ L’endroit est superbe,les bungalows, la piscine, le jardin sont parfaitemet en
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Andre',
-                'konten' => 'Subject: vakantie 27-02 t.e.m. 21-03-2011
+                'konten' => 'vakantie 27-02 t.e.m. 21-03-2011
 
 Sinds 2005 verblijf ik ieder jaar tijdens mijn vakantie in Nusa Dua in
 een bungalow van hotel Puri Tanjung.
@@ -130,7 +130,7 @@ Ik kom volgend jaar weer hier terug.',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Wim van Leeuwen',
-                'konten' => 'Subject: holiday
+                'konten' => 'holiday
 
 Ombak Putih is a great place to stay. We (2 adults with 2 children 5 and 6
 years) stayed in this hotel 11 nights in July 2011. It was the second time
@@ -145,7 +145,7 @@ you a great hospitality at a very low price.',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Mikhail Totmakov',
-                'konten' => 'Subject: Great place!
+                'konten' => 'Great place!
 
 We were really lucky to stay here! We had a nice, super
 clean room on the second floor. The service was simply
@@ -173,7 +173,7 @@ Mikhail and Maria from Moscow, Russia',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Fam Boelen',
-                'konten' => 'Subject: 29-07 / 12-08 Vakantie
+                'konten' => '29-07 / 12-08 Vakantie
 
 Message:
 Koos and Lina,
@@ -191,7 +191,7 @@ Jan, Teddy, Jordy and Jessica Boelen.',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'P.Stokvis',
-                'konten' => 'Subject: vakantie
+                'konten' => 'vakantie
 
 Hallo Lina en Koos,
 Van 21-10 t/m 20-11 hadden we een perfecte vakantie in de
@@ -225,7 +225,7 @@ Catharien, Isabel en Ton',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Fred & Isje Bakkenist',
-                'konten' => 'Subject: Verblijf in Bali. Tanjung Benoa
+                'konten' => 'Verblijf in Bali. Tanjung Benoa
 
 Lieve Lina,
 
@@ -238,7 +238,7 @@ Isje & Fred',
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Becca',
-                'konten' => 'Subject : good for families
+                'konten' => 'good for families
 
 The staff were really helpful, the swimming pool was great and was enjoyed by the whole family. Breakfast was adequate. Bungalows were close to water sports at the beach. A nice quiet beach is a quick taxi ride from the bungalows. Lots of places to eat out within a short walking distance.',
                 'asal' => 'United Kingdom',
@@ -247,7 +247,7 @@ The staff were really helpful, the swimming pool was great and was enjoyed by th
         DB::table('testimonis')->insert([
                 'foto' => '/images/gallery/user.png',
                 'nama_tamu' => 'Liudmyla',
-                'konten' => 'Subject : Exceptional
+                'konten' => 'Exceptional
 
 Everything is nice about this bungalows. Rooms are clean and light. Comfort beds, refrigerator, air conditioners, coffee maker. Staff is friendly and helpful. Nice clean swimming pool. A lot of plants and flowers so you can enjoy your stay there.',
                 'asal' => 'Ukraine',

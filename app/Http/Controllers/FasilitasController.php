@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Image;
+use App\Galeri;
+use App\User;
 use App\Fasilita;
 use App\Testimoni;
 use Illuminate\Http\Request;
@@ -42,8 +44,8 @@ class FasilitasController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        return view('fasilitas.create');
+    {   
+        return view('fasilitas.create',compact('fasilitas'));
     }
 
     /**
@@ -55,12 +57,32 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
-        
         $requestData = $request->all();
         
         Fasilita::create($requestData);
+        $fasilitas = Fasilita::max('id');
+        $kategori_id = $request->get('kategori');
+        $fasilitas_id = $request->get('fasilitas');
+        $file = $request->file('file');
+        if(isset($file))
+        {
+            $filename = $file->getClientOriginalName();
+            Image::make($file)->save(public_path('/images/gallery/' . $filename));
 
-        Session::flash('flash_message', 'Fasilita added!');
+        }
+        if(isset($filename)){
+            $gallery = new Galeri(array(
+                'kategori_id' => $kategori_id,
+                'fasilitas_id' => $fasilitas,
+                'nama' => $filename,
+                'mime' => $file->getClientMimeType(),
+                'path' => '/images/gallery/' . $filename,
+                'size' => $file->getClientSize(),
+            ));
+            $gallery->save();
+        }
+
+        Session::flash('flash_message', 'Fasilitas added!');
 
         return redirect('fasilitas');
     }
@@ -88,9 +110,10 @@ class FasilitasController extends Controller
      */
     public function edit($id)
     {
-        $fasilita = Fasilita::findOrFail($id);
+        $fasilitas = Fasilita::findOrFail($id);
+        $galeri = Galeri::where('fasilitas_id','=',$id)->get();
 
-        return view('fasilitas.edit', compact('fasilita'));
+        return view('fasilitas.edit', compact('fasilitas','galeri'));
     }
 
     /**
@@ -108,6 +131,25 @@ class FasilitasController extends Controller
         
         $fasilita = Fasilita::findOrFail($id);
         $fasilita->update($requestData);
+        $kategori_id = $request->get('kategori');
+        $file = $request->file('file');
+        if(isset($file))
+        {
+            $filename = $file->getClientOriginalName();
+            Image::make($file)->save(public_path('/images/gallery/' . $filename));
+
+        }
+        if(isset($filename)){
+            $gallery = new Galeri(array(
+                'kategori_id' => $kategori_id,
+                'fasilitas_id' => $id,
+                'nama' => $filename,
+                'mime' => $file->getClientMimeType(),
+                'path' => '/images/gallery/' . $filename,
+                'size' => $file->getClientSize(),
+            ));
+            $gallery->save();
+        }
 
         Session::flash('flash_message', 'Fasilita updated!');
 
@@ -122,11 +164,21 @@ class FasilitasController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
-    {
+    {   
+        $galeri = Galeri::select('id')->where('fasilitas_id','=',$id)->get();
+        Galeri::destroy($galeri);
+        
         Fasilita::destroy($id);
 
         Session::flash('flash_message', 'Fasilita deleted!');
 
         return redirect('fasilitas');
+    }
+    public function destroygaleri($id,Request $request){
+        Galeri::destroy($id);
+        $fasilitas_id = $request->get('fasilitas');
+        Session::flash('flash_message', 'Fasilita deleted!');
+
+        return redirect()->back();
     }
 }
