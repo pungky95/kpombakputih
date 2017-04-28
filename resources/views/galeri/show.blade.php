@@ -1,43 +1,86 @@
-@extends('layouts.app')
+@extends('layouts.main')
+@section('title','Gallery')
+@section('content')    
+    <section class="section-breadcrumb">
+        <h2 class="title" >Our Galleries</h2>
+        <div class="breadcrumb">
+            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Gallery</span></span>
+        </div>
+    </section>
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Galeri {{ $galeri->id }}</div>
-                    <div class="panel-body">
-
-                        <a href="{{ url('galeri/' . $galeri->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Galeri"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['galeri', $galeri->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Galeri',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ))!!}
-                        {!! Form::close() !!}
-                        <br/>
-                        <br/>
-
-                        <div class="table-responsive">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $galeri->id }}</td>
-                                    </tr>
-                                    <tr><th> Kegiatan Id </th><td> {{ $galeri->kegiatan_id }} </td></tr><tr><th> Blog Id </th><td> {{ $galeri->blog_id }} </td></tr><tr><th> Foto </th><td> {{ $galeri->foto }} </td></tr><tr><th> Kategori </th><td> {{ $galeri->kategori }} </td></tr>
-                                </tbody>
-                            </table>
+    <section class="section-gallery">
+        <h2 class="hidden" >Gallery section</h2>
+        <div class="container ">
+            <div class="gallery-container">
+                <div class="row gallery-row">
+                    <div class="col-md-6">
+                        <a href="gallery-single.html"><img src="{{asset($single->path)}}" class="img-centered img-responsive" alt="gallery" data-animate="fadeIn" data-delay="300"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="desc">This album has {{sizeof($galeri)}} photos</p>
+                        <p class="content">{{$kategori->nama}}</p>
+                        <div class="date"><i class="fa fa-calendar-o"></i> @php $date=strtotime($single->created_at); echo date('M jS, Y',$date); @endphp</div>
+                        <div class="post-social-links">
+                            <div class="header">Share this gallery</div>
+                            <div class="icons">
+                                <a class="social-link" href="#"><i class="fa fa-facebook"></i></a>
+                                <a class="social-link" href="#"><i class="fa fa-twitter"></i></a>
+                                <a class="social-link" href="#"><i class="fa fa-google-plus"></i></a>
+                                <a class="social-link" href="#"><i class="fa fa-pinterest-p"></i></a>
+                                <a class="social-link" href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
+
+                <hr/>
+                <div class="row gallery-images">
+                    @foreach($galeri as $item)
+                    <div class="col-md-4 col-xs-6">
+                        <a href="{{asset($item->path)}}" data-lightbox="gallery" data-title=""><img src="{{asset($item->path)}}" class="img-centered img-responsive" data-animate="zoomIn" alt="image-1"></a>
+                    </div>
+                    @endforeach
+                </div>
+                @if ($galeri->hasPages())
+    <div class="row">
+        <div class="col-md-12 page-controls text-center">
+        {{-- Previous Page Link --}}
+        @if ($galeri->onFirstPage())
+            <a href="#" class="button "><i class="fa fa-chevron-left"></i> </a>
+        @else
+            <a href="{{ $galeri->previousPageUrl() }}" class="button secondary transparent"><i class="fa fa-chevron-left"></i> </a>
+        @endif
+
+        {{-- Pagination Elements --}}
+        @foreach ($galeri as $element)
+            {{-- "Three Dots" Separator --}}
+            @if (is_string($element))
+                <a href="#" class="button ">{{$element}}</a>
+            @endif
+
+            {{-- Array Of Links --}}
+            @if (is_array($element))
+                @foreach ($element as $page => $url)
+                    @if ($page == $galeri->currentPage())
+                        <a href="#" class="button ">{{$page}}</a>
+                    @else
+                        <a href="{{$url}}" class="button secondary transparent">{{$page}}</a>
+                    @endif
+                @endforeach
+            @endif
+        @endforeach
+
+        {{-- Next Page Link --}}
+        @if ($galeri->hasMorePages())
+            <a href="{{ $galeri->nextPageUrl() }}" class="button secondary transparent"><i class="fa fa-chevron-right"></i> </a>
+        @else
+            <a href="#" class="button"><i class="fa fa-chevron-left"></i> </a>
+        @endif
         </div>
     </div>
+@endif
+
+            </div>
+        </div>
+    </section>
 @endsection

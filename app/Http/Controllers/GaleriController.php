@@ -50,6 +50,7 @@ class GaleriController extends Controller
             $numberphotos = Galeri::where('kategori_id','=',$arrkategori[$i]['id'])->get();
 
             $arrkategori[$i]['path'] = $path->path;
+            $arrkategori[$i]['kategori_id'] = $path->kategori_id;
             $arrkategori[$i]['created_at'] = $path->created_at;
             $arrkategori[$i]['number'] = ''.sizeof($numberphotos);
         }
@@ -112,9 +113,11 @@ class GaleriController extends Controller
      */
     public function show($id)
     {
-        $galeri = Galeri::findOrFail($id);
+        $galeri = Galeri::where('kategori_id','=',$id)->paginate(2);
+        $single = Galeri::where('kategori_id','=',$id)->first();
+        $kategori = Kategori::findOrFail($id);
 
-        return view('galeri.show', compact('galeri'));
+        return view('galeri.show', compact('galeri','kategori','single'));
     }
 
     /**

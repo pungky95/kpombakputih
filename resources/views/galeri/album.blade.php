@@ -15,13 +15,13 @@
                 @for($i=0;$i<sizeof($arrkategori);$i++)
                 <div class="row gallery-row">
                     <div class="col-md-6">
-                        <a href="gallery-single.html"><img src="{{ asset($arrkategori[$i]['path']) }}" class="img-centered img-responsive" data-animate="fadeIn" alt="gallery-1"></a>
+                        <a href="{{ url('/galeri/' . $arrkategori[$i]['kategori_id']) }}"><img src="{{ asset($arrkategori[$i]['path']) }}" class="img-centered img-responsive" data-animate="fadeIn" alt="gallery-1"></a>
                     </div>
                     <div class="col-md-6">
                         <p class="desc">This album has {{($arrkategori[$i]['number'])}}  photos</p>
                         <h3 class="content">{{$arrkategori[$i]['nama']}}</h3>
                         <div class="date"><i class="fa fa-calendar-o"></i>@php $date=strtotime($arrkategori[$i]['created_at']); echo date('M jS, Y',$date); @endphp  {{-- May 22nd, 2015 --}}</div>
-                        <a href="gallery-single.html" class="button secondary transparent">Detail</a>
+                        <a href="{{ url('/galeri/' . $arrkategori[$i]['kategori_id']) }}" class="button secondary transparent">Detail</a>
                     </div>
                 </div>
                 @endfor
