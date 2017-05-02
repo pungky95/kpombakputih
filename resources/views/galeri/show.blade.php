@@ -41,40 +41,27 @@
                     </div>
                     @endforeach
                 </div>
-                @if ($galeri->hasPages())
+                
+@if ($galeri->hasPages())
     <div class="row">
         <div class="col-md-12 page-controls text-center">
         {{-- Previous Page Link --}}
         @if ($galeri->onFirstPage())
-            <a href="#" class="button "><i class="fa fa-chevron-left"></i> </a>
+            <a href="#" class="button secondary transparent"><i class="fa fa-chevron-left"></i> </a>
         @else
             <a href="{{ $galeri->previousPageUrl() }}" class="button secondary transparent"><i class="fa fa-chevron-left"></i> </a>
-        @endif
-
-        {{-- Pagination Elements --}}
-        @foreach ($galeri as $element)
-            {{-- "Three Dots" Separator --}}
-            @if (is_string($element))
-                <a href="#" class="button ">{{$element}}</a>
-            @endif
-
-            {{-- Array Of Links --}}
-            @if (is_array($element))
-                @foreach ($element as $page => $url)
-                    @if ($page == $galeri->currentPage())
-                        <a href="#" class="button ">{{$page}}</a>
+        @endif 
+                @for($i=1;$i<=$galeri->lastPage();$i++)
+                    @if ($i == $galeri->currentPage())
+                        <a href="{{$galeri->url($i)}}" class="button ">{{$i}}</a>
                     @else
-                        <a href="{{$url}}" class="button secondary transparent">{{$page}}</a>
+                        <a href="{{$galeri->url($i)}}" class="button secondary transparent">{{$i}}</a>
                     @endif
-                @endforeach
-            @endif
-        @endforeach
-
-        {{-- Next Page Link --}}
+                @endfor
         @if ($galeri->hasMorePages())
             <a href="{{ $galeri->nextPageUrl() }}" class="button secondary transparent"><i class="fa fa-chevron-right"></i> </a>
         @else
-            <a href="#" class="button"><i class="fa fa-chevron-left"></i> </a>
+            <a href="#" class="button secondary transparent"><i class="fa fa-chevron-right"></i> </a>
         @endif
         </div>
     </div>

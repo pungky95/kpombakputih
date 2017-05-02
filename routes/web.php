@@ -41,7 +41,7 @@ Route::any ( 'blog/search', function () {
         ->where ( 'blogs.nama', 'LIKE', '%' . $keyword . '%' )->orWhere('blogs.konten', 'LIKE', '%' . $keyword . '%')
         ->select('blogs.id as blog_id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
         ->orderBy('created','desc')
-        ->paginate (5)->setPath ( '' );
+        ->paginate (6)->setPath ( '' );
     $pagination = $blog->appends ( array (
                 'keyword' => Input::get ( 'keyword' ) 
         ) );

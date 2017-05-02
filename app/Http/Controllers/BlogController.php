@@ -28,7 +28,7 @@ class BlogController extends Controller
     public function index()
     {
         $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
-        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path')->orderBy('blogs.created_at','desc')->paginate(5);
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path')->orderBy('blogs.created_at','desc')->paginate(6);
         return view('blog.index', compact('blog'));
     }
     /**
@@ -39,7 +39,7 @@ class BlogController extends Controller
     public function blogs()
     {
         $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
-        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
+        ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(6);
         $kategori = Kategori::orderBy('nama','asc')->get();
         return view('blog.user', compact('blog','kategori'));
     }
@@ -51,7 +51,7 @@ class BlogController extends Controller
         ->where('kategoris.nama','=',$selectedkategori)
         ->select('blogs.id as blog_id', 'blogs.nama as judul','blogs.konten','kategoris.nama as kategori','galeris.path','blogs.created_at as created')
         ->orderBy('created','desc')
-        ->paginate (5);
+        ->paginate (6);
         $recent = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')
         ->get();
@@ -143,7 +143,7 @@ class BlogController extends Controller
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
         $kategori = Kategori::orderBy('nama','asc')->get();
 
-        $komentar = Komentar::where('blog_id','=',$id)->where('permissions','=','accept')->orderBy('created_at','desc')->paginate(5);
+        $komentar = Komentar::where('blog_id','=',$id)->where('permissions','=','accept')->orderBy('created_at','desc')->paginate(6);
         return view('blog.show',compact('blog','kategori','recent','user','komentar','jumlahkomentar'));
     }
     /**
