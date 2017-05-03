@@ -31,6 +31,7 @@
                                          <h4 class="post-title"><a href="{{ url('/blog/' . $item->id) }}">{{ $item->nama }}</a></h4>
                                         <div class="post-meta">
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> {{ $item->created_at->format('M jS, Y')}} </span>
+                                            <span class="post-comments"><i class="fa fa-comments"></i>{{$item->komentar->count()}}</span>
                                         </div>
                                     {!!str_limit($item->konten)!!}
                                     </div>

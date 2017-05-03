@@ -33,6 +33,7 @@
                                             <span class="post-date"><i class="fa fa-calendar-o"></i> 
                                             @php $date=strtotime($item->created); echo date('M jS, Y',$date); @endphp 
                                             </span>
+                                            <span class="post-comments"><i class="fa fa-comments"></i>{{$item->komentar->count()}}</span>
                                         </div>
                                     {!!str_limit($item->konten)!!}
                                     </div>

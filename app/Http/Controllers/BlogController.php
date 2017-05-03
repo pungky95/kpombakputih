@@ -55,6 +55,7 @@ class BlogController extends Controller
         $recent = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')
         ->get();
+
         $kategori = Kategori::orderBy('nama','asc')->get();
         return view ( 'blog.category',compact('blog','recent','kategori','selectedkategori'));
     }
