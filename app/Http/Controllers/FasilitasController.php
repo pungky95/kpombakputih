@@ -32,7 +32,8 @@ class FasilitasController extends Controller
 
     public function services()
     {
-        $fasilitas = Fasilita::paginate(25);
+        $fasilitas = Fasilita::join('galeris','galeris.fasilitas_id','=','fasilitas.id')
+        ->select('fasilitas.id as id','fasilitas.nama','keterangan','path','fasilitas.created_at as created_at')->paginate(8);
         $testimoni = Testimoni::paginate(25);
 
         return view('fasilitas.services', compact('fasilitas','testimoni'));

@@ -33,7 +33,7 @@
 
     <header >
         <div class="container">
-            <a href="#" class="logo-link"><img class="logo" src="{{ asset("moon/images/logo.png") }}" alt="Logo"></a>
+            <a href="{{url('/')}}" class="logo-link"><img class="logo" src="{{ asset("moon/images/logo.png") }}" alt="Logo"></a>
             <nav class="main-menu clearfix">
                 <h2 class="hidden">Main Menu</h2>
                 <ul>

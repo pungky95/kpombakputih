@@ -113,7 +113,7 @@ class GaleriController extends Controller
      */
     public function show($id)
     {
-        $galeri = Galeri::where('kategori_id','=',$id)->paginate(20);
+        $galeri = Galeri::where('kategori_id','=',$id)->paginate(6);
         $single = Galeri::where('kategori_id','=',$id)->first();
         $kategori = Kategori::findOrFail($id);
 

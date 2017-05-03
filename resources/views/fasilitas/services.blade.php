@@ -18,10 +18,10 @@
                 @foreach($fasilitas as $item)
                     <div class="col-sm-6 col-md-3">
                         <div class="content-box">
-                            <img src="images/facility-1.jpg" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
+                            <img src="{{asset("$item->path")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
                             <div class="tri-up"></div>
                             <h3 class="title">{{ $item->nama }}</h3>
-                            <p class="content">{{ $item->keterangan }}</p>
+                            <p class="content">{!! $item->keterangan !!}</p>
                         </div>
                     </div>
                 @endforeach    
