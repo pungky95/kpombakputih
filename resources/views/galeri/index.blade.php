@@ -61,7 +61,7 @@ return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor(
                                         @endphp
                                         </td>
                                         <td>
-                                            <a href="{{ url('/galeri/' . $item->id) }}" class="btn btn-default" title="View Gallery">
+                                            <a href="{{ url('/galeri/' . $item->kategori_id) }}" class="btn btn-default" title="View Gallery">
                                             <i class="fa fa-eye"></i></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',

@@ -37,10 +37,10 @@
                                     <tr>
                                         <td>{{ $item->nama_tamu }}</td><td> {{ $item->konten }}</td>
                                         <td>
-                                            <a href="{{ url('//' . $item->id) }}" class="btn btn-default" title="View ">
+                                            {{-- <a href="{{ url('testimoni/' . $item->id) }}" class="btn btn-default" title="View ">
                                             <i class="fa fa-eye"></i></a>
-                                            <a href="{{ url('//' . $item->id . '/edit') }}" class="btn btn-default" title="Edit ">
-                                            <li class="fa fa-edit"></li></a>
+                                            <a href="{{ url('testimoni/' . $item->id . '/edit') }}" class="btn btn-default" title="Edit ">
+                                            <li class="fa fa-edit"></li></a> --}}
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/testimoni', $item->id],

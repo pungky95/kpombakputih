@@ -97,28 +97,28 @@
                                 <div class="form-group">
                                     <label class="col-sm-2" >Name *</label>
                                     <div class="col-sm-6">
-                                        <input name="nama" type="text" class="form-control" autofocus>
+                                        <input name="nama" type="text" class="form-control" placeholder="John Doe" autofocus>
                                         {!! $errors->first('nama', '<p style="color: red;" >:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2" >Email *</label>
                                     <div class="col-sm-6">
-                                        <input name="email" type="text" class="form-control" >
+                                        <input name="email" type="text" class="form-control" placeholder="johndoe@email.com" >
                                         {!! $errors->first('email', '<p style="color: red;" >:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2" >Website </label>
                                     <div class="col-sm-6">
-                                        <input name="website" type="text" class="form-control" >
+                                        <input name="website" type="text" class="form-control" placeholder="http://www.website.com">
                                         {!! $errors->first('website', '<p style="color: red;" >:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2" >Message *</label>
                                     <div class="col-sm-10">
-                                        <textarea name="konten" class="form-control" ></textarea>
+                                        <textarea name="konten" class="form-control" placeholder="Write your comment here" ></textarea>
                                         {!! $errors->first('konten', '<p style="color: red;" >:message</p>') !!}
                                     </div>
                                 </div>

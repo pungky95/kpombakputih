@@ -132,7 +132,6 @@ class FasilitasController extends Controller
         
         $fasilita = Fasilita::findOrFail($id);
         $fasilita->update($requestData);
-        $kategori_id = $request->get('kategori');
         $file = $request->file('file');
         if(isset($file))
         {
@@ -142,7 +141,7 @@ class FasilitasController extends Controller
         }
         if(isset($filename)){
             $gallery = new Galeri(array(
-                'kategori_id' => $kategori_id,
+                'kategori_id' => '10',
                 'fasilitas_id' => $id,
                 'nama' => $filename,
                 'mime' => $file->getClientMimeType(),

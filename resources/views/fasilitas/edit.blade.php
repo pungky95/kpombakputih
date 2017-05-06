@@ -26,7 +26,6 @@
                     <br>
                     Select Images <input multiple="1" onchange="readURL(this);" id="uploadedImages" name="file" type="file">
                     <div class="col-xs-20" id ="up_images">
-                    <input type="hidden" name="kategori" value="10">
                     <input type="hidden" name="fasilitas" value="{{$fasilitas->id}}">
                         @foreach($galeri as $items)
                             <img src="{{asset($items->path)}}" style="width: 200px; height: 200px; object-fit: cover;" name="galeri" value="{{$items->id}}">

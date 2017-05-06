@@ -70,6 +70,15 @@ Just opposite our bungalows within walking distance is the beach where you can e
              array('id'=>'6','kategori_id'=>'9','blog_id'=>'6','nama'=>'watersport1-700x400.jpg','mime'=>'image/jpeg','path'=>'/images/gallery/watersport1-700x400.jpg','size'=>'123498','created_at'=>'2017-04-28 00:00:00'),
           ));
 
+         DB::table('fasilitas')->insert(array(
+             array('id'=>'1','nama'=>'Wifi','keterangan'=>'We provide free WiFi around villas'),
+             array('id'=>'2','nama'=>'Breakfast','keterangan'=>'From 06.30 AM - 11.00 AM'),
+             array('id'=>'3','nama'=>'Room Cleaning Service','keterangan'=>'Villas get dirty?, Dont worry we will Clean all for you before you arrive'),
+             array('id'=>'4','nama'=>'TV-Channels','keterangan'=>'We provide Television with many channel from Europe and Western Country'),
+             array('id'=>'5','nama'=>'Fridge','keterangan'=>'We provide fridge to store your food and others'),
+             array('id'=>'6','nama'=>'Bicycle','keterangan'=>'We rent bicycle with bicycle tour'),
+          ));
+
 
     }
 }

@@ -27,7 +27,6 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Contact</h3>
-                        <a href="{{ url('/kontak/create') }}" class="btn btn-default" title="Add New Contact"><li class="fa fa-plus"></li> Add New Contact</a>
                     </div>
                         <div class="box-body">
                             <table class="table table-bordered">
@@ -41,10 +40,6 @@
                                     <tr>
                                         <td>{{ $item->nama }}</td><td> {{ $item->email }}</td><td>{{ $item->phone }}</td><td>{{ $item->pesan }}</td>
                                         <td>
-                                            <a href="{{ url('/kontak/' . $item->id) }}" class="btn btn-default" title="View ">
-                                            <i class="fa fa-eye"></i></a>
-                                            <a href="{{ url('/kontak/' . $item->id . '/edit') }}" class="btn btn-default" title="Edit ">
-                                            <li class="fa fa-edit"></li></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/kontak', $item->id],

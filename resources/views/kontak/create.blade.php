@@ -54,28 +54,28 @@
                             <div class="form-group {{ $errors->has('nama') ? 'has-error' : ''}}">
                                 {!! Form::label('nama', 'Name*', ['class' => 'control-label']) !!}
                                 <div >
-                                    {!! Form::text('nama', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('nama', null, ['class' => 'form-control','placeholder' => 'John Doe']) !!}
                                     {!! $errors->first('nama', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
                                 {!! Form::label('phone', 'Phone*', ['class' => 'control-label']) !!}
                                 <div>
-                                    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '08123456789']) !!}
                                     {!! $errors->first('phone', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
                                 {!! Form::label('email', 'Email*', ['class' => 'control-label']) !!}
                                 <div >
-                                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('email', null, ['class' => 'form-control','placeholder' => 'johndoe@gmail.com']) !!}
                                     {!! $errors->first('email', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('pesan') ? 'has-error' : ''}}">
                                 {!! Form::label('pesan', 'Message*', ['class' => 'control-label']) !!}
                                 <div >
-                                    {!! Form::textarea('pesan', null, ['class' => 'form-control']) !!}
+                                    {!! Form::textarea('pesan', null, ['class' => 'form-control','placeholder'=>'Write your message here']) !!}
                                     {!! $errors->first('pesan', '<p style="color: red;" >:message</p>') !!}
                                 </div>
                             </div>
