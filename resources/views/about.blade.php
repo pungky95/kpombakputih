@@ -39,10 +39,10 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-sm-6" >
-                            <img src="{{ asset("moon/images/about/story-1.jpg")}}" class="img-centered img-responsive" alt="story-1">
+                            <img src="{{ asset("/images/about/story-1.jpg")}}" style="width: 270px; height: 400px; object-fit: cover;" class="img-centered img-responsive" alt="story-1">
                         </div>
                         <div class="col-sm-6">
-                            <img src="{{ asset("moon/images/about/story-2.jpg")}}"  class="img-centered img-responsive" alt="story-2">
+                            <img src="{{ asset("/images/about/story-2.jpg")}}" style="width: 270px; height: 400px; object-fit: cover;"  class="img-centered img-responsive" alt="story-2">
                         </div>
                     </div>
                 </div>
@@ -58,27 +58,15 @@
                 <div class="section-starter"></div>
             </div>
             <div class="row">
+            @foreach($fasilitas as $items)
                 <div class="col-sm-4">
                     <div class="content-box ">
-                        <img src="{{ asset("moon/images/home/why-moon-4.jpg")}}" class="img-centered img-responsive" data-animate="fadeIn" alt="why-moon-1">
-                        <h3 class="title">King Bed Size</h3>
-                        <p class="content">Porttitor pharetra tortor in, consequat imperdiet nisi. Phasellus at quam tristique, cursus tellus vitae, convallis neque. Sed a lacinia sapien. Etiam dignissim sit amet felis ac sagittis pharetra sagittis ultrices.</p>
+                        <img src="{{ asset("$items->path")}}" class="img-centered img-responsive" data-animate="fadeIn" alt="why-moon-1">
+                        <h3 class="title">{{$items->nama}}</h3>
+                        <p class="content">{!!$items->keterangan!!}</p>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="content-box">
-                        <img src="{{ asset("moon/images/home/why-moon-5.jpg")}}" class="img-centered img-responsive" data-animate="fadeIn" alt="why-moon-2">
-                        <h3 class="title">Kitchen</h3>
-                        <p class="content">Vestibulum quis posuere ligula. Fusce in odio ac diam finibus tempus. Suspendisse potenti. Etiam accumsan purus magna, et viverra neque volutpat fermentum. Vivamus consequat, felis at aliquam elementum, massa sem.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="content-box">
-                        <img src="{{ asset("moon/images/home/why-moon-6.jpg")}}" class="img-centered img-responsive" data-animate="fadeIn" alt="why-moon-3">
-                        <h3 class="title">Tropical Garden</h3>
-                        <p class="content ">Donec condimentum id erat a molestie. In luctus quis risus cursus faucibus. Pellentesque ornare dui cursus ex dictum, eget porttitor est iaculis. Quisque vehicula iaculis purus a egestas in tortor facilisis, congue nisi.</p>
-                    </div>
-                </div>
+            @endforeach    
             </div>
         </div>
     </section>

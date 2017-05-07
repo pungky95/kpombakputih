@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Testimoni;
+use App\Fasilita;
+use App\Galeri;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -16,8 +18,10 @@ class AboutController extends Controller
      */
     public function index()
     {
-         $testimoni = Testimoni::paginate(25);
-         return view('about', compact('testimoni'));
+        $fasilitas = Fasilita::join('galeris','fasilitas.id','=','galeris.fasilitas_id')
+        ->select('fasilitas.id as id','fasilitas.nama as nama','path','keterangan')->whereIn('fasilitas.id',[18,7,19])->get();
+        $testimoni = Testimoni::paginate(25);
+        return view('about', compact('testimoni','fasilitas'));
     }
 
     /**

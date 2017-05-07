@@ -26,7 +26,7 @@ class GalerisTableSeeder extends Seeder
              array('id'=>'10','kategori_id'=>'4','fasilitas_id'=>'4','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/004-refrigerator.png','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'11','kategori_id'=>'4','fasilitas_id'=>'5','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/bicycle.png','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'12','kategori_id'=>'4','fasilitas_id'=>'6','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/swimming-pool.png','created_at'=>'2017-04-28 00:00:00'),
-             array('id'=>'13','kategori_id'=>'4','fasilitas_id'=>'7','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/kitchen.png','created_at'=>'2017-04-28 00:00:00'),
+             array('id'=>'13','kategori_id'=>'4','fasilitas_id'=>'7','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/why-moon-5.jpg','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'14','kategori_id'=>'4','fasilitas_id'=>'8','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/shower.png','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'15','kategori_id'=>'4','fasilitas_id'=>'9','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/towels.png','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'16','kategori_id'=>'4','fasilitas_id'=>'10','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/003-coffee-machine.png','created_at'=>'2017-04-28 00:00:00'),
@@ -37,6 +37,8 @@ class GalerisTableSeeder extends Seeder
              array('id'=>'21','kategori_id'=>'4','fasilitas_id'=>'15','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/taxi.png','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'22','kategori_id'=>'4','fasilitas_id'=>'16','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/safebox-1.png','created_at'=>'2017-04-28 00:00:00'),
              array('id'=>'23','kategori_id'=>'4','fasilitas_id'=>'17','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/hammock.png','created_at'=>'2017-04-28 00:00:00'),
+             array('id'=>'24','kategori_id'=>'4','fasilitas_id'=>'18','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/why-moon-4.jpg','created_at'=>'2017-04-28 00:00:00'),
+             array('id'=>'25','kategori_id'=>'4','fasilitas_id'=>'19','mime'=>'image/jpeg','size'=>'1000000','path'=>'images/gallery/why-moon-6.jpg','created_at'=>'2017-04-28 00:00:00'),
         ));
     }
 }

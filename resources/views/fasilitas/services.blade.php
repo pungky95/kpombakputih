@@ -18,7 +18,7 @@
                 @foreach($fasilitas as $item)
                     <div class="col-sm-6 col-md-3">
                         <div class="content-box">
-                            <img src="{{asset("$item->path")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
+                            <img src="{{asset("$item->path")}}" style="width: 310px; height: 200px; object-fit: cover;" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
                             <h3 class="title">{{ $item->nama }}</h3>
                             {{-- <p class="content">{!! $item->keterangan !!}</p> --}}
                         </div>

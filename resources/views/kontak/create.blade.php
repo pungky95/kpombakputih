@@ -84,7 +84,7 @@
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{asset("images/gallery/1489476256.jpg")}}" style="width: 737; height: 491; object-fit: cover;" class="img-centered img-responsive" alt="contact-bg">
+                    <img src="{{asset("images/contact/1489476256.jpg")}}" style="width: 737; height: 491; object-fit: cover;" class="img-centered img-responsive" alt="contact-bg">
                 </div>
             </div>
 

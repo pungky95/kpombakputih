@@ -21,9 +21,11 @@ class WelcomeController extends Controller
         $testimoni = Testimoni::paginate(10);
         $fasilitas = Fasilita::join('galeris','fasilitas.id','=','galeris.fasilitas_id')->
         select('fasilitas.nama as nama','keterangan','galeris.path')->paginate(4);
+        $whyus = Fasilita::join('galeris','fasilitas.id','=','galeris.fasilitas_id')
+        ->select('fasilitas.id as id','fasilitas.nama as nama','path','keterangan')->whereIn('fasilitas.id',[18,7,19])->get();
         $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
-        return view('home', compact('testimoni','blog','fasilitas'));
+        return view('home', compact('testimoni','blog','fasilitas','whyus'));
     }
 
     /**

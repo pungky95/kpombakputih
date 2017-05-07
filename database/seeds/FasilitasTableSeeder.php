@@ -29,6 +29,8 @@ class FasilitasTableSeeder extends Seeder
              array('id'=>'15','nama'=>'Taxi','keterangan'=>'We book taxi for you'),
              array('id'=>'16','nama'=>'Safe Box','keterangan'=>'We provide Safe Box to keep your belongings safe'),
              array('id'=>'17','nama'=>'Hammock','keterangan'=>'We provide Hammock'),
+             array('id'=>'18','nama'=>'King Bed Size','keterangan'=>'We provide King Bed Size'),
+             array('id'=>'19','nama'=>'Tropical Garden','keterangan'=>'We have Tropical Garden'),
           ));
     }
 }
