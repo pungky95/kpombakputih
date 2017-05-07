@@ -34,7 +34,7 @@ class FasilitasController extends Controller
     {
         $fasilitas = Fasilita::join('galeris','galeris.fasilitas_id','=','fasilitas.id')
         ->select('fasilitas.id as id','fasilitas.nama','keterangan','path','fasilitas.created_at as created_at')->paginate(8);
-        $testimoni = Testimoni::paginate(25);
+        $testimoni = Testimoni::paginate(3);
 
         return view('fasilitas.services', compact('fasilitas','testimoni'));
     }
@@ -62,8 +62,6 @@ class FasilitasController extends Controller
         
         Fasilita::create($requestData);
         $fasilitas = Fasilita::max('id');
-        $kategori_id = $request->get('kategori');
-        $fasilitas_id = $request->get('fasilitas');
         $file = $request->file('file');
         if(isset($file))
         {
@@ -73,7 +71,7 @@ class FasilitasController extends Controller
         }
         if(isset($filename)){
             $gallery = new Galeri(array(
-                'kategori_id' => $kategori_id,
+                'kategori_id' => '4',
                 'fasilitas_id' => $fasilitas,
                 'nama' => $filename,
                 'mime' => $file->getClientMimeType(),

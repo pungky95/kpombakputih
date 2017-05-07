@@ -26,9 +26,8 @@ class GaleriController extends Controller
     public function index()
     {
         $galeri = Galeri::join('kategoris','galeris.kategori_id','=','kategoris.id')
-        ->select('kategoris.id as kategori_id','galeris.nama as nama','mime','path','size','kategoris.nama as kategori')
-        ->paginate(10);
-
+        ->select('galeris.id as galeri_id','kategoris.id as kategori_id','galeris.nama as nama','mime','path','size','kategoris.nama as kategori')
+        ->paginate(20);
         return view('galeri.index', compact('galeri'));
     }
 
@@ -55,7 +54,6 @@ class GaleriController extends Controller
             $arrkategori[$i]['number'] = ''.sizeof($numberphotos);
         }
         sort($arrkategori);
-        print_r($arrkategori); exit();
         return view('galeri.album')->with(['arrkategori'=>$arrkategori]);
     }
 

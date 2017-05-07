@@ -8,32 +8,30 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{{ asset("bootstrap/css/bootstrap.min.css")}}">
+  <link rel="stylesheet" href="{{asset("bootstrap/css/bootstrap.min.css")}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset("css/AdminLTE.min.css")}}">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{ asset("css/skins/_all-skins.min.css")}}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset("plugins/iCheck/flat/blue.css")}}">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="{{ asset("plugins/morris/morris.css")}}">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="{{ asset("plugins/jvectormap/jquery-jvectormap-1.2.2.css")}}">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="{{ asset("plugins/datepicker/datepicker3.css")}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset("plugins/daterangepicker/daterangepicker.css")}}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{ asset("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
-  <link href="{{ asset("css/sweetalert.css") }}" rel='stylesheet' type='text/css'>
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{{asset("plugins/daterangepicker/daterangepicker.css")}}">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="{{asset("plugins/datepicker/datepicker3.css")}}">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{{asset("plugins/iCheck/all.css")}}">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{{asset("plugins/colorpicker/bootstrap-colorpicker.min.css")}}">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="{{asset("plugins/timepicker/bootstrap-timepicker.min.css")}}">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{asset("plugins/select2/select2.min.css")}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset("css/AdminLTE.min.css")}}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{{asset("css/skins/_all-skins.min.css")}}">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{{asset("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,6 +39,8 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <!-- Drop Zone -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
   </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -215,52 +215,112 @@
   </footer>
 </div>
 
-<script src="{{ asset("plugins/jQuery/jquery-2.2.3.min.js")}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
+<!-- jQuery 2.2.3 -->
+<script src="{{asset("plugins/jQuery/jquery-2.2.3.min.js")}}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{ asset("plugins/morris/morris.min.js") }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset("plugins/sparkline/jquery.sparkline.min.js") }}"></script>
-<!-- jvectormap -->
-<script src="{{ asset("plugins/jvectormap/jquery-jvectormap-1.2.2.min.js") }}"></script>
-<script src="{{ asset("plugins/jvectormap/jquery-jvectormap-world-mill-en.js") }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset("plugins/knob/jquery.knob.js")}}"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
-<script src="{{ asset("plugins/select2/select2.full.min.js")}}"></script>
-<script src="{{ asset("plugins/daterangepicker/daterangepicker.js") }}"></script>
-<!-- datepicker -->
-<script src="{{ asset("plugins/datepicker/bootstrap-datepicker.js") }}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{ asset("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js") }}"></script>
-<!-- Slimscroll -->
-<script src="{{ asset("plugins/slimScroll/jquery.slimscroll.min.js")}}"></script>
-<!-- FastClick -->
-<script src="{{ asset("plugins/fastclick/fastclick.js") }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset("js/app.min.js") }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset("js/pages/dashboard.js") }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset("js/demo.js") }}"></script>
-<!-- CK Editor -->
-<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script src="{{asset("bootstrap/js/bootstrap.min.js")}}"></script>
 <!-- Select2 -->
-<script src="{{ asset("plugins/select2/select2.full.min.js")}}"></script>
+<script src="{{asset("plugins/select2/select2.full.min.js")}}"></script>
 <!-- InputMask -->
-<script src="{{ asset("plugins/input-mask/jquery.inputmask.js")}}"></script>
-<script src="{{ asset("plugins/input-mask/jquery.inputmask.date.extensions.js")}}"></script>
-<script src="{{ asset("plugins/input-mask/jquery.inputmask.extensions.js")}}"></script>
+<script src="{{asset("plugins/input-mask/jquery.inputmask.js")}}"></script>
+<script src="{{asset("plugins/input-mask/jquery.inputmask.date.extensions.js")}}"></script>
+<script src="{{asset("plugins/input-mask/jquery.inputmask.extensions.js")}}"></script>
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{asset("plugins/daterangepicker/daterangepicker.js")}}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{asset("plugins/datepicker/bootstrap-datepicker.js")}}"></script>
+<!-- bootstrap color picker -->
+<script src="{{asset("plugins/colorpicker/bootstrap-colorpicker.min.js")}}"></script>
+<!-- bootstrap time picker -->
+<script src="{{asset("plugins/timepicker/bootstrap-timepicker.min.js")}}"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="{{asset("plugins/slimScroll/jquery.slimscroll.min.js")}}"></script>
+<!-- iCheck 1.0.1 -->
+<script src="{{asset("plugins/iCheck/icheck.min.js")}}"></script>
+<!-- FastClick -->
+<script src="{{asset("plugins/fastclick/fastclick.js")}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset("js/app.min.js")}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset("js/demo.js")}}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{asset("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script>
+<!-- Dropzone -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+<!-- Page script -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
 
+    //Datemask dd/mm/yyyy
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+
+    //Date range picker
+    $('#reservation').daterangepicker();
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
+        },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'
+    });
+
+    //Colorpicker
+    $(".my-colorpicker1").colorpicker();
+    //color picker with addon
+    $(".my-colorpicker2").colorpicker();
+
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+  });
+</script>
+<script>
+  $(function () {
+    //bootstrap WYSIHTML5 - text editor
+    $(".textarea").wysihtml5();
+  });
+</script>
 </body>
 </html>

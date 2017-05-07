@@ -20,10 +20,10 @@ class CreateGalerisTable extends Migration
             $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
             $table->integer('blog_id')->unsigned()->nullable();
             $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
-            $table->string('nama',255);
-            $table->string('mime',20);
+            $table->string('nama',255)->nullable();
+            $table->string('mime',20)->nullable();
             $table->string('path',100);
-            $table->string('size',30);
+            $table->string('size',30)->nullable();
             $table->timestamps();
         });
     }

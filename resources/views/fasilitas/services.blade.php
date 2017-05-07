@@ -19,13 +19,36 @@
                     <div class="col-sm-6 col-md-3">
                         <div class="content-box">
                             <img src="{{asset("$item->path")}}" class="img-centered img-responsive" data-animate="zoomIn" alt="facility-1">
-                            <div class="tri-up"></div>
                             <h3 class="title">{{ $item->nama }}</h3>
-                            <p class="content">{!! $item->keterangan !!}</p>
+                            {{-- <p class="content">{!! $item->keterangan !!}</p> --}}
                         </div>
                     </div>
                 @endforeach    
                 </div>
+                @if ($fasilitas->hasPages())
+    <div class="row">
+        <div class="col-md-12 page-controls text-center">
+        {{-- Previous Page Link --}}
+        @if ($fasilitas->onFirstPage())
+            <a href="#" class="button secondary transparent"><i class="fa fa-chevron-left"></i> </a>
+        @else
+            <a href="{{ $fasilitas->previousPageUrl() }}" class="button secondary transparent"><i class="fa fa-chevron-left"></i> </a>
+        @endif 
+                @for($i=1;$i<=$fasilitas->lastPage();$i++)
+                    @if ($i == $fasilitas->currentPage())
+                        <a href="{{$fasilitas->url($i)}}" class="button ">{{$i}}</a>
+                    @else
+                        <a href="{{$fasilitas->url($i)}}" class="button secondary transparent">{{$i}}</a>
+                    @endif
+                @endfor
+        @if ($fasilitas->hasMorePages())
+            <a href="{{ $fasilitas->nextPageUrl() }}" class="button secondary transparent"><i class="fa fa-chevron-right"></i> </a>
+        @else
+            <a href="#" class="button secondary transparent"><i class="fa fa-chevron-right"></i> </a>
+        @endif
+        </div>
+    </div>
+@endif
             </div>
         </div>
     </section>
@@ -38,26 +61,6 @@
         <div class="container">
             <div class="testimonial-slider swiper-container">
                 <div class="swiper-wrapper">
-                @if($testimoni->count()>=3)
-                @foreach($testimoni->random(3) as $item)
-                    <!-- Testimonial 01 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-box">
-                            <p class="text">{{ $item->konten }}</p>
-                            <h4 class="name">{{ $item->nama_tamu}}</h4>
-                            <div class="position">Our Guest</div>
-                        </div>
-                    </div>
-                @endforeach
-                @elseif($testimoni->count()==0)
-                    <div class="swiper-slide">
-                        <div class="testimonial-box">
-                            <p class="text">There is no Testimoni yet</p>
-                            <h4 class="name">Admin</h4>
-                            <div class="position">Admin</div>
-                        </div>
-                    </div>
-                @else
                 @foreach($testimoni as $item)
                     <!-- Testimonial 01 -->
                     <div class="swiper-slide">
@@ -67,8 +70,7 @@
                             <div class="position">Our Guest</div>
                         </div>
                     </div>
-                @endforeach  
-                @endif
+               @endforeach
                 </div>
             </div>
             <div class="testimonial-slider-page-controls"></div>

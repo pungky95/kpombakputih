@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Testimoni;
+use App\Fasilita;
 use App\Http\Requests;
 use DB;
 use App\Blog;
@@ -18,9 +19,11 @@ class WelcomeController extends Controller
     public function index()
     {
         $testimoni = Testimoni::paginate(10);
+        $fasilitas = Fasilita::join('galeris','fasilitas.id','=','galeris.fasilitas_id')->
+        select('fasilitas.nama as nama','keterangan','galeris.path')->paginate(4);
         $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
-        return view('home', compact('testimoni','blog'));
+        return view('home', compact('testimoni','blog','fasilitas'));
     }
 
     /**

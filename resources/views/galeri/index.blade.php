@@ -65,7 +65,7 @@ return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor(
                                             <i class="fa fa-eye"></i></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
-                                                'url' => ['/galeri', $item->id],
+                                                'url' => ['/galeri', $item->galeri_id],
                                                 'style' => 'display:inline'
                                             ]) !!}
                                                 {!! Form::button('<li class="fa fa-trash-o"></li>', array(

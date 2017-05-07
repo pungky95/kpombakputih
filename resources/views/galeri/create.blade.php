@@ -8,7 +8,7 @@
     <section class="content-header">
       <h1>
         Gallery
-        <small>Control panel</small>
+        <small>Upload New Album</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -18,33 +18,30 @@
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
+      <div class="box box-default">
+      <div class="box-body">
         <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Select Category First</h3>
-                    </div>
-                    <div class="box-body">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Choose Category First</label>
                     <select onchange="getval(this);" name="kategori" class="form-control select2" style="width: 100%;">
                             <option selected="selected">Choose Images Category</option>
                             @foreach($kategori as $items)
                             <option>{{$items->nama}}</option>
                             @endforeach
                     </select>
-                    <br>
-                    Max Upload Size is 2 MB
-                    Please make sure you choosing the right file.
-                    <br>
-                        <div id="form" style="display:none;">
-                            {!! Form::open(['url' => url('/galeri'),'enctype'=>'multipart/form-data', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
+
+                    <div id="form" style="display: none;">
+                    <label>Upload Size Max 2 MB, Please make sure before upload because process cannot be undone</label>
+                    {!! Form::open(['url' => url('/galeri'),'enctype'=>'multipart/form-data', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
                             <input type="hidden" name="kategori" id="kategori" value="uncategorize">
-                            {!! Form::close() !!} 
-                        </div>
+                    {!! Form::close() !!} 
                     </div>
-                </div>
             </div>
+          </div>
         </div>
+      </div>
+      </div>
     </section>
   </div>
   <script type="text/javascript">
