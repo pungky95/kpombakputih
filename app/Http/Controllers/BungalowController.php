@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Fasilita;
+use Image;
 use App\Bungalow;
+use App\Bungalow_Fasilita;
+use App\Bungalow_Galeri;
+use App\Bungalow_Pesan;
+use App\Galeri;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class BungalowController extends Controller
 {
@@ -34,7 +40,8 @@ class BungalowController extends Controller
      */
     public function create()
     {
-        return view('bungalow.create');
+        $fasilitas = Fasilita::orderBy('nama','asc')->get();
+        return view('bungalow.create',compact('fasilitas'));
     }
 
     /**
@@ -46,11 +53,49 @@ class BungalowController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $requestData = $request->all();
-        
-        Bungalow::create($requestData);
+        $facilities = $request->get('fasilitas');
+        $bungalow = new Bungalow(array(
+                'nama' => $request->get('nama'),
+                'tarif_low' => $request->get('tarif_low'),
+                'tarif_high' => $request->get('tarif_high'),
+                'keterangan' => $request->get('keterangan'),
+                'jumlah_kamar' => $request->get('jumlah_kamar'),
+        ));
+        $bungalow->save();        
 
+        if($request->get('fasilitas')){
+            $facilities = $request->get('fasilitas');
+            for ($i=0; $i < sizeof($facilities); $i++) { 
+                $fasilitas_id = DB::table('fasilitas')->select('id')->where('nama',$facilities[$i])->first();
+                $bungalow_fasilitas = new Bungalow_Fasilita(array(
+                'bungalow_id' => Bungalow::max('id'),
+                'fasilitas_id' => $fasilitas_id->id,
+                ));
+                $bungalow_fasilitas->save();
+            }
+        }
+
+        if($request->hasFile('images'))
+        {
+            $files = $request->file('images');
+            foreach($files as $file){
+                $filename =$file->getClientOriginalName();
+                Image::make($file)->save(public_path('/images/gallery/' . $filename));
+                $gallery = new Galeri(array(
+                'kategori_id' => 7,
+                'nama' => $filename,
+                'mime' => $file->getClientMimeType(),
+                'path' => '/images/gallery/' . $filename,
+                'size' => $file->getClientSize(),
+                ));
+                $gallery->save();
+                $bungalow_galeri = new Bungalow_Galeri(array(
+                'bungalow_id' => Bungalow::max('id'),
+                'galeri_id' => Galeri::max('id'),
+                ));
+                $bungalow_galeri->save(); 
+            }
+        }
         Session::flash('flash_message', 'Bungalow added!');
 
         return redirect('bungalow');
