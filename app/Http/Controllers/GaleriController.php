@@ -27,7 +27,7 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::join('kategoris','galeris.kategori_id','=','kategoris.id')
         ->select('galeris.id as galeri_id','kategoris.id as kategori_id','galeris.nama as nama','mime','path','size','kategoris.nama as kategori')
-        ->paginate(20);
+        ->orderBy('galeris.created_at','desc')->paginate(20);
         return view('galeri.index', compact('galeri'));
     }
 

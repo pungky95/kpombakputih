@@ -14,9 +14,9 @@ class CreateBungalowGalerisTable extends Migration
     {
         Schema::create('bungalow_galeris', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('bungalow_id')->unsigned();
+            $table->integer('bungalow_id')->unsigned()->nullable();
             $table->foreign('bungalow_id')->references('id')->on('bungalows')->onDelete('cascade');
-            $table->integer('galeri_id')->unsigned();
+            $table->integer('galeri_id')->unsigned()->nullable();
             $table->foreign('galeri_id')->references('id')->on('galeris')->onDelete('cascade');
             $table->timestamps();
         });
