@@ -1,6 +1,6 @@
 <label>Upload Size Max 2 MB, Please make sure before upload because process cannot be undone</label>
-              {!! Form::open(['url' => url('/bungalow'),'class' => 'dropzone', 'files'=>true, 'id'=>'mydropzone']) !!}
-              {!! Form::close() !!} 
+                    {!! Form::open(['url' => url('/bungalow'),'enctype'=>'multipart/form-data', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
+                    {!! Form::close() !!} 
               {!! Form::open(['url' => url('/bungalow'), 'files' => true]) !!}
                 @if ($errors->has('nama'))
                 <div class="form-group has-error">
@@ -10,7 +10,7 @@
                 </div>
                 @else
                 <label>Bungalow Name</label>
-                <input type="text" name="nama" class="form-control" placeholder="Name" value="@if(isset($bungalow){{$bungalow->nama}@else})">
+                <input type="text" name="nama" class="form-control" placeholder="Name">
                 @endif
                 
                 @if($errors->has('fasilitas'))

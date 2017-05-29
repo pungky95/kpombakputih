@@ -53,7 +53,7 @@ class BungalowController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
-    {   
+    { 
         $messages = [
             'nama.required' => 'The Name field is required',
             'nama.max' => 'The Name may not be greater than 25 characters.',
@@ -67,7 +67,14 @@ class BungalowController extends Controller
             'jumlah_kamar.required' => 'The Rooms field is required', 
         ];
 
-        Validator::make($request->all(), [
+        Validator::make(array(
+                'nama' => $request->get('nama'),
+                'tarif_high' => $request->get('tarif_high'),
+                'tarif_low' => $request->get('tarif_low'),
+                'jumlah_kamar' => $request->get('jumlah_kamar'),
+                'keterangan' => $request->get('keterangan'),
+                'fasilitas' => $request->get('fasilitas'),
+            ), [
             'nama' => 'required|max:25|min:3',
             'tarif_high' => 'required',
             'tarif_low' => 'required',
@@ -95,6 +102,7 @@ class BungalowController extends Controller
             ));
             $bungalow_galeri->save();
         }
+
         if($request->get('nama')){
             $facilities = $request->get('fasilitas');
             $bungalow = new Bungalow(array(
@@ -120,27 +128,6 @@ class BungalowController extends Controller
                 }
             }
         }
-        // if($request->hasFile('images'))
-        // {
-        //     $files = $request->file('images');
-        //     foreach($files as $file){
-        //         $filename =$file->getClientOriginalName();
-        //         Image::make($file)->save(public_path('/images/gallery/' . $filename));
-        //         $gallery = new Galeri(array(
-        //         'kategori_id' => 7,
-        //         'nama' => $filename,
-        //         'mime' => $file->getClientMimeType(),
-        //         'path' => '/images/gallery/' . $filename,
-        //         'size' => $file->getClientSize(),
-        //         ));
-        //         $gallery->save();
-        //         $bungalow_galeri = new Bungalow_Galeri(array(
-        //         'bungalow_id' => Bungalow::max('id'),
-        //         'galeri_id' => Galeri::max('id'),
-        //         ));
-        //         $bungalow_galeri->save(); 
-        //     }
-        // }
         Session::flash('flash_message', 'Bungalow added!');
 
         return redirect('bungalow');
