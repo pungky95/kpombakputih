@@ -1,5 +1,5 @@
 <label>Upload Size Max 2 MB, Please make sure before upload because process cannot be undone</label>
-                    {!! Form::open(['url' => url('/bungalow'),'enctype'=>'multipart/form-data', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
+                    {!! Form::open(['url' => url('/bungalowphoto'),'enctype'=>'multipart/form-data', 'class' => 'dropzone', 'files'=>true, 'id'=>'real-dropzone']) !!}
                     {!! Form::close() !!} 
               {!! Form::open(['url' => url('/bungalow'), 'files' => true]) !!}
                 @if ($errors->has('nama'))

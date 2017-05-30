@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('title','Contact')
 @section('content')
-{{ Counter::count('contact') }}
 @include('sweet::alert')
 @if (count($errors) > 0)
     <script type="text/javascript"> sweetAlert("Failed to Sent Your Message", "Check Your Contact Form" , "error"); </script>

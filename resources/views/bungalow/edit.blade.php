@@ -24,7 +24,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label>Upload Size Max 2 MB, Please make sure before upload because process cannot be undone</label>
-              {!! Form::open(['url' => url('/bungalow'),'class' => 'dropzone', 'files'=>true, 'id'=>'mydropzone']) !!}
+              {!! Form::open(['url' => url('/bungalowphoto'),'class' => 'dropzone', 'files'=>true, 'id'=>'mydropzone']) !!}
               {!! Form::close() !!} 
               {!! Form::open(['url' => url('/bungalow'), 'files' => true]) !!}
                 @if ($errors->has('nama'))

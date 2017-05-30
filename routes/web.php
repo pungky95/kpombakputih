@@ -17,6 +17,8 @@ use App\Galeri;
 //     return view('home');
 // });
 
+
+Route::post('bungalowphoto','BungalowController@storephoto');
 Route::resource('bungalow', 'BungalowController');
 Route::get('services', 'FasilitasController@services');
 Route::any('destroygaleri/{id}','FasilitasController@destroygaleri');

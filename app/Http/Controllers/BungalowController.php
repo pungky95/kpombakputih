@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use Validator;
+use App\Http\Requests\StoreBungalowRequest;
 
 class BungalowController extends Controller
 {
@@ -44,47 +45,8 @@ class BungalowController extends Controller
         $fasilitas = Fasilita::orderBy('nama','asc')->get();
         return view('bungalow.create',compact('fasilitas'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function store(Request $request)
-    { 
-        $messages = [
-            'nama.required' => 'The Name field is required',
-            'nama.max' => 'The Name may not be greater than 25 characters.',
-            'nama.min' => 'The Name may not be lesser than 3 characters',
-            'tarif_low.required' => 'The Low Season Price field is required',
-            'tarif_high.required' => 'The High Season Price field is required',
-            'keterangan.required' => 'The Description field is required',
-            'keterangan.max' => 'The Description may not be greater than 2000 characters',
-            'keterangan.min' => 'The Description may not be lesser than 10 characters',
-            'fasilitas.required' => 'The facilities field is required, at least choose min one',
-            'jumlah_kamar.required' => 'The Rooms field is required', 
-        ];
-
-        Validator::make(array(
-                'nama' => $request->get('nama'),
-                'tarif_high' => $request->get('tarif_high'),
-                'tarif_low' => $request->get('tarif_low'),
-                'jumlah_kamar' => $request->get('jumlah_kamar'),
-                'keterangan' => $request->get('keterangan'),
-                'fasilitas' => $request->get('fasilitas'),
-            ), [
-            'nama' => 'required|max:25|min:3',
-            'tarif_high' => 'required',
-            'tarif_low' => 'required',
-            'keterangan' => 'required|max:2000|min:10',
-            'fasilitas' => 'required',
-            'jumlah_kamar' => 'required',
-        ],$messages)->validate();
-
-
-        $file = $request->file('file');
+    public function storephoto(Request $request){
+        $file = $request->input('file');
         if(isset($file))
         {
             $filename = $file->getClientOriginalName();
@@ -102,7 +64,17 @@ class BungalowController extends Controller
             ));
             $bungalow_galeri->save();
         }
-
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(StoreBungalowRequest $request)
+    {   
+    
         if($request->get('nama')){
             $facilities = $request->get('fasilitas');
             $bungalow = new Bungalow(array(
@@ -170,49 +142,10 @@ class BungalowController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
+    public function update($id, StoreBungalowRequest $request)
     {
-         $messages = [
-            'nama.required' => 'The Name field is required',
-            'nama.max' => 'The Name may not be greater than 25 characters.',
-            'nama.min' => 'The Name may not be lesser than 3 characters',
-            'tarif_low.required' => 'The Low Season Price field is required',
-            'tarif_high.required' => 'The High Season Price field is required',
-            'keterangan.required' => 'The Description field is required',
-            'keterangan.max' => 'The Description may not be greater than 2000 characters',
-            'keterangan.min' => 'The Description may not be lesser than 10 characters',
-            'fasilitas.required' => 'The facilities field is required, at least choose min one',
-        ];
-
-        Validator::make($request->all(), [
-            'nama' => 'required|max:25|min:3',
-            'tarif_high' => 'required',
-            'tarif_low' => 'required',
-            'keterangan' => 'required|max:2000|min:10',
-            'fasilitas' => 'required',
-            'file' => 'required',
-        ],$messages)->validate();
-        
         $bungalow = Bungalow::findOrFail($id);
-        $file = $request->file('file');
-        if(isset($file))
-        {
-            $filename = $file->getClientOriginalName();
-            Image::make($file)->save(public_path('/images/gallery/' . $filename));
-            $gallery = new Galeri(array(
-                'kategori_id' => 7,
-                'nama' => $filename,
-                'mime' => $file->getClientMimeType(),
-                'path' => '/images/gallery/' . $filename,
-                'size' => $file->getClientSize(),
-            ));
-            $gallery->save();
-            $bungalow_galeri = new Bungalow_Galeri(array(
-                'galeri_id' => Galeri::max('id'),
-            ));
-            $bungalow_galeri->save();
-        }
-        
+               
         if($request->get('nama')){
         $bungalow->update(
             [   'nama' => $request->get('nama'),

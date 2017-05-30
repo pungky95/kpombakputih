@@ -41,6 +41,8 @@
   <![endif]-->
   <!-- Drop Zone -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
+  <!-- Sweet Alert -->
+  <link href="{{ asset("css/sweetalert.css") }}" rel='stylesheet' type='text/css'>
   </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -248,6 +250,8 @@
 <script src="{{asset("plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script>
 <!-- Dropzone -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+<!-- Sweet Alert -->
+<script src="{{ asset("js/sweetalert.min.js") }}"></script>
 <!-- Page script -->
 <script>
   $(function () {

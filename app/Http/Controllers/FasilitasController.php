@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\StoreFasilitasRequest;
 use App\Http\Controllers\Controller;
 use Image;
 use App\Galeri;
@@ -56,7 +57,7 @@ class FasilitasController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(StoreFasilitasRequest $request)
     {
         $requestData = $request->all();
         
@@ -123,11 +124,10 @@ class FasilitasController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
+    public function update($id, StoreFasilitasRequest $request)
     {
         
         $requestData = $request->all();
-        
         $fasilita = Fasilita::findOrFail($id);
         $fasilita->update($requestData);
         $file = $request->file('file');

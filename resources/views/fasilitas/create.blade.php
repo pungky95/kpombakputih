@@ -24,14 +24,30 @@
           <div class="col-md-12">
             <div class="form-group">
               {!! Form::open(['url' => '/fasilitas', 'files' => true]) !!}
+              @if ($errors->has('nama'))
+              <div class="form-group has-error">
+              <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Name of Facility </label>
+              <input type="text" id="inputError" name="nama" class="form-control" placeholder="Name of Facility">
+              <span class="help-block">{{ $errors->first('nama') }}</span>
+              </div>
+              @else
                 <label>Name of Facility</label>
                 <input type="text" name="nama" class="form-control" placeholder="Name of Facility"> 
+              @endif
                 <label>Upload Images</label>        
                 <input multiple onchange="readURL(this);" id="uploadedImages" name="file" type="file">
                 <div id ="up_images"></div>
                 <input type="hidden" name="kategori" value="10">
-                <label>Description of Facility</label>
+                @if($errors->has('keterangan'))
+                <div class="form-group has-error">
+                <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Descriptions of Facility </label>
                 <textarea name="keterangan" class="textarea" placeholder="Write Description of Facility Here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <span class="help-block">{{ $errors->first('keterangan') }}</span>
+                </div>
+                @else
+                <label> Descriptions of Facility </label>
+                <textarea name="keterangan" class="textarea" placeholder="Write Description of Facility Here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                @endif
                 {!! Form::submit('Add Facility', ['class' => 'btn btn-block btn-primary btn-lg']) !!}
               {!! Form::close() !!}
             </div>
