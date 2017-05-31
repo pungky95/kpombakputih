@@ -26,7 +26,15 @@
               <label>Upload Size Max 2 MB, Please make sure before upload because process cannot be undone</label>
               {!! Form::open(['url' => url('/bungalowphoto'),'class' => 'dropzone', 'files'=>true, 'id'=>'mydropzone']) !!}
               {!! Form::close() !!} 
-              {!! Form::open(['url' => url('/bungalow'), 'files' => true]) !!}
+              <div id ="up_images">
+              
+              </div>
+               {!! Form::model($fasilitas, [
+                            'method' => 'PATCH',
+                            'url' => ['/bungalow', $bungalow->id],
+                            'class' => 'form-horizontal',
+                            'files' => true
+                        ]) !!}
                 @if ($errors->has('nama'))
                 <div class="form-group has-error">
                   <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Bungalow Name </label>

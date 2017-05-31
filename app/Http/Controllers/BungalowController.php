@@ -129,6 +129,12 @@ class BungalowController extends Controller
     public function edit($id)
     {
         $bungalow = Bungalow::findOrFail($id);
+        $galeri = Bungalow_Galeri::where('bungalow_id',$id)->get();
+        $arrgaleri = array();
+        foreach ($galeri as $items){
+            array_push($arrgaleri,$items->galeri_id);
+        }
+        // print_r($arrgaleri); exit();
         $fasilitas = Fasilita::orderBy('nama','asc')->get();
         $bungalow_fasilitas = DB::table('bungalow_fasilitas')->select('fasilitas_id')->where('bungalow_id',$id)->get();
         return view('bungalow.edit', compact('bungalow','fasilitas','bungalow_fasilitas'));
@@ -155,14 +161,15 @@ class BungalowController extends Controller
                 'jumlah_kamar' => $request->get('jumlah_kamar'),
             ]
             );
-        $bungalow_galeri = Bungalow_Galeri::WhereNull('bungalow_id')->update(['bungalow_id'=>Bungalow::max('id')]);
 
+        $bungalow_galeri = Bungalow_Galeri::WhereNull('bungalow_id')->update(['bungalow_id'=>$id]);
+        $deleted_row = Bungalow_Fasilita::Where('bungalow_id',$id)->delete();
         if($request->get('fasilitas')){
                 $facilities = $request->get('fasilitas');
                 for ($i=0; $i < sizeof($facilities); $i++) { 
                     $fasilitas_id = DB::table('fasilitas')->select('id')->where('nama',$facilities[$i])->first();
                     $bungalow_fasilitas = new Bungalow_Fasilita(array(
-                    'bungalow_id' => Bungalow::max('id'),
+                    'bungalow_id' => $id,
                     'fasilitas_id' => $fasilitas_id->id,
                     ));
                     $bungalow_fasilitas->save();
