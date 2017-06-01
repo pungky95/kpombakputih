@@ -45,8 +45,9 @@ class BungalowController extends Controller
         $fasilitas = Fasilita::orderBy('nama','asc')->get();
         return view('bungalow.create',compact('fasilitas'));
     }
+
     public function storephoto(Request $request){
-        $file = $request->input('file');
+        $file = $request->file('file');
         if(isset($file))
         {
             $filename = $file->getClientOriginalName();
@@ -129,15 +130,15 @@ class BungalowController extends Controller
     public function edit($id)
     {
         $bungalow = Bungalow::findOrFail($id);
-        $galeri = Bungalow_Galeri::where('bungalow_id',$id)->get();
+        $bungalow_galeri = Bungalow_Galeri::where('bungalow_id',$id)->get();
         $arrgaleri = array();
-        foreach ($galeri as $items){
+        foreach ($bungalow_galeri as $items){
             array_push($arrgaleri,$items->galeri_id);
         }
-        // print_r($arrgaleri); exit();
+        $galeri = Galeri::WhereIn('id',[27,28])->get(); 
         $fasilitas = Fasilita::orderBy('nama','asc')->get();
         $bungalow_fasilitas = DB::table('bungalow_fasilitas')->select('fasilitas_id')->where('bungalow_id',$id)->get();
-        return view('bungalow.edit', compact('bungalow','fasilitas','bungalow_fasilitas'));
+        return view('bungalow.edit', compact('bungalow','fasilitas','bungalow_fasilitas','galeri'));
     }
 
     /**

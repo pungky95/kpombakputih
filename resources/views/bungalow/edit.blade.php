@@ -26,8 +26,12 @@
               <label>Upload Size Max 2 MB, Please make sure before upload because process cannot be undone</label>
               {!! Form::open(['url' => url('/bungalowphoto'),'class' => 'dropzone', 'files'=>true, 'id'=>'mydropzone']) !!}
               {!! Form::close() !!} 
-              <div id ="up_images">
-              
+              <div class="<form-group></form-group>" id ="up_images">
+              <label>Photos</label>
+              <br>
+                @foreach($galeri as $items)                            
+                  <a href="{{url('/destroygaleri/'.$items->id)}}"><img src="{{asset($items->path)}}" style="width: 200px; height: 200px; object-fit: cover;" name="galeri" value="{{$items->id}}"></a>
+                @endforeach  
               </div>
                {!! Form::model($fasilitas, [
                             'method' => 'PATCH',
@@ -150,4 +154,22 @@
       </div>
     </section>
   </div>
+
+  <script type="text/javascript">
+
+  var readURL = function(input) {
+      $('#up_images').empty();   
+      var number = 0;
+      $.each(input.files, function(value) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              var id = (new Date).getTime();
+              number++;
+              $('#up_images').prepend('<img id='+id+' src='+e.target.result+' width="200px" height="200px" data-index='+number+' onclick="removePreviewImage('+id+')" style="object-fit: cover; "/>')
+          };
+          reader.readAsDataURL(input.files[value]);
+          }); 
+    }
+
+</script>
 @endsection
