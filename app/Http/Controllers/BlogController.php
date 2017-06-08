@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\StoreBlogRequest;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Blog;
@@ -77,7 +78,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(StoreBlogRequest $request)
     {
 
         $kategori_id = Kategori::select('id')->where('nama','=',$request->get('kategori'))->get();

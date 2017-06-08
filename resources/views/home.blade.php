@@ -141,72 +141,29 @@
         <h2 class="hidden">Rooms</h2>
         <div class="container">
             <div class="rooms-area">
+                @foreach($bungalow as $items)
                 <div class="row">
                     <div class="col-md-4 col-xs-6">
                         <div class="room-title-container" >
-                            <h3 class="title">House</h3>
-                            <div class="title-room">One</div>
+                            <h3 class="title">{{substr($items->nama,0,17)}}</h3>
+                            <div class="title-room">{{substr($items->nama,17)}}</div>
                             <p class="content muted">Pellentesque a massa risus. Cras convallis finibus porta. Integer in ligula leo. Cras quis consequat nisl, at malesuada sapien. Mauris ultricies nisi eget velit bibendum, sit amet euismod mi gravida.</p>
                             <a href="#" class="link secondary">Continue Reading </a>
                         </div>
                     </div>
                     <div class="col-md-4 hidden-xs hidden-sm">
-                        <img src="{{ asset("moon/images/room-1.jpg")}}" class="img-centered img-responsive grayscale" data-animate="fadeInLeft" alt="room-1">
+                        <img src="{{ asset("$items->path")}}" class="img-centered img-responsive grayscale" data-animate="fadeInLeft" alt="room-1">
                     </div>
                     <div class="col-md-4 col-xs-6">
                         <div class="room-container" >
                             <div class="price-text">from <span class="price">$99.00</span> / night</div>
-                            <p class="room-desc">Only 5 rooms are available</p>
+                            <p class="room-desc">Only {{$items->jumlah_kamar}} rooms are available</p>
                             <p class="room-desc">Breakfast included</p>
-                            <p class="room-desc">Price does not include VAT & service fee</p>
                             <a href="booking-choose-date.html" class="button" >Book Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 col-xs-6">
-                        <div class="room-title-container" >
-                            <h3 class="title">House</h3>
-                            <div class="title-room">Two</div>
-                            <p class="content muted">Pellentesque a massa risus. Cras convallis finibus porta. Integer in ligula leo. Cras quis consequat nisl, at malesuada sapien. Mauris ultricies nisi eget velit bibendum, sit amet euismod mi gravida.</p>
-                            <a href="#" class="link secondary">Continue Reading </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 hidden-xs hidden-sm">
-                        <img src="{{ asset("moon/images/room-2.jpg")}}" class="img-centered img-responsive grayscale" data-animate="fadeInLeft" alt="room-2">
-                    </div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="room-container" >
-                            <div class="price-text">from <span class="price">$99.00</span> / night</div>
-                            <p class="room-desc">Only 5 rooms are available</p>
-                            <p class="room-desc">Breakfast included</p>
-                            <p class="room-desc">Price does not include VAT & service fee</p>
-                            <a href="booking-choose-date.html" class="button" >Book Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-xs-6">
-                        <div class="room-title-container" >
-                            <h3 class="title">House</h3>
-                            <div class="title-room">Three</div>
-                            <p class="content muted">Pellentesque a massa risus. Cras convallis finibus porta. Integer in ligula leo. Cras quis consequat nisl, at malesuada sapien. Mauris ultricies nisi eget velit bibendum, sit amet euismod mi gravida.</p>
-                            <a href="#" class="link secondary">Continue Reading </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 hidden-xs hidden-sm">
-                        <img src="{{ asset("moon/images/room-3.jpg")}}" class="img-centered img-responsive grayscale" data-animate="fadeInLeft" alt="room-3">
-                    </div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="room-container" >
-                            <div class="price-text">from <span class="price">$99.00</span> / night</div>
-                            <p class="room-desc">Only 5 rooms are available</p>
-                            <p class="room-desc">Breakfast included</p>
-                            <p class="room-desc">Price does not include VAT & service fee</p>
-                            <a href="booking-choose-date.html" class="button" >Book Now</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="col-md-offset-8 col-xs-offset-6 rooms-background bg-secondary"></div>
         </div>

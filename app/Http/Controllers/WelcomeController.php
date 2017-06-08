@@ -19,13 +19,14 @@ class WelcomeController extends Controller
     public function index()
     {
         $testimoni = Testimoni::paginate(10);
+        $bungalow = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->get();
         $fasilitas = Fasilita::join('galeris','fasilitas.id','=','galeris.fasilitas_id')->
         select('fasilitas.nama as nama','keterangan','galeris.path')->paginate(4);
         $whyus = Fasilita::join('galeris','fasilitas.id','=','galeris.fasilitas_id')
         ->select('fasilitas.id as id','fasilitas.nama as nama','path','keterangan')->whereIn('fasilitas.id',[18,7,19])->get();
         $blog = Blog::join('galeris', 'blogs.id', '=', 'galeris.blog_id')
         ->select('blogs.id','blogs.kategori_id','blogs.nama','konten','path','blogs.created_at')->orderBy('blogs.created_at','desc')->paginate(5);
-        return view('home', compact('testimoni','blog','fasilitas','whyus'));
+        return view('home', compact('testimoni','blog','fasilitas','whyus','bungalow'));
     }
 
     /**
