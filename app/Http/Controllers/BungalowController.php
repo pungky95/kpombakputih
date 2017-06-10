@@ -116,8 +116,20 @@ class BungalowController extends Controller
     public function show($id)
     {
         $bungalow = Bungalow::findOrFail($id);
+        $galeri = Bungalow_Galeri::Where('bungalow_id',$id)->get();
+        $fasilitas = Bungalow_Fasilita::Where('Bungalow_id',$id)->get();
+        $galeri_id = array();
+        $fasilitas_id = array();
+        foreach ($galeri as $items){
+            array_push($galeri_id,$items->galeri_id);
+        }
+        foreach ($fasilitas as $items){
+            array_push($fasilitas_id,$items->fasilitas_id);
+        }
+        $galeri = Galeri::whereIn('id',$galeri_id)->first();
+        $fasilitas = Fasilita::whereIn('id',$fasilitas_id)->get();
 
-        return view('bungalow.show', compact('bungalow'));
+        return view('bungalow.show', compact('bungalow','galeri','fasilitas'));
     }
 
     /**
@@ -135,7 +147,7 @@ class BungalowController extends Controller
         foreach ($bungalow_galeri as $items){
             array_push($arrgaleri,$items->galeri_id);
         }
-        $galeri = Galeri::WhereIn('id',[27,28])->get(); 
+        $galeri = Galeri::WhereIn('id',$arrgaleri)->get();
         $fasilitas = Fasilita::orderBy('nama','asc')->get();
         $bungalow_fasilitas = DB::table('bungalow_fasilitas')->select('fasilitas_id')->where('bungalow_id',$id)->get();
         return view('bungalow.edit', compact('bungalow','fasilitas','bungalow_fasilitas','galeri'));
