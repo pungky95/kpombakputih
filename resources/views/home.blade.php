@@ -75,8 +75,8 @@
                                 <div class="form-group">
                                     <label>Adults</label><br>
                                     <select name="adults" class="form-control form-select secondary" >
-                                    	<option selected="selected">0</option>
-                                        <option>1</option>
+                                    	<option>0</option>
+                                        <option selected="selected">1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
