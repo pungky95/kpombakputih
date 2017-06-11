@@ -44,7 +44,7 @@
                         <a href="{{ url('/about') }}">About</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">Bungalows</a>
+                        <a href="{{ url('/bungalows')}}">Bungalows</a>
                     </li>
                     <li class="menu-item">
                         <a href="{{ url('/services')}}">Services</a>

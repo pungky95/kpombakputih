@@ -66,6 +66,36 @@ class BungalowController extends Controller
             $bungalow_galeri->save();
         }
     }
+    public function bungalows(){
+        $bungalow = DB::table('bungalow_galeris')->select('bungalow_id','galeri_id')->groupby('bungalow_id','galeri_id')->get();
+        $arrgaleri = array();
+        $i=0;
+        foreach ($bungalow as $items){
+            $arrgaleri[$i]['bungalow_id'] = $items->bungalow_id;
+            $arrgaleri[$i]['galeri_id'] = $items->galeri_id;
+            $i++;
+        }
+        function unique_multidim_array($array, $key) { 
+            $temp_array = array(); 
+            $i = 0; 
+            $key_array = array(); 
+            foreach($array as $val) { 
+                if (!in_array($val[$key], $key_array)) { 
+                    $key_array[$i] = $val[$key]; 
+                    array_push($temp_array,$val);
+                } 
+            $i++; 
+            } 
+            return $temp_array; 
+        } 
+        $arrgaleri = unique_multidim_array($arrgaleri,'bungalow_id');
+        $arrid = array(); 
+        for($i=0;$i<sizeof($arrgaleri);$i++){
+            array_push($arrid,$arrgaleri[$i]['galeri_id']);
+        }
+        $bungalow_galeris = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->WhereIn('galeri_id',$arrid)->get();
+        return view('bungalow.bungalows', compact('bungalow_galeris'));
+    }
     /**
      * Store a newly created resource in storage.
      *

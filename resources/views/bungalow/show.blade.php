@@ -2,7 +2,7 @@
 @section('title','Bungalow')
 @section('content')
 <section class="section-breadcrumb">
-        <h2 class="title" >{{$bungalow->judul}}</h2>
+        <h2 class="title" >{{$bungalow->nama}}</h2>
         <div class="breadcrumb">
             You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Bungalows</span></span>
         </div>
@@ -24,9 +24,9 @@
                             @endforeach
                         </ul>
 
-                        <h3 class="subtitle ">Other Information</h3>
+                        {{-- <h3 class="subtitle ">Other Information</h3>
                         <p class="content">Vestibulum urna massa, hendrerit sed fringilla in, mollis vitae tellus. Vestibulum mattis nulla elementum tristique fringilla. Morbi in sollicitudin erat. Nullam ligula sem, imperdiet nec commodo non, convallis vitae neque. Cras tempor magna a purus finibus tristique. Suspendisse euismod, neque faucibus dictum rutrum, ex dolor tempor dolor, ut egestas velit tellus quis erat. Curabitur vel elit a nibh fringilla maximus. Curabitur ut auctor elit, non gravida felis.</p>
-                        <em class="content">Sed malesuada tellus id sem placerat dapibus. Pellentesque dui lorem, viverra fringilla nisl id, molestie condimentum tellus. Vivamus nec lectus congue, ultrices felis sit amet, dapibus augue..</em>
+                        <em class="content">Sed malesuada tellus id sem placerat dapibus. Pellentesque dui lorem, viverra fringilla nisl id, molestie condimentum tellus. Vivamus nec lectus congue, ultrices felis sit amet, dapibus augue..</em> --}}
                     </div>
                 </div>
                 <div class="col-md-3 ">
@@ -62,8 +62,8 @@
                             <div class="form-group col-xs-6">
                                 <label>Adults</label><br>
                                 <select class="form-control third">
-                                    <option>1</option>
-                                    <option selected="selected">2</option>
+                                    <option selected="selected">1</option>
+                                    <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                 </select>
@@ -71,8 +71,8 @@
                             <div class="form-group col-xs-6">
                                 <label >Children</label><br>
                                 <select class="form-control third">
-                                    <option>0</option>
-                                    <option selected="selected">1</option>
+                                    <option selected="selected">0</option>
+                                    <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>

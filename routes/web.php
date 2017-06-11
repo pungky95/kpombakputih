@@ -19,6 +19,7 @@ use App\Galeri;
 
 
 Route::post('bungalowphoto','BungalowController@storephoto');
+Route::get('bungalows','BungalowController@bungalows');
 Route::resource('bungalow', 'BungalowController');
 Route::get('services', 'FasilitasController@services');
 Route::any('destroygaleri/{id}','FasilitasController@destroygaleri');
