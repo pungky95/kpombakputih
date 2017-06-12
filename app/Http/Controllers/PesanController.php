@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Pesan;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class PesanController extends Controller
 {
@@ -25,6 +26,52 @@ class PesanController extends Controller
         $pesan = Pesan::paginate(25);
 
         return view('pesan.index', compact('pesan'));
+    }
+
+    public function check(Request $request)
+    {
+        $tgl_masuk = strtotime($request->get('tgl_masuk'));
+        $tgl_masuk = date('Y/m/d',$tgl_masuk);
+        $tgl_keluar = strtotime($request->get('tgl_keluar'));
+        $tgl_keluar = date('Y/m/d',$tgl_keluar);
+        $check = DB::table('pesans')->where('tgl_masuk','>=',$tgl_masuk)->where('tgl_keluar','<=',$tgl_keluar)->get();
+        $pesan_id = array();
+        foreach($check as $items){
+            array_push($pesan_id,$items->id);
+        }
+        $check_bungalow = DB::table('bungalow_pesans')->where('pesan_id',$pesan_id)->get();
+        $bungalow_id = array();
+        foreach($check_bungalow as $items){
+            array_push($bungalow_id,$items->bungalow_id);
+        }
+        $bungalow = DB::table('bungalow_galeris')->select('bungalow_id','galeri_id')->whereNotIn('bungalow_id',$bungalow_id)->get();
+        $arrgaleri = array();
+        $i=0;
+        foreach ($bungalow as $items){
+            $arrgaleri[$i]['bungalow_id'] = $items->bungalow_id;
+            $arrgaleri[$i]['galeri_id'] = $items->galeri_id;
+            $i++;
+        }
+        function unique_multidim_array($array, $key) { 
+            $temp_array = array(); 
+            $i = 0; 
+            $key_array = array(); 
+            foreach($array as $val) { 
+                if (!in_array($val[$key], $key_array)) { 
+                    $key_array[$i] = $val[$key]; 
+                    array_push($temp_array,$val);
+                } 
+            $i++; 
+            } 
+            return $temp_array; 
+        } 
+        $arrgaleri = unique_multidim_array($arrgaleri,'bungalow_id');
+        $arrid = array(); 
+        for($i=0;$i<sizeof($arrgaleri);$i++){
+            array_push($arrid,$arrgaleri[$i]['galeri_id']);
+        }
+        $bungalow_galeris = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->WhereIn('galeri_id',$arrid)->get();
+        return view('pesan.available_bungalow',compact('bungalow_galeris'));
     }
 
     /**

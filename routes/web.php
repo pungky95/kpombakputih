@@ -31,6 +31,7 @@ Route::resource('galeri', 'GaleriController');
 Route::resource('bungalow_pesan', 'Bungalow_PesanController');
 Route::resource('bungalow_fasilitas', 'Bungalow_FasilitasController');
 Route::resource('bungalow_galeri', 'Bungalow_GaleriController');
+Route::any('/check','PesanController@check');
 Route::resource('pesan', 'PesanController');
 Route::any ( 'blog/search', function () {
     $keyword = Input::get ( 'keyword' );
@@ -63,5 +64,4 @@ Route::get('editprofile', 'HomeController@editprofile');
 Route::post('editprofile', 'HomeController@update');
 Route::get('/', 'WelcomeController@index');
 Route::resource('komentar', 'KomentarController');
-Route::get('/pesan/show', 'PesanController@show');
 Route::resource('kategori', 'KategoriController');

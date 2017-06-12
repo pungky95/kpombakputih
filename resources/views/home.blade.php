@@ -56,21 +56,22 @@
                             <div class="title-area bg-primary">
                                 <div class="title">Search Rooms</div>
                                 <div class="subtitle">For rates & availability</div>
-                                <p class="content muted">Choose from over 5 House that suits you best</p>
+                                <p class="content muted">Choose from over {{$bungalow_galeris->count()}} House that suits you best</p>
                             </div>
                             <div class="title-background bg-primary"></div>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="search-form">
-                            <form class="form-inline check-rooms secondary" action="#" method="post" >
+                            <form class="form-inline check-rooms secondary" action="{{url('/check')}}" method="post" >
+                            {{ csrf_field() }}
                                 <div class="form-group ">
                                     <label>Arrival Date</label><br>
-                                    <input name="arrival" class="form-control datepicker" data-theme="secondary">
+                                    <input name="tgl_masuk" class="form-control datepicker" data-theme="secondary">
                                 </div>
                                 <div class="form-group ">
                                     <label>Departure Date</label><br>
-                                    <input name="departure" class="form-control datepicker" data-theme="secondary">
+                                    <input name="tgl_keluar" class="form-control datepicker" data-theme="secondary">
                                 </div>
                                 <div class="form-group">
                                     <label>Adults</label><br>
