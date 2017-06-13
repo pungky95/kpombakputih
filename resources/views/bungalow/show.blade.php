@@ -41,7 +41,18 @@
                         <div class="include-item">Free spa ticket</div>
                         <div class="include-item">VAT fee & 5% service fee</div> --}}
                         <div class="text-center">
-                            <a href="#" class="button">Book</a>
+                            @if(isset($tgl_masuk,$tgl_keluar))
+                            <br>
+                            <form action={{url('/reservation')}} method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" value="{{$tgl_masuk}}" name="tgl_masuk">
+                            <input type="hidden" value="{{$tgl_keluar}}" name="tgl_keluar">
+                            <input type="hidden" value="{{$bungalow->id}}" name="bungalow_id">
+                            <button type="submit" class="button">Book</button>
+                            </form>
+                            @else
+                            <a href="{{url('/choose_date')}}" class="button">Book</a>
+                            @endif
                         </div>
                     </div>
                     <div class="widget-box">
@@ -49,32 +60,50 @@
                         <em >For rates & availability</em>
                         <hr>
 
-                        <form class="check-rooms vertical third">
+                        <form class="check-rooms vertical third" action="{{url('/choose_bungalow')}}" method="get">
+                        {{ csrf_field() }}
                             <div class="form-group ">
                                 <label>Arrival Date</label><br>
-                                <input class="form-control datepicker" data-theme="primary">
+                                <input class="form-control datepicker" data-theme="primary" name="tgl_masuk">
                             </div>
                             <div class="form-group ">
                                 <label >Departure Date</label><br>
-                                <input class="form-control datepicker" data-theme="primary">
+                                <input class="form-control datepicker" data-theme="primary" name="tgl_keluar">
                             </div>
                             <div class="row">
                             <div class="form-group col-xs-6">
                                 <label>Adults</label><br>
-                                <select class="form-control third">
+                                <select class="form-control third" name="adults">
                                     <option selected="selected">1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
+                                    <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
                                 </select>
                             </div>
                             <div class="form-group col-xs-6">
                                 <label >Children</label><br>
-                                <select class="form-control third">
+                                <select class="form-control third" name="children">
                                     <option selected="selected">0</option>
                                     <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
                                 </select>
                             </div>
                             </div>

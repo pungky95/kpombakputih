@@ -51,7 +51,7 @@
                         <a href="{{ url('/services')}}">Services</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">Booking</a>
+                        <a href="{{url('/choose_date')}}">Booking</a>
                     </li>
                     <li class="menu-item">
                         <a href="{{ url('/gallery')}}">Gallery</a>
@@ -82,19 +82,19 @@
                     <a href="{{ url('/about') }}">About</a>
                 </li>
                 <li class="mobile-menu-item">
-                    <a class="menu-item" href="#">Rooms<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <a class="menu-item" href="{{ url('/bungalows')}}">Bungalows<i class="toggle-state-icon icon-angle-right"></i></a>
                 </li>
                 <li class="mobile-menu-item">
                     <a href="{{ url('/services')}}">Services</a>
                 </li>
                 <li class="mobile-menu-item">
-                    <a class="menu-item" href="#">Booking<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <a class="menu-item" href="{{url('/choose_date')}}">Booking<i class="toggle-state-icon icon-angle-right"></i></a>
                 </li>
                 <li class="mobile-menu-item">
-                    <a class="menu-item" href="#">Gallery<i class="toggle-state-icon icon-angle-right"></i></a>
+                    <a class="menu-item" href="{{ url('/gallery')}}">Gallery<i class="toggle-state-icon icon-angle-right"></i></a>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="{{ url('/blog/user')}}">Blog</a>
+                    <a href="{{ url('/blogs')}}">Blog</a>
                 </li>
                 <li class="mobile-menu-item">
                     <a href="{{ url('kontak/create')}}">Contact</a>

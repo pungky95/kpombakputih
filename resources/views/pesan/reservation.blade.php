@@ -1,22 +1,22 @@
 @extends('layouts.main')
-@section('title','Room Availbility')
+@section('title','Reservation')
 @section('content')
 <section class="section-breadcrumb">
         <h2 class="title" >Check Results</h2>
         <div class="breadcrumb">
-            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Rooms</span></span>
+            You are here: <span class="slug"><span class="home"> Home </span> <span class="page"> > Reservation</span></span>
         </div>
         <div class="booking-progress-bar">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-xs-6 booking-step ">
-                        <a href="booking-choose-date.html"><span class="number-circle">1</span>Choose date</a>
-                    </div>
-                    <div class="col-md-3 col-xs-6 booking-step current">
-                        <a href="booking-choose-room.html"><span class="number-circle">2</span>Choose rooms</a>
+                        <a href="#"><span class="number-circle">1</span>Choose date</a>
                     </div>
                     <div class="col-md-3 col-xs-6 booking-step">
-                        <a href="booking-reservation.html"><span class="number-circle">3</span>Reservation</a>
+                        <a href="#"><span class="number-circle">2</span>Choose rooms</a>
+                    </div>
+                    <div class="col-md-3 col-xs-6 booking-step current">
+                        <a href="#"><span class="number-circle">3</span>Reservation</a>
                     </div>
                     <div class="col-md-3 col-xs-6 booking-step">
                         <a href="#"><span class="number-circle">4</span>Review & Book</a>
@@ -143,91 +143,51 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-7 ">
-                    <h3 class="hidden">Choose room</h3>
-                    <div class="rooms-container">
-                        <img src="images/booking/booking-lg.jpg" class="img-centered img-responsive" alt="booking-banner" data-animate="fadeIn">
-                        <div class="room-row">
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <div>
-                                        <img src="images/booking/room-thumb-1.jpg" class="img-responsive" alt="room-thumb-1">
-                                    </div>
-                                </div>
-                                <div class="col-xs-7">
+                <div class="col-lg-8 col-md-7">
+                    <h3 class="hidden">Reservation form</h3>
+                    <div class="reservation-container">
+                        <img src="images/booking/booking-lg.jpg" class="img-centered img-responsive" alt="booking-background" data-animate="fadeIn">
+                        <div class="reservation-form">
+                            <form class="form-horizontal" role="form">
+                                <div class="col-xs-6">
                                     <div class="">
-                                        <h4 class="subtitle">Superior Room - No.305</h4>
-                                        <em >from <span class="price">$99.00</span>/night</em>
-                                        <p class="content">Aliquam suscipit nisi in dui commodo tristique. Sed mollis posuere sapien, vitae fringilla purus ornare vel. Sed convallis malesuada massa id volutpat.</p>
-                                        <p><a href="facilities.html" class="link secondary"><i class="fa fa-arrow-right"></i>See facilities of this room</a></p>
-                                        <a href="room-single.html" class="button transparent">Select this room</a>
+                                        <label class="control-label" >First name *</label>
+                                        <input type="text" class="form-control" >
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="room-row">
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <img src="images/booking/room-thumb-2.jpg" class="img-responsive" alt="room-thumb-2">
-                                </div>
-                                <div class="col-xs-7">
+                                <div class="col-xs-6">
                                     <div class="">
-                                        <h4 class="subtitle">Luxury Room - No.1208</h4>
-                                        <em >from <span class="price">$199.00</span>/night</em>
-                                        <p class="content">Aliquam suscipit nisi in dui commodo tristique. Sed mollis posuere sapien, vitae fringilla purus ornare vel. Sed convallis malesuada massa id volutpat.</p>
-                                        <p><a href="facilities.html" class="link secondary"><i class="fa fa-arrow-right"></i>See facilities of this room</a></p>
-                                        <a href="room-single.html" class="button transparent">Select this room</a>
+                                        <label class="control-label " >Last name *</label>
+                                        <input type="text" class="form-control">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="room-row">
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <img src="images/booking/room-thumb-3.jpg" class="img-responsive" alt="room-thumb-3">
-                                </div>
-                                <div class="col-xs-7">
+                                <div class="col-xs-6">
                                     <div class="">
-                                        <h4 class="subtitle">Deluxe Room - No.415</h4>
-                                        <em >from <span class="price">$99.00</span>/night</em>
-                                        <p class="content">Aliquam suscipit nisi in dui commodo tristique. Sed mollis posuere sapien, vitae fringilla purus ornare vel. Sed convallis malesuada massa id volutpat.</p>
-                                        <p><a href="facilities.html" class="link secondary"><i class="fa fa-arrow-right"></i>See facilities of this room</a></p>
-                                        <a href="room-single.html" class="button transparent">Select this room</a>
+                                        <label class="control-label">Email *</label>
+                                        <input type="text" class="form-control" >
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="room-row">
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <img src="images/booking/room-thumb-4.jpg" class="img-responsive" alt="-room-thumb-4">
-                                </div>
-                                <div class="col-xs-7">
+                                <div class="col-xs-6">
                                     <div class="">
-                                        <h4 class="subtitle">Superior Room - No.706</h4>
-                                        <em >from <span class="price">$99.00</span>/night</em>
-                                        <p class="content">Aliquam suscipit nisi in dui commodo tristique. Sed mollis posuere sapien, vitae fringilla purus ornare vel. Sed convallis malesuada massa id volutpat.</p>
-                                        <p><a href="facilities.html" class="link secondary"><i class="fa fa-arrow-right"></i>See facilities of this room</a></p>
-                                        <a href="room-single.html" class="button transparent">Select this room</a>
+                                        <label class="control-label">Phone *</label>
+                                        <input type="text" class="form-control" >
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="room-row">
-                            <div class="row">
-                                <div class="col-xs-5">
-                                    <img src="images/booking/room-thumb-5.jpg" class="img-responsive" alt="room-thumb-5">
-                                </div>
-                                <div class="col-xs-7">
+                                <div class="col-xs-12">
                                     <div class="">
-                                        <h4 class="subtitle">Superior - No.707</h4>
-                                        <em >from <span class="price">$99.00</span>/night</em>
-                                        <p class="content">Aliquam suscipit nisi in dui commodo tristique. Sed mollis posuere sapien, vitae fringilla purus ornare vel. Sed convallis malesuada massa id volutpat.</p>
-                                        <p><a href="facilities.html" class="link secondary"><i class="fa fa-arrow-right"></i>See facilities of this room</a></p>
-                                        <a href="room-single.html" class="button transparent">Select this room</a>
+                                        <label class="control-label">Additional note for us</label>
+                                        <textarea class="form-control" ></textarea>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-xs-12">
+                                    <div class="text-center buttons-container">
+                                        <button class="button">Book via Email</button>
+                                        <span class="space-text">-or-</span>
+                                        <button class="button third">Pay with Paypal Now</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

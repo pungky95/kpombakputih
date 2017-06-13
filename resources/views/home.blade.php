@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="search-form">
-                            <form class="form-inline check-rooms secondary" action="{{url('/check')}}" method="post" >
+                            <form class="form-inline check-rooms secondary" action="{{url('/choose_bungalow')}}" method="get" >
                             {{ csrf_field() }}
                                 <div class="form-group ">
                                     <label>Arrival Date</label><br>
@@ -148,7 +148,7 @@
                         <div class="room-title-container" >
                             <h3 class="title">{{substr($items->nama,0,17)}}</h3>
                             <div class="title-room">{{substr($items->nama,17)}}</div>
-                            <p class="content muted">{!!$items->keterangan!!}</p>
+                            <p class="content muted">{!!str_limit($items->keterangan)!!}</p>
                             <a href="{{url('bungalow/'.$items->bungalow_id)}}" class="link secondary">Continue Reading </a>
                         </div>
                     </div>

@@ -9,6 +9,10 @@ use App\Pesan;
 use Illuminate\Http\Request;
 use Session;
 use DB;
+use App\Bungalow;
+use App\Bungalow_Galeri;
+use App\Bungalow_Fasilita;
+use Illuminate\Cookie\CookieJar;
 
 class PesanController extends Controller
 {
@@ -27,51 +31,116 @@ class PesanController extends Controller
 
         return view('pesan.index', compact('pesan'));
     }
-
-    public function check(Request $request)
+    public function pesan(Request $request){
+        if($request->get('tgl_masuk') && $request->get('tgl_keluar') && $request->get('bungalow_id')){
+            $tgl_masuk = $request->get('tgl_masuk');
+            $tgl_keluar = $request->get('tgl_keluar');
+            $bungalow_id = $request->get('bungalow_id');       
+        }
+        return view('pesan.reservation',compact('tgl_masuk','tgl_keluar','bungalow_id'));
+    }
+    public function showbungalow($id)
+    {
+        $bungalow = Bungalow::findOrFail($id);
+        $galeri = Bungalow_Galeri::Where('bungalow_id',$id)->get();
+        $fasilitas = Bungalow_Fasilita::Where('Bungalow_id',$id)->get();
+        $galeri_id = array();
+        $fasilitas_id = array();
+        foreach ($galeri as $items){
+            array_push($galeri_id,$items->galeri_id);
+        }
+        foreach ($fasilitas as $items){
+            array_push($fasilitas_id,$items->fasilitas_id);
+        }
+        $galeri = Galeri::whereIn('id',$galeri_id)->first();
+        $fasilitas = Fasilita::whereIn('id',$fasilitas_id)->get();
+        return view('bungalow.show', compact('bungalow','galeri','fasilitas'));
+    }
+    public function checkdate()
+    {
+        return view('pesan.choose_date');
+    }
+    public function checkbungalow(Request $request)
     {
         $tgl_masuk = strtotime($request->get('tgl_masuk'));
         $tgl_masuk = date('Y/m/d',$tgl_masuk);
         $tgl_keluar = strtotime($request->get('tgl_keluar'));
         $tgl_keluar = date('Y/m/d',$tgl_keluar);
+        if($request->get('adults') || $request->get('children')){
+            $adult = $request->get('adults')/2;
+            $children = $request->get('children')/2;
+            $room = $adult+$children;
+        }
         $check = DB::table('pesans')->where('tgl_masuk','>=',$tgl_masuk)->where('tgl_keluar','<=',$tgl_keluar)->get();
-        $pesan_id = array();
-        foreach($check as $items){
-            array_push($pesan_id,$items->id);
-        }
-        $check_bungalow = DB::table('bungalow_pesans')->where('pesan_id',$pesan_id)->get();
-        $bungalow_id = array();
-        foreach($check_bungalow as $items){
-            array_push($bungalow_id,$items->bungalow_id);
-        }
-        $bungalow = DB::table('bungalow_galeris')->select('bungalow_id','galeri_id')->whereNotIn('bungalow_id',$bungalow_id)->get();
-        $arrgaleri = array();
-        $i=0;
-        foreach ($bungalow as $items){
-            $arrgaleri[$i]['bungalow_id'] = $items->bungalow_id;
-            $arrgaleri[$i]['galeri_id'] = $items->galeri_id;
+        if($check->count()>0)
+        {
+            $pesan_id = array();
+            foreach($check as $items){
+                array_push($pesan_id,$items->id);
+            }
+            $check_bungalow = DB::table('bungalow_pesans')->where('pesan_id',$pesan_id)->get();
+            $bungalow_id = array();
+            foreach($check_bungalow as $items){
+                array_push($bungalow_id,$items->bungalow_id);
+            }
+            $bungalow = DB::table('bungalow_galeris')->select('bungalow_id','galeri_id')->whereNotIn('bungalow_id',$bungalow_id)->get();
+            $arrgaleri = array();
+            $i=0;
+            foreach ($bungalow as $items){
+                $arrgaleri[$i]['bungalow_id'] = $items->bungalow_id;
+                $arrgaleri[$i]['galeri_id'] = $items->galeri_id;
             $i++;
-        }
-        function unique_multidim_array($array, $key) { 
-            $temp_array = array(); 
-            $i = 0; 
-            $key_array = array(); 
-            foreach($array as $val) { 
-                if (!in_array($val[$key], $key_array)) { 
-                    $key_array[$i] = $val[$key]; 
-                    array_push($temp_array,$val);
+            }
+            function unique_multidim_array($array, $key) { 
+                $temp_array = array(); 
+                $i = 0; 
+                $key_array = array(); 
+                foreach($array as $val) { 
+                    if (!in_array($val[$key], $key_array)) { 
+                        $key_array[$i] = $val[$key]; 
+                        array_push($temp_array,$val);
+                    } 
+                    $i++; 
                 } 
-            $i++; 
-            } 
             return $temp_array; 
-        } 
-        $arrgaleri = unique_multidim_array($arrgaleri,'bungalow_id');
-        $arrid = array(); 
-        for($i=0;$i<sizeof($arrgaleri);$i++){
-            array_push($arrid,$arrgaleri[$i]['galeri_id']);
+            } 
+            $arrgaleri = unique_multidim_array($arrgaleri,'bungalow_id');
+            $arrid = array(); 
+            for($i=0;$i<sizeof($arrgaleri);$i++){
+                array_push($arrid,$arrgaleri[$i]['galeri_id']);
+            }
+            $bungalow_galeris = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->WhereIn('galeri_id',$arrid)->Where('jumlah_kamar','>=',$room)->get();
         }
-        $bungalow_galeris = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->WhereIn('galeri_id',$arrid)->get();
-        return view('pesan.available_bungalow',compact('bungalow_galeris'));
+        else if($check->count()<=0){
+            $bungalow = DB::table('bungalow_galeris')->select('bungalow_id','galeri_id')->get();
+            $arrgaleri = array();
+            $i=0;
+            foreach ($bungalow as $items){
+                $arrgaleri[$i]['bungalow_id'] = $items->bungalow_id;
+                $arrgaleri[$i]['galeri_id'] = $items->galeri_id;
+            $i++;
+            }
+            function unique_multidim_array($array, $key) { 
+                $temp_array = array(); 
+                $i = 0; 
+                $key_array = array(); 
+                foreach($array as $val) { 
+                    if (!in_array($val[$key], $key_array)) { 
+                        $key_array[$i] = $val[$key]; 
+                        array_push($temp_array,$val);
+                    } 
+                    $i++; 
+                } 
+            return $temp_array; 
+            } 
+            $arrgaleri = unique_multidim_array($arrgaleri,'bungalow_id');
+            $arrid = array(); 
+            for($i=0;$i<sizeof($arrgaleri);$i++){
+                array_push($arrid,$arrgaleri[$i]['galeri_id']);
+            }
+            $bungalow_galeris = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->WhereIn('galeri_id',$arrid)->Where('jumlah_kamar','>=',$room)->get();
+        }
+        return view('pesan.choose_bungalow',compact('bungalow_galeris','tgl_masuk','tgl_keluar'));
     }
 
     /**

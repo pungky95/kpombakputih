@@ -31,7 +31,9 @@ Route::resource('galeri', 'GaleriController');
 Route::resource('bungalow_pesan', 'Bungalow_PesanController');
 Route::resource('bungalow_fasilitas', 'Bungalow_FasilitasController');
 Route::resource('bungalow_galeri', 'Bungalow_GaleriController');
-Route::any('/check','PesanController@check');
+Route::get('/choose_bungalow','PesanController@checkbungalow');
+Route::get('/choose_date','PesanController@checkdate');
+Route::post('/reservation','PesanController@pesan');
 Route::resource('pesan', 'PesanController');
 Route::any ( 'blog/search', function () {
     $keyword = Input::get ( 'keyword' );
