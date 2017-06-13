@@ -35,9 +35,11 @@ class PesanController extends Controller
         if($request->get('tgl_masuk') && $request->get('tgl_keluar') && $request->get('bungalow_id')){
             $tgl_masuk = $request->get('tgl_masuk');
             $tgl_keluar = $request->get('tgl_keluar');
-            $bungalow_id = $request->get('bungalow_id');       
+            $bungalow_id = $request->get('bungalow_id');
+            $adults = $request->get('adults');
+            $children = $request->get('children');       
         }
-        return view('pesan.reservation',compact('tgl_masuk','tgl_keluar','bungalow_id'));
+        return view('pesan.reservation',compact('tgl_masuk','tgl_keluar','bungalow_id','adults','children'));
     }
     public function showbungalow($id)
     {
@@ -67,9 +69,9 @@ class PesanController extends Controller
         $tgl_keluar = strtotime($request->get('tgl_keluar'));
         $tgl_keluar = date('Y/m/d',$tgl_keluar);
         if($request->get('adults') || $request->get('children')){
-            $adult = $request->get('adults')/2;
-            $children = $request->get('children')/2;
-            $room = $adult+$children;
+            $adults = $request->get('adults');
+            $children = $request->get('children');
+            $room = ($adults/2)+($children/2);
         }
         $check = DB::table('pesans')->where('tgl_masuk','>=',$tgl_masuk)->where('tgl_keluar','<=',$tgl_keluar)->get();
         if($check->count()>0)
@@ -140,7 +142,8 @@ class PesanController extends Controller
             }
             $bungalow_galeris = DB::table('bungalows')->join('bungalow_galeris','bungalows.id','=','bungalow_id')->join('galeris','galeris.id','=','galeri_id')->select('bungalow_id','bungalows.nama as nama','tarif_high','tarif_low','bungalows.keterangan as keterangan','jumlah_kamar','galeris.path')->WhereIn('galeri_id',$arrid)->Where('jumlah_kamar','>=',$room)->get();
         }
-        return view('pesan.choose_bungalow',compact('bungalow_galeris','tgl_masuk','tgl_keluar'));
+        
+        return view('pesan.choose_bungalow',compact('bungalow_galeris','tgl_masuk','tgl_keluar','adults','children'));
     }
 
     /**

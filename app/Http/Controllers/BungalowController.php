@@ -145,9 +145,12 @@ class BungalowController extends Controller
      */
     public function show(Request $request,$id)
     {   
+        
         if($request->get('tgl_masuk') && $request->get('tgl_keluar')){
             $tgl_masuk = $request->get('tgl_masuk');
             $tgl_keluar = $request->get('tgl_keluar');
+            $adults = $request->get('adults');
+            $children = $request->get('children');
         }
         $bungalow = Bungalow::findOrFail($id);
         $galeri = Bungalow_Galeri::Where('bungalow_id',$id)->get();
@@ -163,7 +166,7 @@ class BungalowController extends Controller
         $galeri = Galeri::whereIn('id',$galeri_id)->first();
         $fasilitas = Fasilita::whereIn('id',$fasilitas_id)->get();
 
-        return view('bungalow.show', compact('bungalow','galeri','fasilitas','tgl_masuk','tgl_keluar'));
+        return view('bungalow.show', compact('bungalow','galeri','fasilitas','tgl_masuk','tgl_keluar','adults','children'));
     }
 
     /**

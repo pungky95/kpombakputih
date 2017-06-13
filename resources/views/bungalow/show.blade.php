@@ -48,6 +48,8 @@
                             <input type="hidden" value="{{$tgl_masuk}}" name="tgl_masuk">
                             <input type="hidden" value="{{$tgl_keluar}}" name="tgl_keluar">
                             <input type="hidden" value="{{$bungalow->id}}" name="bungalow_id">
+                            <input type="hidden" value="{{$adults}}" name="adults">
+                            <input type="hidden" value="{{$children}}" name="children">
                             <button type="submit" class="button">Book</button>
                             </form>
                             @else

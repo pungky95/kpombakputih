@@ -13,7 +13,7 @@
                         <a href="#"><span class="number-circle">1</span>Choose date</a>
                     </div>
                     <div class="col-md-3 col-xs-6 booking-step">
-                        <a href="#"><span class="number-circle">2</span>Choose rooms</a>
+                        <a href="#"><span class="number-circle">2</span>Choose bungalows</a>
                     </div>
                     <div class="col-md-3 col-xs-6 booking-step current">
                         <a href="#"><span class="number-circle">3</span>Reservation</a>
@@ -87,10 +87,13 @@
                                     <div class="form-group ">
                                         <label>Adults</label>
                                         <select class="form-control third">
+                                        @if($adults == 1 )
+                                            <option selected="selected">1</option>
+                                            <option>2</option>
+                                        @elseif($adults > 1)
                                             <option>1</option>
-                                            <option selected="selected">2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                            <option selected="selected">2</option> 
+                                        @endif       
                                         </select>
                                     </div>
                                 </div>
@@ -149,16 +152,28 @@
                         <img src="images/booking/booking-lg.jpg" class="img-centered img-responsive" alt="booking-background" data-animate="fadeIn">
                         <div class="reservation-form">
                             <form class="form-horizontal" role="form">
-                                <div class="col-xs-6">
+                                <div class="col-xs-12">
                                     <div class="">
-                                        <label class="control-label" >First name *</label>
+                                        <label class="control-label" >Full Name *</label>
                                         <input type="text" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="">
-                                        <label class="control-label " >Last name *</label>
-                                        <input type="text" class="form-control">
+                                        <label class="control-label" >Adults</label>
+                                        <select class="form-control third" name="adult">
+                                            <option>0</option>
+                                            <option selected="selected">1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                        <label class="control-label" >Children</label>
+                                        <select class="form-control third" name="children">
+                                            <option>0</option>
+                                            <option selected="selected">1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
@@ -181,9 +196,7 @@
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="text-center buttons-container">
-                                        <button class="button">Book via Email</button>
-                                        <span class="space-text">-or-</span>
-                                        <button class="button third">Pay with Paypal Now</button>
+                                        <button class="button third">Book Now</button>
                                     </div>
                                 </div>
                             </form>

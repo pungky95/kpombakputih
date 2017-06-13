@@ -119,10 +119,12 @@
                                         <em >from IDR <span class="price">{{number_format($items->tarif_low,2)}}</span>/night</em>
                                         <p class="content">{!!str_limit($items->keterangan)!!}</p>
                                         <p><a href="{{url('/services')}}" class="link secondary"><i class="fa fa-arrow-right"></i>See facilities of this bungalow</a></p>
-                                        <form action="{{url('bungalow/'.$items->bungalow_id)}}">
+                                        <form action="{{url('bungalow/'.$items->bungalow_id)}}" method="get">
                                         {{ csrf_field() }}
                                         <input type="hidden" value="{{$tgl_masuk}}" name="tgl_masuk">
                                         <input type="hidden" value="{{$tgl_keluar}}" name="tgl_keluar">
+                                        <input type="hidden" value="{{$adults}}" name="adults">
+                                        <input type="hidden" value="{{$children}}" name="children">
                                         <button type="submit" class="button transparent">Select this bungalow</button>
                                         </form>
                                     </div>
