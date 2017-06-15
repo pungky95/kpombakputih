@@ -1,6 +1,10 @@
 @extends('layouts.main')
 @section('title','Welcome to Ombak Putih Bungalows')
 @section('content')
+@include('sweet::alert')
+@if ($errors->has('tgl_masuk') || $errors->has('tgl_keluar'))
+<script type="text/javascript"> sweetAlert("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} {{ $errors->first('tgl_keluar') }}" , "error"); </script>
+@endif
 {{ Counter::count('home') }}
  <div id="main-slider" class="slider">
         <div class="swiper-container">
@@ -54,7 +58,7 @@
                     <div class="col-md-4 ">
                         <div class="title-container">
                             <div class="title-area bg-primary">
-                                <div class="title">Search Rooms</div>
+                                <div class="title">Search Bungalows</div>
                                 <div class="subtitle">For rates & availability</div>
                                 <p class="content muted">Choose from over {{$bungalow_galeris->count()}} House that suits you best</p>
                             </div>
@@ -67,7 +71,7 @@
                             {{ csrf_field() }}
                                 <div class="form-group ">
                                     <label>Arrival Date</label><br>
-                                    <input name="tgl_masuk" class="form-control datepicker" data-theme="secondary">
+                                    <input name="tgl_masuk" class="form-control datepicker" min="<?php echo date('m-d-Y'); ?>" data-theme="secondary">
                                 </div>
                                 <div class="form-group ">
                                     <label>Departure Date</label><br>
@@ -76,7 +80,6 @@
                                 <div class="form-group">
                                     <label>Adults</label><br>
                                     <select name="adults" class="form-control form-select secondary" >
-                                    	<option>0</option>
                                         <option selected="selected">1</option>
                                         <option>2</option>
                                         <option>3</option>

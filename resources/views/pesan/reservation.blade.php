@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-xs-6 booking-step ">
-                        <a href="#"><span class="number-circle">1</span>Choose date</a>
+                        <a href="{{url('choose_date')}}"><span class="number-circle">1</span>Choose date</a>
                     </div>
                     <div class="col-md-3 col-xs-6 booking-step">
                         <a href="#"><span class="number-circle">2</span>Choose bungalows</a>
@@ -36,110 +36,64 @@
                         <div class="widget-title">Your Reservation Information</div>
                         <em >Booking Online System</em>
                         <hr>
-                        <form class="check-rooms vertical third">
+                        <form class="check-rooms vertical third" action="{{url('/choose_bungalow')}}" method="get">
+                        {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group ">
                                         <label >Arrival Date</label>
-                                        <input class="form-control datepicker " data-theme="primary">
+                                        <input class="form-control datepicker " data-theme="primary" name="tgl_masuk">
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
                                         <label >Departure Date</label>
-                                        <input class="form-control datepicker " data-theme="primary">
+                                        <input class="form-control datepicker " data-theme="primary" name="tgl_keluar">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        <label class="">Night</label>
-                                        <select class="form-control third">
+                                        <label >Adults</label>
+                                        <select class="form-control third" name="adults">
+                                            <option>0</option>
                                             <option>1</option>
                                             <option selected="selected">2</option>
                                             <option>3</option>
                                             <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        <label >Rooms</label>
-                                        <select class="form-control third">
-                                            <option>0</option>
+                                        <label >Adults</label>
+                                        <select class="form-control third" name="children">
+                                            <option selected="selected">0</option>
                                             <option>1</option>
-                                            <option selected="selected">2</option>
-                                            <option>3</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <hr >
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <br>
-                                        <label class="room-num"><i class="fa fa-plus-circle"></i>Room 1</label>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group ">
-                                        <label>Adults</label>
-                                        <select class="form-control third">
-                                        @if($adults == 1 )
-                                            <option selected="selected">1</option>
-                                            <option>2</option>
-                                        @elseif($adults > 1)
-                                            <option>1</option>
-                                            <option selected="selected">2</option> 
-                                        @endif       
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group ">
-                                        <label >Children</label>
-                                        <select class="form-control third">
-                                            <option>0</option>
-                                            <option selected="selected">1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="form-group ">
-                                        <br>
-                                        <label class="room-num"><i class="fa fa-plus-circle"></i>Room 2</label>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group ">
-                                        <label>Adults</label>
-                                        <select class="form-control third">
-                                            <option>1</option>
-                                            <option selected="selected">2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group ">
-                                        <label >Children</label>
-                                        <select class="form-control third">
-                                            <option>0</option>
-                                            <option selected="selected">1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr >
                             <div class="text-center">
                                 <button type="submit" class="button">Check Availability</button>
                             </div>
@@ -149,26 +103,30 @@
                 <div class="col-lg-8 col-md-7">
                     <h3 class="hidden">Reservation form</h3>
                     <div class="reservation-container">
-                        <img src="images/booking/booking-lg.jpg" class="img-centered img-responsive" alt="booking-background" data-animate="fadeIn">
+                        <img src="{{asset('/images/gallery/bg_reservasi.jpg')}}" class="img-centered img-responsive" alt="booking-background" data-animate="fadeIn">
                         <div class="reservation-form">
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" action="{{url('/pesan')}}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="hidden" value="{{$tgl_masuk}}" name="tgl_masuk">
+                            <input type="hidden" value="{{$tgl_keluar}}" name="tgl_keluar">
+                            <input type="hidden" value="{{$bungalow_id}}" name="bungalow_id">
                                 <div class="col-xs-12">
                                     <div class="">
                                         <label class="control-label" >Full Name *</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" name="nama_pemesan">
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="">
                                         <label class="control-label" >Adults</label>
-                                        <select class="form-control third" name="adult">
+                                        <select class="form-control third" name="jumlah_dewasa">
                                             <option>0</option>
                                             <option selected="selected">1</option>
                                             <option>2</option>
                                             <option>3</option>
                                         </select>
                                         <label class="control-label" >Children</label>
-                                        <select class="form-control third" name="children">
+                                        <select class="form-control third" name="jumlah_anak">
                                             <option>0</option>
                                             <option selected="selected">1</option>
                                             <option>2</option>
@@ -179,19 +137,19 @@
                                 <div class="col-xs-6">
                                     <div class="">
                                         <label class="control-label">Email *</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" name="email">
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="">
                                         <label class="control-label">Phone *</label>
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" name="no_telepon">
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="">
                                         <label class="control-label">Additional note for us</label>
-                                        <textarea class="form-control" ></textarea>
+                                        <textarea class="form-control" name="permintaan_khusus"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">

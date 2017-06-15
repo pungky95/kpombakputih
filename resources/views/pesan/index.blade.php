@@ -39,7 +39,7 @@
                                 <tbody>
                                 @foreach($pesan as $item)
                                     <tr>
-                                        <td>{{ $item->nama_pemesan }}</td><td> {{ $item->tgl_masuk }}</td><td>{{ $item->tgl_keluar }}</td><td>{{ $item->jumlah_anak }}</td><td>{{ $item->jumlah_dewasa }}</td><td>{{ $item->permintaan_khusus }}</td><td>{{ $item->no_telpon }}</td><td>{{ $item->email }}</td>
+                                        <td>{{ $item->nama_pemesan }}</td><td> {{ $item->tgl_masuk }}</td><td>{{ $item->tgl_keluar }}</td><td>{{ $item->jumlah_anak }}</td><td>{{ $item->jumlah_dewasa }}</td><td>{{ $item->permintaan_khusus }}</td><td>{{ $item->no_telepon }}</td><td>{{ $item->email }}</td>
                                         <td>
                                             <a href="{{ url('/pesan/' . $item->id) }}" class="btn btn-default" title="View ">
                                             <i class="fa fa-eye"></i></a>

@@ -13,6 +13,8 @@ use App\Bungalow;
 use App\Bungalow_Galeri;
 use App\Bungalow_Fasilita;
 use Illuminate\Cookie\CookieJar;
+use App\Http\Requests\StorePesanRequest;
+use App\Bungalow_Pesan;
 
 class PesanController extends Controller
 {
@@ -37,7 +39,7 @@ class PesanController extends Controller
             $tgl_keluar = $request->get('tgl_keluar');
             $bungalow_id = $request->get('bungalow_id');
             $adults = $request->get('adults');
-            $children = $request->get('children');       
+            $children = $request->get('children');      
         }
         return view('pesan.reservation',compact('tgl_masuk','tgl_keluar','bungalow_id','adults','children'));
     }
@@ -62,7 +64,7 @@ class PesanController extends Controller
     {
         return view('pesan.choose_date');
     }
-    public function checkbungalow(Request $request)
+    public function checkbungalow(StorePesanRequest $request)
     {
         $tgl_masuk = strtotime($request->get('tgl_masuk'));
         $tgl_masuk = date('Y/m/d',$tgl_masuk);
@@ -165,10 +167,19 @@ class PesanController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-        
         Pesan::create($requestData);
+
+        $bungalow_id = $request->get('bungalow_id');
+        $pesan_id = Pesan::max('id');
+
+        $bungalow_pesan = new Bungalow_Pesan(array(
+                'bungalow_id' => $bungalow_id,
+                'pesan_id' => $pesan_id,
+            ));
+        $bungalow_pesan->save();
+
 
         Session::flash('flash_message', 'Pesan added!');
 

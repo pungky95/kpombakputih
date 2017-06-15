@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-xs-6 booking-step ">
-                        <a href="#"><span class="number-circle">1</span>Choose date</a>
+                        <a href="{{url('choose_date')}}"><span class="number-circle">1</span>Choose date</a>
                     </div>
                     <div class="col-md-3 col-xs-6 booking-step current">
                         <a href="#"><span class="number-circle">2</span>Choose bungalows</a>
@@ -103,7 +103,7 @@
                 <div class="col-lg-8 col-md-7 ">
                     <h3 class="hidden">Choose bungalows</h3>
                     <div class="rooms-container">
-                        <img src="images/booking/booking-lg.jpg" class="img-centered img-responsive" alt="booking-banner" data-animate="fadeIn">
+                        <img src="{{asset('/images/gallery/bg_reservasi.jpg')}}" class="img-centered img-responsive" alt="booking-banner" data-animate="fadeIn">
 
                         @foreach($bungalow_galeris as $items)
                         <div class="room-row">

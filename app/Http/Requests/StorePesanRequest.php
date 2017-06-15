@@ -26,8 +26,6 @@ class StorePesanRequest extends FormRequest
         return [
             'tgl_masuk' => 'required|date|after:yesterday|before:tgl_keluar',
             'tgl_keluar' => 'required|date|after:tgl_masuk',
-            'adults' => 'required',
-            'children' => 'required',
         ];
     }
     public function messages()
@@ -40,7 +38,6 @@ class StorePesanRequest extends FormRequest
             'tgl_keluar.required' => 'The departure date is required',
             'tgl_keluar.date' => 'The departure date must be date',
             'tgl_keluar.after' => 'The departure date must be after arrival date',
-            'adults.required' => 'The adults field is required',
         ];
     }
 }
