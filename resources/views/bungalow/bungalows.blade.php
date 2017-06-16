@@ -1,6 +1,9 @@
 @extends('layouts.main')
 @section('title','Bungalow')
 @section('content')
+@if ($errors->has('tgl_masuk') || $errors->has('tgl_keluar'))
+<script type="text/javascript"> swal("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} . {{ $errors->first('tgl_keluar') }}" , "error"); </script>
+@endif
     <section class="section-breadcrumb">
         <h2 class="title" >Accommodations</h2>
         <div class="breadcrumb">
@@ -15,23 +18,23 @@
             <div class="section-starter"></div>
             <div class="row">
                 <div class="search-form">
-                    <form class="check-rooms ">
+                    <form class="check-rooms" action="{{url('/choose_bungalow')}}" method="get">
                         <div class="col-md-3">
                         <div class="form-group ">
                             <label>Arrival Date</label><br>
-                            <input class="form-control datepicker" data-theme="primary" >
+                            <input class="form-control datepicker" data-theme="primary" name="tgl_masuk">
                         </div>
                         </div>
                         <div class="col-md-3">
                         <div class="form-group ">
                             <label>Departure Date</label><br>
-                            <input class="form-control datepicker">
+                            <input class="form-control datepicker" name="tgl_keluar">
                         </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                             <label>Adults</label><br>
-                            <select class="form-control form-select" data-theme="primary">
+                            <select class="form-control form-select" data-theme="primary" name="adults">
                                 <option selected="selected">1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -42,7 +45,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                             <label >Children</label><br>
-                            <select class="form-control form-select">
+                            <select class="form-control form-select" name="children">
                                 <option selected="selected">0</option>
                                 <option>1</option>
                                 <option>2</option>

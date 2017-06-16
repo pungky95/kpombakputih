@@ -31,8 +31,10 @@ Route::resource('galeri', 'GaleriController');
 Route::resource('bungalow_pesan', 'Bungalow_PesanController');
 Route::resource('bungalow_fasilitas', 'Bungalow_FasilitasController');
 Route::resource('bungalow_galeri', 'Bungalow_GaleriController');
-Route::get('/choose_bungalow','PesanController@checkbungalow');
-Route::get('/choose_date','PesanController@checkdate');
+Route::any('/choose_bungalow','PesanController@checkbungalow');
+Route::any('/choose_date','PesanController@checkdate');
+Route::any('/book','PesanController@store');
+Route::any('/invoice','PesanController@invoice');
 Route::any('/reservation','PesanController@pesan');
 Route::resource('pesan', 'PesanController');
 Route::any ( 'blog/search', function () {

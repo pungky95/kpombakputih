@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title')</title>
+  <title>Invoice</title>
   <link rel="shortcut icon" href="{{{ asset('images/gallery/favicon.png') }}}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -45,178 +45,154 @@
   <link href="{{ asset("css/sweetalert.css") }}" rel='stylesheet' type='text/css'>
   </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-<header class="main-header">
-    <!-- Logo -->
-    <a href="{{url('/admin')}}" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>OP</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin </b>Ombak Putih</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have no messages</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="@if(Auth::user()){{ asset(Auth::user()->foto)}}@endif" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="@if(Auth::user()){{ asset(Auth::user()->foto)}}@endif" class="user-image" alt="User Image">
-              <span class="hidden-xs">@if(Auth::user()){{Auth::user()->name}}@endif</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="@if(Auth::user()){{ asset(Auth::user()->foto)}}@endif" class="img-circle" alt="User Image">
-
-                <p>
-                  @if(Auth::user()){{Auth::user()->name}}@endif
-                  <small>Admin since @if(Auth::user()){{Auth::user()->created_at->format('M. Y')}}@endif</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="{{ url('/editprofile') }}" class="btn btn-default btn-flat">Edit Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
-                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                </div>
-              </li>
-            </ul>
-          </li>
-
-        </ul>
-      </div>
-
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="@if(Auth::user()){{ asset(Auth::user()->foto)}}@endif" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>@if(Auth::user()){{ Auth::user()->name }}@endif</p>
-          <a href="{{ url('/editprofile') }}"><i class="fa fa-book"></i> Edit Profile</a>
-        </div>
-      </div>
-      
-      <!-- pungky -->
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="@yield('dashboard') treeview">
-          <a href="{{ url('/admin') }}">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="@yield('bungalow') treeview">
-          <a href="{{ url('/bungalow')}}">
-            <i class="fa fa-bed"></i>
-            <span>Bungalows</span>
-          </a>
-        </li>
-        <li class="@yield('fasilitas') treeview">
-          <a href="{{ url('/fasilitas')}}">
-            <i class="fa fa-tv"></i>
-            <span>Facilities</span>
-          </a>
-        </li>
-        <li class="@yield('galeri') treeview">
-          <a href="{{ url('/galeri')}}">
-            <i class="fa fa-photo"></i>
-            <span>Gallery</span>
-          </a>
-        </li>
-        <li class="@yield('blog') treeview">
-          <a href="{{ url('/blog')}}">
-            <i class="fa fa-file-text-o"></i>
-            <span>Blog</span>
-          </a>
-        </li>
-        <li class="@yield('kontak') treeview">
-          <a href="{{ url('/kontak')}}">
-            <i class="fa fa-phone"></i>
-            <span>Contact</span>
-          </a>
-        </li>
-        <li class="@yield('pesan') treeview">
-          <a href="{{ url('/pesan')}}">
-            <i class="fa fa-book"></i>
-            <span>Booking</span>
-          </a>
-        </li>
-        <li class="@yield('testimoni') treeview">
-          <a href="{{ url('/testimoni')}}">
-            <i class="fa fa-users"></i>
-            <span>Testimonial</span>
-          </a>
-        </li>
-        <li class="@yield('komentar') treeview">
-          <a href="{{ url('/komentar')}}">
-            <i class="fa fa-comments"></i>
-            <span>Comment</span>
-          </a>
-        </li>
-      </ul>
+ 
+  <section class="content-header">
+      <h1>
+        Invoice
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        {{-- <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Invoice</li> --}}
+      </ol>
     </section>
-    <!-- /.sidebar -->
-  </aside>
-  @yield('content')
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="#">Pungky &amp; Welly </a>.</strong> All rights
-    reserved.
-  </footer>
-</div>
 
+    <!-- Main content -->
+    @foreach($pesan as $items)
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-home"></i> Ombak Putih Bungalows
+            <small class="pull-right">@php echo "Date: " . date("d/m/Y"); @endphp</small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+          From
+          <address>
+            <strong>Koos Buis</strong><br>
+            Jalan Pratama 101X, Tanjung Benoa, Nusa Dua<br>
+            Bali<br>
+            Phone: (+62)81-338-827-281<br>
+            Email: dinafur@hotmail.com
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          To
+          <address>
+            <strong>{{$items->nama_pemesan}}</strong><br>
+            Phone: {{$items->no_telepon}}<br>
+            Email: {{$items->email}}
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          <b>Invoice </b>{{$items->id}}<br>
+          <br>
+          <b>Order ID:</b> B{{$items->id}}<br>
+          <b>Checkin Due:</b> @php $tgl_masuk = strtotime($items->tgl_masuk); $tgl_masuk=date('d/m/Y',$tgl_masuk); echo $tgl_masuk; @endphp<br>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Arrival Date</th>
+              <th>Departure Date</th>
+              <th>Price by Season</th>
+              <th>Bungalow</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>@php $tgl_masuk = strtotime($items->tgl_masuk); $tgl_masuk=date('d/m/Y',$tgl_masuk); echo $tgl_masuk; @endphp</td>
+              <td>@php $tgl_keluar = strtotime($items->tgl_keluar); $tgl_keluar=date('d/m/Y',$tgl_keluar); echo $tgl_keluar; @endphp</td>
+              <td>@php$transdate = date('m-d-Y', time());
+                    $month = date('m');
+                    if($month > 1 && $month <= 6 ){
+                        echo "IDR " . number_format($items->tarif_low,2);
+                    } 
+                    else 
+                    {
+                        echo "IDR " .  number_format($items->tarif_high,2);
+                    }
+                @endphp  </td>
+              <td>{{$items->nama}}</td>
+             </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <!-- accepted payments column -->
+
+        <!-- /.col -->
+        <div class="col-xs-6">
+
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th style="width:50%">Subtotal:</th>
+                <td>
+                @php$transdate = date('m-d-Y', time());
+                    $month = date('m');
+                    if($month > 1 && $month <= 6 ){
+                        echo "IDR " . number_format($items->tarif_low,2);
+                    } 
+                    else 
+                    {
+                        echo "IDR " .  number_format($items->tarif_high,2);
+                    }
+                @endphp    
+                </td>
+              </tr>
+              <tr>
+                <th>Total:</th>
+                <td>@php$transdate = date('m-d-Y', time());
+                    $month = date('m');
+                    if($month > 1 && $month <= 6 ){
+                        echo "IDR " . number_format($items->tarif_low,2);
+                    } 
+                    else 
+                    {
+                        echo "IDR " .  number_format($items->tarif_high,2);
+                    }
+                @endphp    </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <!-- this row will not appear when printing -->
+      <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="{{url('/invoice')}}" onclick="window.print();" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a href="{{url('/')}}" class="btn btn-default"><i class="fa fa-times"></i> Close</a>
+          {{-- <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate PDF
+          </button> --}}
+        </div>
+      </div>
+    </section>
+@endforeach
 <!-- jQuery 2.2.3 -->
 <script src="{{asset("plugins/jQuery/jquery-2.2.3.min.js")}}"></script>
 <!-- Bootstrap 3.3.6 -->

@@ -1,6 +1,10 @@
 @extends('layouts.main')
 @section('title','Choose Bungalow')
 @section('content')
+@include('sweet::alert')
+@if ($errors->has('tgl_masuk') || $errors->has('tgl_keluar'))
+<script type="text/javascript"> swal("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} . {{ $errors->first('tgl_keluar') }}" , "error"); </script>
+@endif
 <section class="section-breadcrumb">
         <h2 class="title" >Check Results</h2>
         <div class="breadcrumb">
@@ -57,11 +61,10 @@
                                     <div class="form-group">
                                         <label >Adults</label>
                                         <select class="form-control third" name="adults">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option selected="selected">2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <option>1</option>
+                                        <option selected="selected">2</option>
+                                        <option>3</option>
+                                        <option>4</option>
                                         <option>5</option>
                                         <option>6</option>
                                         <option>7</option>
@@ -77,8 +80,8 @@
                                     <div class="form-group">
                                         <label >Children</label>
                                         <select class="form-control third" name="children">
-                                            <option selected="selected">0</option>
-                                            <option>1</option>
+                                        <option selected="selected">0</option>
+                                        <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>

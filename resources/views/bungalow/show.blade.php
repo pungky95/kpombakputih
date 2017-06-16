@@ -1,6 +1,10 @@
 @extends('layouts.main')
 @section('title','Bungalow')
 @section('content')
+@include('sweet::alert')
+@if ($errors->has('tgl_masuk') || $errors->has('tgl_keluar'))
+<script type="text/javascript"> swal("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} . {{ $errors->first('tgl_keluar') }}" , "error"); </script>
+@endif
 <section class="section-breadcrumb">
         <h2 class="title" >{{$bungalow->nama}}</h2>
         <div class="breadcrumb">
@@ -34,7 +38,8 @@
                     <div class="widget-box ">
                         <h4 class="widget-title">Book this room</h4>
                         <hr>
-                        <em >from IDR <span class="price">{{number_format($bungalow->tarif_low,2)}}</span> / night</em>
+                        <em >Low Season IDR <span class="price">{{number_format($bungalow->tarif_low,2)}}</span> / night</em>
+                        <em >High Season IDR <span class="price">{{number_format($bungalow->tarif_high,2)}}</span> / night</em>
                         <div class="include-header">This price includes</div>
                         <div class="include-item">Breakfast</div>
                         {{-- <div class="include-header"><strong>... and do not includes:</strong></div>

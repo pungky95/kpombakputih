@@ -3,7 +3,7 @@
 @section('content')
 @include('sweet::alert')
 @if ($errors->has('tgl_masuk') || $errors->has('tgl_keluar'))
-<script type="text/javascript"> swal("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} {{ $errors->first('tgl_keluar') }}" , "error"); </script>
+<script type="text/javascript"> swal("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} . {{ $errors->first('tgl_keluar') }}" , "error"); </script>
 @endif
 {{ Counter::count('home') }}
  <div id="main-slider" class="slider">
