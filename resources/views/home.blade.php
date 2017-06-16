@@ -145,13 +145,12 @@
         <h2 class="hidden">Rooms</h2>
         <div class="container">
             <div class="rooms-area">
-                @foreach($bungalow_galeris as $items)
+                @foreach($bungalow_galeris->slice(0,3) as $items)
                 <div class="row">
                     <div class="col-md-4 col-xs-6">
                         <div class="room-title-container" >
-                            <h3 class="title">{{substr($items->nama,0,17)}}</h3>
-                            <div class="title-room">{{substr($items->nama,17)}}</div>
-                            <p class="content muted">{!!str_limit($items->keterangan)!!}</p>
+                            <h3 class="title">{{str_replace("Number","","$items->nama")}}</h3>
+                            <p class="content muted">@php echo str_limit(str_replace("<p>","","$items->keterangan")); @endphp </p>
                             <a href="{{url('bungalow/'.$items->bungalow_id)}}" class="link secondary">Continue Reading </a>
                         </div>
                     </div>
@@ -160,7 +159,7 @@
                     </div>
                     <div class="col-md-4 col-xs-6">
                         <div class="room-container" >
-                            <div class="price-text">from <span class="price">IDR {{number_format($items->tarif_low,2)}}</span> / night</div>
+                            <div class="price-text">from <span class="price">IDR {{number_format($items->tarif_low)}}</span> / night</div>
                             <p class="room-desc">Only {{$items->jumlah_kamar}} rooms are available</p>
                             <p class="room-desc">Breakfast included</p>
                             <a href="booking-choose-date.html" class="button" >Book Now</a>

@@ -163,7 +163,7 @@ class BungalowController extends Controller
         foreach ($fasilitas as $items){
             array_push($fasilitas_id,$items->fasilitas_id);
         }
-        $galeri = Galeri::whereIn('id',$galeri_id)->first();
+        $galeri = Galeri::whereIn('id',$galeri_id)->get();
         $fasilitas = Fasilita::whereIn('id',$fasilitas_id)->get();
 
         return view('bungalow.show', compact('bungalow','galeri','fasilitas','tgl_masuk','tgl_keluar','adults','children'));

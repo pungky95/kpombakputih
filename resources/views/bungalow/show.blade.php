@@ -18,7 +18,14 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="room-description">
-                        <img src="{{asset($galeri->path)}}" class="img-centered img-responsive" alt="room-large" data-animate="fadeIn">
+                    <div class="w3-content w3-display-container">
+                    @foreach ($galeri as $photos)
+                    <img class="mySlides" src="{{asset($photos->path)}}" style="width:100%">
+                    @endforeach
+                    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                    </div>
+                        {{-- <img src="{{asset($galeri->path)}}" class="img-centered img-responsive" alt="room-large" data-animate="fadeIn"> --}}
                         <h3 class="subtitle">Description</h3>
                         {!!$bungalow->keterangan!!}
                         <h3 class="subtitle large-caps">Facilities</h3>
