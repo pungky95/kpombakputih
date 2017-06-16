@@ -22,7 +22,7 @@ class TestimoniController extends Controller
      */
     public function index()
     {
-        $testimoni = Testimoni::paginate(5);
+        $testimoni = Testimoni::orderby('created_at','desc')->paginate(10);
         return view('testimoni.index', compact('testimoni'));
     }
 
