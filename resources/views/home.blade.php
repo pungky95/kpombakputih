@@ -3,7 +3,7 @@
 @section('content')
 @include('sweet::alert')
 @if ($errors->has('tgl_masuk') || $errors->has('tgl_keluar'))
-<script type="text/javascript"> sweetAlert("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} {{ $errors->first('tgl_keluar') }}" , "error"); </script>
+<script type="text/javascript"> swal("Failed to Check Bungalows", "{{ $errors->first('tgl_masuk') }} {{ $errors->first('tgl_keluar') }}" , "error"); </script>
 @endif
 {{ Counter::count('home') }}
  <div id="main-slider" class="slider">
@@ -58,7 +58,7 @@
                     <div class="col-md-4 ">
                         <div class="title-container">
                             <div class="title-area bg-primary">
-                                <div class="title">Search Bungalows</div>
+                                <div class="title">Search Rooms</div>
                                 <div class="subtitle">For rates & availability</div>
                                 <p class="content muted">Choose from over {{$bungalow_galeris->count()}} House that suits you best</p>
                             </div>
