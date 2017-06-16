@@ -96,7 +96,7 @@
         <div class="col-sm-4 invoice-col">
           <b>Invoice </b>{{$items->id}}<br>
           <br>
-          <b>Order ID:</b> B{{$items->id}}<br>
+          <b>Order ID: </b> #BK{{$items->id}}<br>
           <b>Checkin Due:</b> @php $tgl_masuk = strtotime($items->tgl_masuk); $tgl_masuk=date('d/m/Y',$tgl_masuk); echo $tgl_masuk; @endphp<br>
         </div>
         <!-- /.col -->

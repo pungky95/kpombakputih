@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Alert;
 use App\Testimoni;
+use App\Http\Requests\StoreTestimoniRequest;
 use Illuminate\Http\Request;
 use Session;
 
@@ -42,16 +43,16 @@ class TestimoniController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(StoreTestimoniRequest $request)
     {
         
         $requestData = $request->all();
         
         Testimoni::create($requestData);
 
-        Session::flash('flash_message', 'Testimoni added!');
-
-        return redirect('testimoni');
+        Session::flash('testimoni', 'Testimoni added!');
+        Alert::success('Your Testimoni Sent','Sent')->persistent('OK');
+        return redirect('/');
     }
 
     /**
@@ -97,7 +98,7 @@ class TestimoniController extends Controller
         
         $testimoni = Testimoni::findOrFail($id);
         $testimoni->update($requestData);
-
+        
         Session::flash('flash_message', 'Testimoni updated!');
 
         return redirect('testimoni');

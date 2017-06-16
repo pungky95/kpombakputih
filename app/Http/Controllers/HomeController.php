@@ -8,6 +8,7 @@ use App\User;
 use Image;
 use Alert;
 use Auth;
+
 class HomeController extends Controller
 {
     /**

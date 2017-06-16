@@ -136,6 +136,24 @@
                         <a class="social-link" href="#"><i class="fa fa-youtube"></i><i class="fa fa-youtube"></i></a>
                     </div>
                 </div>
+                <div class="col-sm-4 text-right">
+                @include('sweet::alert')
+@if ($errors->has('nama_tamu') || $errors->has('konten'))
+<script type="text/javascript"> swal("Failed to sent Testimoni", "{{ $errors->first('nama_tamu') }} . {{ $errors->first('konten') }}" , "error"); </script>
+@endif
+                    <h3 class="subtitle"><strong>Testimoni</strong></h3>
+                    <p>Give your testimoni downbelow</p>
+                    <div class="inputs">
+                        {!! Form::open(['url' => '/testimoni',  'files' => true]) !!}
+                        <div class="input-wrapper">
+                        <input type="text" name="nama_tamu" placeholder="Enter your name here">
+                        <input type="text" name="konten" placeholder="Enter your testimoni here">
+                        </div>
+                        <button ><i class="fa fa-arrow-right"></i></button>
+                        {!! Form::close() !!}
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="copyright-area">
