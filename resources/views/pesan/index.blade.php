@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{ $item->nama_pemesan }}</td><td> {{ $item->tgl_masuk }}</td><td>{{ $item->tgl_keluar }}</td><td>{{ $item->jumlah_anak }}</td><td>{{ $item->jumlah_dewasa }}</td><td>{{ $item->permintaan_khusus }}</td><td>{{ $item->no_telepon }}</td><td>{{ $item->email }}</td>
                                         <td>
-                                            <a href="{{ url('/pesan/' . $item->id) }}" class="btn btn-default" title="View ">
+                                            <a href="{{ url('/invoice/' . $item->id) }}" class="btn btn-default" title="Invoice ">
                                             <i class="fa fa-eye"></i></a>
                                             <a href="{{ url('/pesan/' . $item->id . '/edit') }}" class="btn btn-default" title="Edit ">
                                             <li class="fa fa-edit"></li></a>

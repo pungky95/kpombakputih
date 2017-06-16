@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title','Services')
+@section('title','Facilities')
 @section('content')
 
     <h1 class="hidden">Facilities</h1>
@@ -11,7 +11,7 @@
     </section>
 
     <section class="section-facilities">
-        <h2 class="hidden">Services</h2>
+        <h2 class="hidden">Facilities</h2>
         <div class="container">
             <div class="facilities-container">
                 <div class="row">

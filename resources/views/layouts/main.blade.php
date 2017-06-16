@@ -49,7 +49,7 @@
                         <a href="{{ url('/bungalows')}}">Bungalows</a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('/services')}}">Services</a>
+                        <a href="{{ url('/facilities')}}">Facilities</a>
                     </li>
                     <li class="menu-item">
                         <a href="{{url('/choose_date')}}">Booking</a>
@@ -112,15 +112,11 @@
                 <div class="col-sm-4">
                     <h3 class="subtitle"><strong>Useful Links</strong></h3>
                     <ul class="site-links">
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Rooms</a></li>
-                        <li><a href="#">Facilities</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Event Planner</a></li>
-                        <li><a href="#">Special Offer</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Under Construction</a></li>
+                        <li><a href="{{ url('/services')}}">Services</a></li>
+                        <li><a href="{{ url('/blogs')}}">Blog</a></li>
+                        <li><a href="{{ url('/bungalows')}}">Bungalows</a></li>
+                        <li><a href="{{ url('/facilities')}}">Facilities</a></li>
+                        <li><a href="{{ url('/about') }}">About</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4 text-center">
@@ -144,7 +140,7 @@
         </div>
         <div class="copyright-area">
             <div class="container">
-                <p>@2016 Ombak Putih Bungalows. Designed by Code with <i class="fa fa-heart"></i></p>
+                <p>@2017 Ombak Putih Bungalows. Designed by Pungky &amp; Welly with Code and <i class="fa fa-heart"></i></p>
             </div>
         </div>
     </footer>

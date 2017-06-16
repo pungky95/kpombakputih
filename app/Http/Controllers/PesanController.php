@@ -167,7 +167,6 @@ class PesanController extends Controller
      */
     public function store(Request $request)
     {
-        $idcheck = Pesan::max('id');
         $requestData = $request->all();
         Pesan::create($requestData);
 
@@ -181,13 +180,15 @@ class PesanController extends Controller
         $bungalow_pesan->save();
 
         Session::flash('flash_message', 'Pesan added!');
-
-        return redirect('/invoice');
-    }
-    public function invoice(){
         $pesan_id = Pesan::max('id');
+        return redirect()->action(
+        'PesanController@invoice', ['id' => $pesan_id]
+);
+    }
+    public function invoice($id){
+
         $pesan = DB::select(DB::raw("SELECT p.id, p.nama_pemesan, p.tgl_masuk, p.tgl_keluar, p.jumlah_dewasa, p.jumlah_anak,p.permintaan_khusus,p.no_telepon,p.email, b.nama, b.tarif_low,b.tarif_high,b.jumlah_kamar 
-                                     FROM bungalow_pesans s, bungalows b, pesans p WHERE s.pesan_id=p.id and s.bungalow_id = b.id"));
+                                     FROM bungalow_pesans s, bungalows b, pesans p WHERE s.pesan_id=p.id and s.bungalow_id = b.id and p.id = ".$id));
         return view('pesan.invoice',compact('pesan'));
     }
 

@@ -40,7 +40,7 @@
                     <div class="reservation-container">
                         <img src="{{asset('/images/gallery/bg_reservasi.jpg')}}" class="img-centered img-responsive" alt="booking-background" data-animate="fadeIn">
                         <div class="reservation-form">
-                            <form class="form-horizontal" role="form" action="{{url('/book')}}" method="POST">
+                            <form class="form-horizontal" id="reservation" role="form" action="{{url('/book')}}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" value="{{$tgl_masuk}}" name="tgl_masuk">
                             <input type="hidden" value="{{$tgl_keluar}}" name="tgl_keluar">

@@ -21,7 +21,7 @@ use App\Galeri;
 Route::post('bungalowphoto','BungalowController@storephoto');
 Route::get('bungalows','BungalowController@bungalows');
 Route::resource('bungalow', 'BungalowController');
-Route::get('services', 'FasilitasController@services');
+Route::get('facilities', 'FasilitasController@services');
 Route::any('destroygaleri/{id}','FasilitasController@destroygaleri');
 Route::resource('fasilitas', 'FasilitasController');
 Route::resource('testimoni', 'TestimoniController');
@@ -34,7 +34,7 @@ Route::resource('bungalow_galeri', 'Bungalow_GaleriController');
 Route::any('/choose_bungalow','PesanController@checkbungalow');
 Route::any('/choose_date','PesanController@checkdate');
 Route::any('/book','PesanController@store');
-Route::any('/invoice','PesanController@invoice');
+Route::any('/invoice/{id}','PesanController@invoice');
 Route::any('/reservation','PesanController@pesan');
 Route::resource('pesan', 'PesanController');
 Route::any ( 'blog/search', function () {

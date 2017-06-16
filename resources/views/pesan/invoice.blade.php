@@ -185,7 +185,11 @@
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="{{url('/invoice')}}" onclick="window.print();" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          @if(Auth::check())
+          <a href="{{url('/pesan')}}" class="btn btn-default"><i class="fa fa-times"></i> Close</a>
+          @else
           <a href="{{url('/')}}" class="btn btn-default"><i class="fa fa-times"></i> Close</a>
+          @endif
           {{-- <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button> --}}
